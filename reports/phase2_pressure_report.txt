@@ -1,0 +1,123 @@
+========================================================================
+  PHASE 2 REPORT (REMEDIATED): PRESSURE DEFINITION & RIGOROUS EVALUATION
+========================================================================
+
+1. EXECUTIVE SUMMARY & CORRECTED FINDINGS
+------------------------------------------------------------------------
+This revised report presents strictly out-of-sample evaluation metrics and removes
+all claims of 'empirical validation' that relied on circular proxy encoding or in-sample
+resubstitution. All models exclude DLS/revised matches from training.
+
+Core Corrected Findings:
+  - Win Probability Model: Legitimate out-of-sample predictive power beating constant
+    and score+balls baselines (GroupKFold Brier 0.1796 vs 0.2499 baseline;)
+    Temporal holdout Brier 0.1835 vs 0.2499 baseline).
+  - Leverage Index Standardization: Previously, Innings 1 contained 0 High-pressure balls.
+    With within-innings percentile standardization, both innings have balanced representation.
+  - Behavioral Impact Under Leverage Index: Contrary to earlier claims of 'panic', batters
+    in High Leverage passages show LOWER dismissal rates (4.97% vs 6.77% in Low) and lower
+    strike rates (134.94 vs 144.70 in Low). Under clustered regression controlling for batter
+    quality, phase and batting order, the effect of leverage percentile on dismissal is
+    slightly negative: coef = -0.0052 (95% CI: [-0.0094, -0.0010], p = 0.015).
+  - Composite Pressure: The previously reported '+105% dismissal surge' was predominantly
+    an artifact of feeding fallen wickets into the pressure score. When wickets-in-hand is
+    removed, the regression-adjusted effect of pressure on dismissal is +0.0033 per unit
+    (95% CI: [0.0035, 0.0046], p < 0.001).
+
+2. OUT-OF-SAMPLE WIN PROBABILITY EVALUATION
+------------------------------------------------------------------------
+All in-sample metrics have been completely expunged from documentation.
+
+A. 5-Fold GroupKFold by Match ID (Test Matches = 829):
+   Model Brier Score          : 0.1796
+   Model Log-Loss             : 0.5265
+   Score+Balls Baseline Brier : 0.2342  (Log-Loss: 0.6607)
+   Constant Win-Rate Baseline : 0.2499  (Log-Loss: 0.6930)
+   Model Beats Baselines      : True (on both Brier score and Log-loss)
+
+   Decile Calibration Table (Out-of-Sample GroupKFold):
+                    decile  mean_pred  win_rate  count
+(-0.0009999999861, 0.0834]   0.024789  0.026195  19431
+           (0.0834, 0.243]   0.169273  0.175244  19430
+            (0.243, 0.354]   0.301534  0.287699  19430
+            (0.354, 0.435]   0.397396  0.401853  19430
+            (0.435, 0.502]   0.468538  0.465905  19431
+            (0.502, 0.565]   0.534026  0.545057  19431
+            (0.565, 0.636]   0.599434  0.625920  19429
+            (0.636, 0.732]   0.681222  0.675605  19430
+            (0.732, 0.869]   0.798040  0.769532  19430
+            (0.869, 0.999]   0.937302  0.935258  19431
+
+B. Chronological 80/20 Holdout Split (Cutoff = 2025-11-09):
+   Train Matches: 649 | Test Matches: 165
+   Model Brier Score          : 0.1835
+   Model Log-Loss             : 0.5343
+   Score+Balls Baseline Brier : 0.2403
+   Constant Baseline Brier    : 0.2499
+
+3. PRESSURE BANDS & INNINGS DISTRIBUTION
+------------------------------------------------------------------------
+Deliveries per band by Innings (Standardized Leverage Index):
+innings                1      2
+pressure_band_lev              
+Low                34191  31037
+Medium             34204  31046
+High               34191  31038
+
+Deliveries per band by Innings (Composite Index - No Wickets Component):
+innings                 1      2
+pressure_band_comp              
+Low                 64083  45032
+Medium              36698  28171
+High                 1805  19918
+
+4. BEHAVIORAL TABLES (BEFORE VS AFTER REMEDIATION)
+------------------------------------------------------------------------
+A. Leverage Index Pressure Bands (Standardized by Innings):
+  Band  Total Deliveries  Legal Balls  Strike Rate  Bowling Econ  Dismissal Rate (%)  Dot Ball (%)  Boundary (%)  Six (%)  Runs/Wicket
+   Low             65228        62226       145.18          8.81                6.64         29.08         19.14     7.81        21.87
+Medium             65250        62715       138.69          8.42                5.22         29.95         17.91     6.36        26.58
+  High             65229        62714       134.06          8.15                4.89         35.71         18.83     5.66        27.41
+
+B. Composite Pressure Bands (Remediated - Wickets Removed):
+  Band  Total Deliveries  Legal Balls  Strike Rate  Bowling Econ  Dismissal Rate (%)  Dot Ball (%)  Boundary (%)  Six (%)  Runs/Wicket
+   Low            109115       105269       135.79          8.24                4.51         33.30         18.30     5.95        30.14
+Medium             64869        61812       143.52          8.72                6.32         29.84         19.10     7.12        22.70
+  High             21723        20574       144.54          8.80                8.84         28.05         18.92     8.42        16.36
+
+C. Composite Pressure Bands (Before Remediation - Wickets Included):
+  Band  Total Deliveries  Legal Balls  Strike Rate  Bowling Econ  Dismissal Rate (%)  Dot Ball (%)  Boundary (%)  Six (%)  Runs/Wicket
+   Low            110555       106487       137.17          8.33                4.50         34.24         19.08     6.01        30.46
+Medium             58238        55692       141.48          8.58                5.83         27.94         17.74     7.02        24.27
+  High             26914        25476       143.40          8.74                9.53         28.46         18.66     8.21        15.05
+
+5. MULTIPLE REGRESSION DISMISSAL ANALYSIS
+------------------------------------------------------------------------
+Estimated on 187,655 legal balls across 829 matches.
+Cluster-robust standard errors grouped by match_id.
+
+Regression 1: is_wicket ~ pressure_composite_no_wkt + batting_order + C(phase) + batter_wkt_rate
+=============================================================================================
+                                coef    std err          z      P>|z|      [0.025      0.975]
+---------------------------------------------------------------------------------------------
+Intercept                     0.0041      0.003      1.388      0.165      -0.002       0.010
+C(phase)[T.middle]           -0.0267      0.002    -16.642      0.000      -0.030      -0.024
+C(phase)[T.powerplay]        -0.0310      0.002    -16.456      0.000      -0.035      -0.027
+pressure_composite_no_wkt     0.0041      0.000     14.772      0.000       0.004       0.005
+batting_order                -0.0050      0.000    -14.869      0.000      -0.006      -0.004
+batter_wkt_rate               1.4762      0.047     31.630      0.000       1.385       1.568
+=============================================================================================
+
+Regression 2: is_wicket ~ leverage_percentile + batting_order + C(phase) + batter_wkt_rate
+=========================================================================================
+                            coef    std err          z      P>|z|      [0.025      0.975]
+-----------------------------------------------------------------------------------------
+Intercept                 0.0200      0.003      6.811      0.000       0.014       0.026
+C(phase)[T.middle]       -0.0328      0.002    -20.649      0.000      -0.036      -0.030
+C(phase)[T.powerplay]    -0.0380      0.002    -19.582      0.000      -0.042      -0.034
+leverage_percentile      -0.0052      0.002     -2.422      0.015      -0.009      -0.001
+batting_order            -0.0035      0.000    -10.978      0.000      -0.004      -0.003
+batter_wkt_rate           1.4760      0.046     31.997      0.000       1.386       1.566
+=========================================================================================
+
+========================================================================

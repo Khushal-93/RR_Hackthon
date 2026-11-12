@@ -1,0 +1,28 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Environments and caches
+.venv/
+env/
+venv/
+.pytest_cache/
+.ipynb_checkpoints/
+.DS_Store
+
+# Competition and raw/intermediate data binaries
+*.parquet
+data/*.parquet
+audit/*.parquet
+*.pdf
+*.zip
+*.pkl
+*.joblib
+*.tar.gz
+
+# Secrets and environment configs
+.env
+.env.*
+*.secret

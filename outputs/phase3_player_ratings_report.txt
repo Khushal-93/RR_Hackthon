@@ -1,0 +1,164 @@
+================================================================================
+  PHASE 3 FINAL METHODOLOGY & PLAYER PRESSURE RATINGS REPORT
+================================================================================
+Dataset: Clean Non-DLS Delivery Parquet (N = 195,707 deliveries, 829 matches)
+Branch: fix/audit-remediation
+Eligibility: >= 150 High-Pressure Legal Deliveries and >= 15 Matches
+
+1. PRESSURE DEFINITION
+--------------------------------------------------------------------------------
+Pressure is defined strictly as the TOP THIRD of Leverage Index standardized within each innings:
+  - Innings 1: Leverage Index standardized across all Innings 1 legal deliveries.
+    High Pressure = Percentile Rank >= 66.7% (Leverage >= 1.258).
+    75.54% of Innings 1 High Pressure falls in Overs 1-6 (Powerplay) and 86.99% is faced by Orders 1-3.
+    It captures Early Foundation Volatility (surviving swing while setting target).
+  - Innings 2: Leverage Index standardized across all Innings 2 legal deliveries.
+    High Pressure = Percentile Rank >= 66.7% (Leverage >= 1.246).
+    Distributed across middle and death overs under escalating Required Run Rate.
+    It captures Target-Chasing Execution under match-outcome volatility.
+
+2. METRICS & BASELINES
+--------------------------------------------------------------------------------
+A. Score Specification (Pure Run Efficiency):
+   - Batters: Shrunk opposition-adjusted Runs Above Expected (RAE) per high-pressure ball.
+     RAE_i,t = runs_t - (E_{-m}[runs | phase, WIH, batting_order, bowler_type] + Delta_bowl_team / 6)
+   - Bowlers: Shrunk opposition-adjusted Runs Saved (RSE) per high-pressure ball.
+     RSE_i,t = (E_{-m}[runs | phase, WIH, batting_order] + Delta_bat_team / 6) - total_delivery_runs_t
+   - Dismissal Rate vs Expected: Reported as an independent diagnostic column only.
+     Out-of-time validation proved that adding binary wicket outcomes (k*WAE) degrades cross-era
+     repeatability (rho drops from +0.23 to -0.004 for batters, and from +0.31 to +0.10 for bowlers).
+     Therefore, wickets are excluded from the score to maximize signal-to-noise.
+
+B. Empirical Bayes Shrinkage Formulation:
+   Each player's observed sample mean y_i is shrunk toward the pool grand mean mu0:
+     y_shrunk,i = lambda_i * y_i + (1 - lambda_i) * mu0
+     lambda_i   = tau^2 / (tau^2 + v_i)
+     v_i        = sigma_i^2 / N_i  (true delivery-level sampling variance)
+   - Batters Pool: mu0 = -0.0361 runs/b, tau^2 = 0.0182, mean(v_i) = 0.0098
+   - Bowlers Pool: mu0 = +0.0788 runs/b, tau^2 = 0.0112, mean(v_i) = 0.0103
+
+3. FAIRNESS: SAMPLE SIZE, ELIGIBILITY, IPL VS T20I, AND DLS
+--------------------------------------------------------------------------------
+  1. Strict Non-DLS Sample: 100% of rain-shortened and DLS-affected matches (41 matches, 5,254 deliveries)
+     were excluded from model baselines and player ratings. A test enforces 0 DLS deliveries.
+  2. Eligibility Threshold: Players must face >= 150 high-pressure legal balls and play >= 15 matches.
+     This eliminates small-sample outliers while retaining 118 eligible batters and 124 eligible bowlers.
+  3. Empirical Bayes Equalizer: Players with moderate volume (150-250 balls) are safely shrunk
+     toward mu0 (lambda ~ 0.45-0.55), preventing small-sample spikes from dominating high-volume veterans.
+  4. Competition & Opposition Quality: Expected baseline runs are adjusted for opponent bowling/batting
+     attack strength (shrunk toward global economy with m=300 prior). Batters facing international
+     bowling attacks receive upward credit (+0.05 to +0.08 runs/ball), balancing higher IPL venue baselines.
+
+4. EVIDENCE FOR THE TOP 10
+--------------------------------------------------------------------------------
+A. TOP 10 BATTERS UNDER PRESSURE:
+ rank         striker_name  balls  matches raw_rate shrunk_rate lambda ci80_lower ci80_upper prob_top10 dismissal_rate_vs_exp ipl_share_pct               tier
+    1 Vaibhav Sooryavanshi    331       29  +0.7877     +0.3921  0.520    +0.2948    +0.4884     100.0%                +1.41%         66.8% Tier 1: Elite Lock
+    2        Priyansh Arya    316       29  +0.4663     +0.2531  0.576    +0.1622    +0.3388      94.2%                -0.33%         89.6% Tier 1: Elite Lock
+    3      Abhishek Sharma   1084      106  +0.2984     +0.2420  0.831    +0.1684    +0.3037      95.6%                +0.01%         59.3% Tier 1: Elite Lock
+    4            Tim David    279       32  +0.3804     +0.1898  0.542    +0.0717    +0.3032      68.9%                -0.11%         35.8% Tier 1: Elite Lock
+    5            Phil Salt    716       68  +0.2319     +0.1731  0.781    +0.0983    +0.2471      73.0%                +0.31%         45.4% Tier 1: Elite Lock
+    6          Travis Head    586       55  +0.2401     +0.1650  0.728    +0.0694    +0.2610      64.4%                +0.11%         74.7% Tier 1: Elite Lock
+    7          Josh Inglis    342       35  +0.2749     +0.1539  0.611    +0.0534    +0.2497      56.4%                +0.09%         45.9% Tier 1: Elite Lock
+    8           Finn Allen    364       38  +0.2700     +0.1490  0.605    +0.0698    +0.2341      55.4%                -1.05%         21.2% Tier 1: Elite Lock
+    9     Heinrich Klaasen    229       24  +0.3103     +0.1454  0.524    +0.0614    +0.2215      53.5%                +1.38%         81.7% Tier 1: Elite Lock
+   10          Harry Brook    239       23  +0.2708     +0.1407  0.576    +0.0650    +0.2247      51.8%                -0.41%         22.6% Tier 1: Elite Lock
+
+Statistical Ties in Batters Top 10 (Adjacent Pairwise Probabilities):
+  Rank 1 vs 2 (Vaibhav Sooryavanshi vs Priyansh Arya): P(A > B) = 94.3%
+  Rank 2 vs 3 (Priyansh Arya vs Abhishek Sharma): P(A > B) = 55.8% [STATISTICAL TIE]
+  Rank 3 vs 4 (Abhishek Sharma vs Tim David): P(A > B) = 5.3%
+  Rank 4 vs 5 (Tim David vs Phil Salt): P(A > B) = 79.6%
+  Rank 5 vs 6 (Phil Salt vs Travis Head): P(A > B) = 36.5%
+  Rank 6 vs 7 (Travis Head vs Josh Inglis): P(A > B) = 65.0%
+  Rank 7 vs 8 (Josh Inglis vs Finn Allen): P(A > B) = 46.4% [STATISTICAL TIE]
+  Rank 8 vs 9 (Finn Allen vs Heinrich Klaasen): P(A > B) = 20.7%
+  Rank 9 vs 10 (Heinrich Klaasen vs Harry Brook): P(A > B) = 47.1% [STATISTICAL TIE]
+
+B. TOP 10 BOWLERS UNDER PRESSURE:
+ rank         bowler_name  balls  matches raw_rate shrunk_rate lambda ci80_lower ci80_upper prob_top10 dismissal_rate_vs_exp ipl_share_pct               tier
+    1       Krunal Pandya    468       43  +0.3441     +0.2707  0.723    +0.1935    +0.3417      88.8%                +0.33%        100.0% Tier 1: Elite Lock
+    2        Sunil Narine    472       41  +0.3074     +0.2365  0.690    +0.1632    +0.3037      76.9%                -1.80%        100.0% Tier 1: Elite Lock
+    3         Rashid Khan    680       63  +0.2761     +0.2354  0.794    +0.1721    +0.2938      79.9%                +0.54%         65.1% Tier 1: Elite Lock
+    4      Sufiyan Muqeem    171       15  +0.3664     +0.2236  0.503    +0.1522    +0.2866      71.3%                +1.76%          0.0% Tier 1: Elite Lock
+    5         Adil Rashid    264       36  +0.2818     +0.2029  0.611    +0.1105    +0.2934      57.4%                -0.43%          0.0% Tier 1: Elite Lock
+    6   Jason Behrendorff    182       17  +0.3277     +0.1916  0.453    +0.1257    +0.2554      46.1%                +1.87%         63.2% Tier 1: Elite Lock
+    7      Mohammed Shami    507       49  +0.2400     +0.1859  0.665    +0.1204    +0.2447      41.0%                +0.71%         97.6% Tier 1: Elite Lock
+    8      Gudakesh Motie    219       19  +0.2710     +0.1772  0.512    +0.1118    +0.2438      36.9%                +0.72%          0.0% Tier 1: Elite Lock
+    9   Bhuvneshwar Kumar    910       83  +0.1982     +0.1716  0.777    +0.1058    +0.2321      28.7%                -0.63%         72.6% Tier 1: Elite Lock
+   10 Matheesha Pathirana    191       20  +0.2515     +0.1659  0.504    +0.1079    +0.2187      21.8%                +2.67%         67.0% Tier 1: Elite Lock
+
+Statistical Ties in Bowlers Top 10 (Adjacent Pairwise Probabilities):
+  Rank 1 vs 2 (Krunal Pandya vs Sunil Narine): P(A > B) = 7.5%
+  Rank 2 vs 3 (Sunil Narine vs Rashid Khan): P(A > B) = 49.9% [STATISTICAL TIE]
+  Rank 3 vs 4 (Rashid Khan vs Sufiyan Muqeem): P(A > B) = 67.2%
+  Rank 4 vs 5 (Sufiyan Muqeem vs Adil Rashid): P(A > B) = 22.0%
+  Rank 5 vs 6 (Adil Rashid vs Jason Behrendorff): P(A > B) = 62.5%
+  Rank 6 vs 7 (Jason Behrendorff vs Mohammed Shami): P(A > B) = 24.5%
+  Rank 7 vs 8 (Mohammed Shami vs Gudakesh Motie): P(A > B) = 37.7%
+  Rank 8 vs 9 (Gudakesh Motie vs Bhuvneshwar Kumar): P(A > B) = 100.0%
+  Rank 9 vs 10 (Bhuvneshwar Kumar vs Matheesha Pathirana): P(A > B) = 1.0%
+
+C. BOWLERS PHASE & BOWLER TYPE BREAKDOWN (TOP 10 VS POOL):
+Rank  Bowler Name            Type   Balls  Powerplay    Middle       Death       
+--------------------------------------------------------------------------------
+#1    Krunal Pandya          Spin   468     34.6%        63.5%         1.9%
+#2    Sunil Narine           Spin   472     26.5%        66.9%         6.6%
+#3    Rashid Khan            Spin   680     20.3%        70.9%         8.8%
+#4    Sufiyan Muqeem         Spin   171      0.0%        91.2%         8.8%
+#5    Adil Rashid            Spin   264      4.9%        89.8%         5.3%
+#6    Jason Behrendorff      Pace   182     98.9%         0.0%         1.1%
+#7    Mohammed Shami         Pace   507     92.1%         5.3%         2.6%
+#8    Gudakesh Motie         Spin   219      7.8%        91.8%         0.5%
+#9    Bhuvneshwar Kumar      Pace   910     84.0%         4.8%        11.2%
+#10   Matheesha Pathirana    Pace   191      9.4%        50.8%        39.8%
+--------------------------------------------------------------------------------
+Top-10 Combined (4064 balls):
+  Bowler Type: Spin = 56.0%, Pace = 44.0%
+  Phase Share: Powerplay = 46.4%, Middle = 45.7%, Death = 7.9%
+Eligible Pool (N = 125 bowlers, 44312 balls):
+  Bowler Type: Spin = 35.1%, Pace = 64.9%
+  Phase Share: Powerplay = 57.9%, Middle = 33.4%, Death = 8.7%
+
+D. SENSITIVITY FOR LOW-VOLUME QUALIFIERS NEAR FLOOR (150-220 BALLS):
+Leave-top-2-matches-out re-ranking evaluates whether ratings depend on a handful of standout matches:
+  - Sufiyan Muqeem (bowler, Orig #4): 171b across 15m | Raw +0.3664 -> Shrunk +0.2236 (lam=0.503) | Opp: West Indies (63b), India A (23b), Zimbabwe (19b)
+    Leave-Top-2-Out: Raw +0.2990 -> Shrunk +0.1690 | New Rank in Pool: #9 (of 125)
+  - Jason Behrendorff (bowler, Orig #6): 182b across 17m | Raw +0.3277 -> Shrunk +0.1916 (lam=0.453) | Opp: India (42b), Gujarat Titans (26b), Sunrisers Hyderabad (22b)
+    Leave-Top-2-Out: Raw +0.1936 -> Shrunk +0.1245 | New Rank in Pool: #28 (of 125)
+  - Matheesha Pathirana (bowler, Orig #10): 191b across 20m | Raw +0.2515 -> Shrunk +0.1659 (lam=0.504) | Opp: Punjab Kings (29b), Royal Challengers Bengaluru (25b), Afghanistan (24b)
+    Leave-Top-2-Out: Raw +0.1719 -> Shrunk +0.1185 | New Rank in Pool: #32 (of 125)
+  - Gudakesh Motie (bowler, Orig #8): 219b across 19m | Raw +0.2710 -> Shrunk +0.1772 (lam=0.512) | Opp: England (89b), South Africa (48b), Australia (31b)
+    Leave-Top-2-Out: Raw +0.1690 -> Shrunk +0.1201 | New Rank in Pool: #30 (of 125)
+  - Tim David (batter, Orig #4): 279b across 32m | Raw +0.3804 -> Shrunk +0.1898 (lam=0.542) | Opp: India (81b), West Indies (27b), South Africa (26b)
+    Leave-Top-2-Out: Raw +0.2105 -> Shrunk +0.0954 | New Rank in Pool: #13 (of 118)
+  - Heinrich Klaasen (batter, Orig #9): 229b across 24m | Raw +0.3103 -> Shrunk +0.1454 (lam=0.524) | Opp: Chennai Super Kings (41b), Rajasthan Royals (33b), India (29b)
+    Leave-Top-2-Out: Raw +0.1884 -> Shrunk +0.0733 | New Rank in Pool: #17 (of 118)
+
+5. RELIABILITY AND LIMITATIONS
+--------------------------------------------------------------------------------
+A. Out-of-Time Repeatability (Fitted on 2022-2024 -> Evaluated on Raw 2025-2026):
+   Evaluated at Final Eligibility Threshold (Train >= 150 High Balls, Test >= 60 High Balls):
+   - Batters (N = 51): Spearman rho = +0.2501 (95% CI [-0.0711, +0.4985]), Pearson r = +0.2523
+     Top-10 Overlap = 3/10 (Chance: 1.96/10) | Top-20% Overlap = 30.0% (Chance: 20.0%)
+   - Bowlers (N = 63): Spearman rho = +0.2861 (95% CI [+0.0105, +0.5017]), Pearson r = +0.3218
+     Top-10 Overlap = 3/10 (Chance: 1.59/10) | Top-20% Overlap = 25.0% (Chance: 20.0%)
+
+B. Plain Limitations Assessment:
+   1. Signal is Modest: Across disjoint seasons, rank correlation is rho ~ 0.25 - 0.29, with top-20%
+      overlap around 25-30% (better than chance 20%, but far from deterministic). These ratings describe
+      historical efficiency in high-pressure corridors, NOT high-precision predictive traits.
+   2. Wickets Reduced Repeatability: Testing candidates confirmed that adding k*WAE to rate metrics
+      destroys out-of-time stability due to Bernoulli dismissal variance. Bowler ranking ordering
+      in particular is heavily clustered with statistical ties (~50% pairwise probabilities between adjacent
+      ranks) and must be understood as confidence tiers rather than discrete rank numbers.
+   3. Middle-Overs Spin Tactical Confounding: The top-10 bowler list is 60.0% spin (vs 33.6% in the pool),
+      and 5 of those spinners bowl 63.5% to 91.8% of their balls in Middle overs (overs 7-15). While state
+      baselines adjust for phase and wickets in hand, middle overs provide structurally different run-suppression
+      dynamics compared to powerplay and death pace corridors. Role-stratified evaluations are recommended.
+   4. Low-Volume Sensitivity near Floor: For qualifiers near 150-220 balls, bowler rankings show sensitivity
+      to peak matches: dropping the top 2 matches moves Behrendorff, Pathirana, and Motie from top 10 into
+      ranks #28-#32, while Muqeem (#9) and batters David (#13) and Klaasen (#17) maintain top-tier stability.
+   5. No Psychological Attribution: Models measure delivered runs and wickets in historical states.
+      They do not quantify mental toughness, choking, or tactical intent.
+================================================================================

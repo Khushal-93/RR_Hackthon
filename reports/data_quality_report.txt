@@ -1,0 +1,232 @@
+
+========================================================================
+  LOADING DATA
+========================================================================
+ball_by_ball              : 200,999 rows, 33 cols
+matches                   :     883 rows, 22 cols
+competitions              :     141 rows, 4 cols
+playing_eleven            :  28,381 rows,  9 cols
+competition_team_player   :   6,413 rows,  6 cols
+teams                     :     353 rows,   3 cols
+
+========================================================================
+  CHECK 1 — extras1_runs: type code vs actual runs?
+========================================================================
+Value counts of extras1_runs:
+     1  =>      576 rows
+     2  =>    7,714 rows
+     3  =>    2,748 rows
+     4  =>      529 rows
+     5  =>      264 rows
+     6  =>  189,167 rows
+     7  =>        1 rows
+
+--- Cross-tab: extras1_runs vs extras_type ---
+extras_type   Overstep  Penalty  byes  legbyes  other  wide
+extras1_runs                                               
+1                  576        0     0        0      0     0
+2                    0        0     0        0      0  7714
+3                    0        0     0     2748      0     0
+4                    0        0   529        0      0     0
+5                    0        0     0        0    264     0
+7                    0        1     0        0      0     0
+
+--- Hypothesis mapping check ---
+  code=6 (None/no extras): extras_type distribution = {}
+  code=2 (wide): extras_type distribution = {'wide': 7714}
+  code=1 (Overstep(no-ball)): extras_type distribution = {'Overstep': 576}
+  code=3 (legbyes): extras_type distribution = {'legbyes': 2748}
+  code=4 (byes): extras_type distribution = {'byes': 529}
+  code=5 (other): extras_type distribution = {'other': 264}
+  code=7 (Penalty): extras_type distribution = {'Penalty': 1}
+
+  Max extras1_runs value: 7
+
+--- extras_2_runs distribution ---
+extras_2_runs value counts:
+     0  =>  200,963 rows
+     1  =>       20 rows
+     4  =>       16 rows
+
+========================================================================
+  CHECK 2 — `runs` column: bat runs only or total delivery runs?
+========================================================================
+Wide deliveries: 7,714
+  runs on wides: {0: 7714}
+  extras_2_runs on wides: {0: 7714}
+
+No-ball (Overstep) deliveries: 576
+  runs on no-balls: {0: 239, 1: 174, 4: 81, 6: 47, 2: 33, 3: 2}
+  extras_2_runs on no-balls: {0: 555, 1: 12, 4: 9}
+
+Legbye deliveries: 2,748
+  runs on legbyes: {0: 2747, 1: 1}
+  extras_2_runs on legbyes: {0: 2748}
+
+========================================================================
+  CHECK 3 — Innings total reconstruction vs match results
+========================================================================
+
+--- Sample innings totals (first 10 matches) ---
+ match_id  innings  calc_total
+    13511        1         100
+    13511        2          99
+    13512        1         163
+    13512        2         158
+    13513        1         211
+    13513        2         192
+    13514        1         182
+    13514        2         150
+    13515        1         168
+    13515        2         150
+    13522        1         140
+    13522        2         158
+    13523        1         171
+    13523        2         164
+    13524        1         170
+    13524        2         157
+    13612        1         141
+    13612        2         111
+    13613        1         158
+    13613        2         154
+
+--- Run-margin match reconciliation (sample 10) ---
+  match 13512: result='England Won by 1 Run' | inn1=163 inn2=158 diff=5
+  match 13513: result='West Indies Won by 20 runs' | inn1=211 inn2=192 diff=19
+  match 13514: result='England Won by 34 runs' | inn1=182 inn2=150 diff=32
+  match 13515: result='West Indies Won by 17 runs' | inn1=168 inn2=150 diff=18
+  match 13523: result='India Won by 8 Runs' | inn1=171 inn2=164 diff=7
+  match 13524: result='India Won by 17 runs' | inn1=170 inn2=157 diff=13
+  match 13612: result='Australia Won by 20 runs (D/L method)' | inn1=141 inn2=111 diff=30
+  match 14098: result='Rajasthan Royals Won by 61 Runs' | inn1=196 inn2=139 diff=57
+  match 14102: result='Rajasthan Royals Won by 23 Runs' | inn1=182 inn2=159 diff=23
+  match 14103: result='Gujarat Titans won by 14 runs' | inn1=164 inn2=146 diff=18
+
+========================================================================
+  CHECK 4 — Legal ball identification
+========================================================================
+Legal deliveries  : 192,709
+Illegal (W/NB)    : 8,290
+Illegals % of all : 4.12%
+
+--- Legal balls per innings (sample 5 complete matches) ---
+  match 13512: inn1=120 legal balls | inn2=120 legal balls
+  match 13513: inn1=121 legal balls | inn2=120 legal balls
+  match 13514: inn1=120 legal balls | inn2=120 legal balls
+  match 13515: inn1=121 legal balls | inn2=120 legal balls
+  match 13522: inn1=120 legal balls | inn2=113 legal balls
+
+========================================================================
+  CHECK 5 — Super overs detection
+========================================================================
+Innings value distribution:
+  innings=1: 105,727 deliveries
+  innings=2: 95,234 deliveries
+  innings=3: 25 deliveries
+  innings=4: 13 deliveries
+
+Matches with super overs (innings>2): 6
+
+========================================================================
+  CHECK 6 — DLS / revised target matches
+========================================================================
+Matches with a revised DLS target: 23
+Sample revised targets: [143.0, 56.0, 91.0, 130.0, 171.0, 104.0, 203.0, 152.0, 126.0, 94.0]
+Matches with reduced 1st-inn overs: 25
+Matches with reduced 2nd-inn overs: 25
+
+========================================================================
+  CHECK 7 — Impact Player substitutions
+========================================================================
+Impact player (substituted IN)  rows: 558
+Impact player (substituted OUT) rows: 558
+Impact player appearances by format: {'T20': 558}
+
+========================================================================
+  CHECK 8 — bowl_speed coverage
+========================================================================
+Deliveries with bowl_speed > 0 : 123,137 (61.3%)
+Deliveries with bowl_speed == 0: 77,861
+
+========================================================================
+  CHECK 9 — IPL vs T20I breakdown
+========================================================================
+Deliveries by format:
+  T20I: 106,327
+  T20: 94,672
+
+Deliveries by season:
+  2022: 39,627
+  2022/23: 2,838
+  2023: 32,249
+  2023/24: 739
+  2024: 44,294
+  2024/25: 754
+  2025: 47,412
+  2026: 33,086
+
+========================================================================
+  CHECK 10 — Null / missing values
+========================================================================
+
+ball_by_ball:
+  dismissal_type_id: 190118 nulls (94.6%)
+  dismissal_type: 190118 nulls (94.6%)
+  dismissed_player_id: 190107 nulls (94.6%)
+  extras_type: 189167 nulls (94.1%)
+  stroke: 6158 nulls (3.1%)
+  delivery_style: 391 nulls (0.2%)
+  over_or_around: 407 nulls (0.2%)
+
+matches:
+  home_team_captain_id: 44 nulls (5.0%)
+  away_team_captain_id: 45 nulls (5.1%)
+  toss_win_team_id: 15 nulls (1.7%)
+  toss_opted: 15 nulls (1.7%)
+  first_inn_revised_overs: 858 nulls (97.2%)
+  second_inn_revised_overs: 858 nulls (97.2%)
+  revised_target: 860 nulls (97.4%)
+  win_team_id: 41 nulls (4.6%)
+
+competitions: no nulls
+
+playing_eleven:
+  batting_order: 8678 nulls (30.6%)
+
+comp_team_player_mapping: no nulls
+
+teams: no nulls
+
+========================================================================
+  CHECK 11 — Duplicate rows
+========================================================================
+ball_by_ball duplicate key rows: 0
+matches duplicate match_id rows: 0
+
+========================================================================
+  SUMMARY OF FINDINGS & FIXES
+========================================================================
+
+FINDING 1 (extras1_runs): Confirmed type CODE not run value.
+  Mapping: 6=None, 2=wide, 1=no-ball, 3=legbye, 4=bye, 5=other, 7=penalty.
+  FIX: Use extras1_runs only as a category flag; use extras_2_runs for actual run value.
+
+FINDING 2 (runs column): Contains BATTER runs only. Wide/bye extras NOT in `runs`.
+  FIX: delivery_total_runs = runs + extras_2_runs.
+
+FINDING 3 (legal balls): Exclude extras_type IN ['wide','Overstep'] for legal ball count.
+  FIX: is_legal = extras_type NOT IN ('wide','Overstep')
+
+FINDING 4 (super overs): Deliveries with innings > 2 are super overs.
+  FIX: Exclude innings > 2 from all pressure and rating calculations.
+
+FINDING 5 (DLS matches): Small number of DLS/revised-target matches exist.
+  FIX: Flag and exclude 2nd innings of DLS matches from RRR-based pressure calcs.
+
+FINDING 6 (Impact Player): Exists in IPL (T20 format) only.
+  FIX: When attributing balls to a player, use is_played=True from playing_eleven.
+
+FINDING 7 (bowl_speed): ~39% missing (value=0). 
+  FIX: Exclude bowl_speed from all models.
+
+FINDING 8 (duplicates): Check output above; fix any found.
