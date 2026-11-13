@@ -1,0 +1,189 @@
+{
+  "player_id": "charith-asalanka-batter",
+  "player_name": "Charith Asalanka",
+  "role": "batter",
+  "rank": 111,
+  "tier": "Tier 3: Fringe / High Var",
+  "plain_language_reading": "Charith Asalanka performs near historical baseline under high pressure (-0.17 runs/b across 235 balls).",
+  "stats": {
+    "balls": 235,
+    "matches": 26,
+    "raw_rate": -0.2363,
+    "shrunk_rate": -0.1683,
+    "lambda": 0.66,
+    "ci80_lower": -0.2514,
+    "ci80_upper": -0.0867,
+    "prob_top10": 0.0,
+    "dismissal_rate_vs_exp": -1.7884,
+    "ipl_share_pct": 0.0,
+    "t20i_share_pct": 100.0
+  },
+  "profile": {
+    "batting_type": "LHB",
+    "bowling_type": null,
+    "pace_or_spin": null,
+    "active_years": [
+      2022,
+      2026
+    ]
+  },
+  "phase_split": {
+    "powerplay_balls": 80,
+    "powerplay_pct": 34.0,
+    "middle_balls": 145,
+    "middle_pct": 61.7,
+    "death_balls": 10,
+    "death_pct": 4.3
+  },
+  "innings_split": {
+    "innings_1_balls": 122,
+    "innings_1_pct": 51.9,
+    "innings_2_balls": 113,
+    "innings_2_pct": 48.1
+  },
+  "stability_check": {
+    "leave_2_matches_raw_rate": -0.1938,
+    "leave_2_matches_shrunk_rate": -0.1431,
+    "leave_2_matches_rank": 116,
+    "rank_delta": 5,
+    "is_sensitive": false,
+    "audit_note": "Stable rating: stays within player's 80% credible interval when top matches are excluded."
+  },
+  "match_strip": [
+    {
+      "match_id": 45491,
+      "season": 2026,
+      "match_date": "2026-09-19",
+      "balls": 13,
+      "runs": 10,
+      "wickets": 0,
+      "contribution_rate": -0.48
+    },
+    {
+      "match_id": 45490,
+      "season": 2026,
+      "match_date": "2026-09-17",
+      "balls": 15,
+      "runs": 14,
+      "wickets": 0,
+      "contribution_rate": -0.32
+    },
+    {
+      "match_id": 48514,
+      "season": 2026,
+      "match_date": "2026-01-12",
+      "balls": 10,
+      "runs": 14,
+      "wickets": 0,
+      "contribution_rate": 0.15
+    },
+    {
+      "match_id": 45512,
+      "season": 2025,
+      "match_date": "2025-09-26",
+      "balls": 1,
+      "runs": 1,
+      "wickets": 0,
+      "contribution_rate": -0.25
+    },
+    {
+      "match_id": 45509,
+      "season": 2025,
+      "match_date": "2025-09-23",
+      "balls": 19,
+      "runs": 20,
+      "wickets": 1,
+      "contribution_rate": -0.2
+    },
+    {
+      "match_id": 45505,
+      "season": 2025,
+      "match_date": "2025-09-18",
+      "balls": 12,
+      "runs": 17,
+      "wickets": 1,
+      "contribution_rate": 0.17
+    },
+    {
+      "match_id": 45903,
+      "season": 2025,
+      "match_date": "2025-09-03",
+      "balls": 2,
+      "runs": 1,
+      "wickets": 1,
+      "contribution_rate": -0.75
+    },
+    {
+      "match_id": 43595,
+      "season": 2025,
+      "match_date": "2025-07-16",
+      "balls": 2,
+      "runs": 0,
+      "wickets": 0,
+      "contribution_rate": -1.25
+    },
+    {
+      "match_id": 38634,
+      "season": 2024,
+      "match_date": "2025-01-02",
+      "balls": 7,
+      "runs": 2,
+      "wickets": 0,
+      "contribution_rate": -0.96
+    },
+    {
+      "match_id": 38633,
+      "season": 2024,
+      "match_date": "2024-12-30",
+      "balls": 16,
+      "runs": 20,
+      "wickets": 1,
+      "contribution_rate": 0.0
+    },
+    {
+      "match_id": 38632,
+      "season": 2024,
+      "match_date": "2024-12-28",
+      "balls": 4,
+      "runs": 2,
+      "wickets": 1,
+      "contribution_rate": -0.75
+    },
+    {
+      "match_id": 37894,
+      "season": 2024,
+      "match_date": "2024-11-09",
+      "balls": 2,
+      "runs": 5,
+      "wickets": 0,
+      "contribution_rate": 1.25
+    },
+    {
+      "match_id": 37553,
+      "season": 2024,
+      "match_date": "2024-10-13",
+      "balls": 7,
+      "runs": 8,
+      "wickets": 0,
+      "contribution_rate": -0.11
+    },
+    {
+      "match_id": 34427,
+      "season": 2024,
+      "match_date": "2024-07-27",
+      "balls": 2,
+      "runs": 0,
+      "wickets": 1,
+      "contribution_rate": -1.25
+    },
+    {
+      "match_id": 29924,
+      "season": 2024,
+      "match_date": "2024-02-17",
+      "balls": 7,
+      "runs": 3,
+      "wickets": 1,
+      "contribution_rate": -0.82
+    }
+  ]
+}

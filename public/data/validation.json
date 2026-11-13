@@ -1,0 +1,116 @@
+{
+  "win_probability_brier": {
+    "group_kfold_brier": 0.1796,
+    "temporal_holdout_brier": 0.1835,
+    "naive_baseline_brier": 0.2499,
+    "relative_improvement_pct": 28.1
+  },
+  "out_of_time_repeatability": {
+    "evaluation_threshold": "Train >= 150 High-Pressure Balls, Test >= 60 High-Pressure Balls",
+    "train_span": "2022 to 2024",
+    "test_span": "2025 to 2026",
+    "batters": {
+      "n_qualifiers": 51,
+      "spearman_rho": 0.2501,
+      "ci95_lower": -0.0711,
+      "ci95_upper": 0.4985,
+      "pearson_r": 0.2523,
+      "top10_overlap": 3,
+      "top10_chance": 1.96,
+      "top20pct_overlap_pct": 30.0,
+      "top20pct_chance_pct": 20.0,
+      "signal_interpretation": "Modest repeatability. 95% CI spans zero; historical efficiency under pressure is not a rigid predictive trait."
+    },
+    "bowlers": {
+      "n_qualifiers": 63,
+      "spearman_rho": 0.2861,
+      "ci95_lower": 0.0105,
+      "ci95_upper": 0.5017,
+      "pearson_r": 0.3218,
+      "top10_overlap": 3,
+      "top10_chance": 1.59,
+      "top20pct_overlap_pct": 25.0,
+      "top20pct_chance_pct": 20.0,
+      "signal_interpretation": "Modest repeatability. 95% CI strictly positive but modest. Rank orders are closely tied and best viewed as confidence tiers."
+    }
+  },
+  "dropped_experiments": [
+    {
+      "candidate": "Flat Wicket Weighting (k * WAE)",
+      "reason": "Degraded out-of-time correlation (rho collapsed from +0.25 to -0.004 for batters, and from +0.31 to +0.10 for bowlers) due to Bernoulli wicket noise.",
+      "disposition": "Dropped. Score uses pure run efficiency; dismissals reported as diagnostic column only."
+    },
+    {
+      "candidate": "Raw High-Pressure Strike Rate / Economy",
+      "reason": "Favored low-volume outliers and middle-overs spinners without adjusting for venue, phase, or opponent strength.",
+      "disposition": "Dropped. Replaced by empirical Bayes shrunk opposition-adjusted rates."
+    },
+    {
+      "candidate": "Innings-1 Unstandardized Leverage Index",
+      "reason": "Innings 1 had zero high-pressure deliveries because pre-match win probability starts near 50% and swings less in Innings 1 than chasing in Innings 2.",
+      "disposition": "Dropped. Adopted within-innings percentile standardization (top third in each innings)."
+    }
+  ],
+  "calibration_deciles": [
+    {
+      "decile": 1,
+      "pred_wp": 0.05,
+      "obs_win_rate": 0.048,
+      "count": 18240
+    },
+    {
+      "decile": 2,
+      "pred_wp": 0.15,
+      "obs_win_rate": 0.153,
+      "count": 19410
+    },
+    {
+      "decile": 3,
+      "pred_wp": 0.25,
+      "obs_win_rate": 0.247,
+      "count": 19880
+    },
+    {
+      "decile": 4,
+      "pred_wp": 0.35,
+      "obs_win_rate": 0.342,
+      "count": 20120
+    },
+    {
+      "decile": 5,
+      "pred_wp": 0.45,
+      "obs_win_rate": 0.456,
+      "count": 20850
+    },
+    {
+      "decile": 6,
+      "pred_wp": 0.55,
+      "obs_win_rate": 0.548,
+      "count": 20410
+    },
+    {
+      "decile": 7,
+      "pred_wp": 0.65,
+      "obs_win_rate": 0.659,
+      "count": 19930
+    },
+    {
+      "decile": 8,
+      "pred_wp": 0.75,
+      "obs_win_rate": 0.749,
+      "count": 19650
+    },
+    {
+      "decile": 9,
+      "pred_wp": 0.85,
+      "obs_win_rate": 0.844,
+      "count": 19120
+    },
+    {
+      "decile": 10,
+      "pred_wp": 0.95,
+      "obs_win_rate": 0.952,
+      "count": 18087
+    }
+  ]
+}

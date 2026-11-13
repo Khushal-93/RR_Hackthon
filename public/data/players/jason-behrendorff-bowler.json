@@ -1,0 +1,189 @@
+{
+  "player_id": "jason-behrendorff-bowler",
+  "player_name": "Jason Behrendorff",
+  "role": "bowler",
+  "rank": 6,
+  "tier": "Tier 1: Elite Lock",
+  "plain_language_reading": "Jason Behrendorff saves +0.19 runs per high-pressure ball compared to expected baseline (182 balls across 17 matches). Shrunk towards pool mean (+0.0788) with shrinkage factor lambda=0.453.",
+  "stats": {
+    "balls": 182,
+    "matches": 17,
+    "raw_rate": 0.3277,
+    "shrunk_rate": 0.1916,
+    "lambda": 0.453,
+    "ci80_lower": 0.1257,
+    "ci80_upper": 0.2554,
+    "prob_top10": 0.461,
+    "dismissal_rate_vs_exp": 1.872,
+    "ipl_share_pct": 63.2,
+    "t20i_share_pct": 36.8
+  },
+  "profile": {
+    "batting_type": null,
+    "bowling_type": "Left-arm fast-medium",
+    "pace_or_spin": "Pace",
+    "active_years": [
+      2023,
+      2024
+    ]
+  },
+  "phase_split": {
+    "powerplay_balls": 180,
+    "powerplay_pct": 98.9,
+    "middle_balls": 0,
+    "middle_pct": 0.0,
+    "death_balls": 2,
+    "death_pct": 1.1
+  },
+  "innings_split": {
+    "innings_1_balls": 134,
+    "innings_1_pct": 73.6,
+    "innings_2_balls": 48,
+    "innings_2_pct": 26.4
+  },
+  "stability_check": {
+    "leave_2_matches_raw_rate": 0.1936,
+    "leave_2_matches_shrunk_rate": 0.1245,
+    "leave_2_matches_rank": 28,
+    "rank_delta": 22,
+    "is_sensitive": true,
+    "audit_note": "Dropping top 2 matches changes rank from #6 to #28."
+  },
+  "match_strip": [
+    {
+      "match_id": 29817,
+      "season": 2024,
+      "match_date": "2024-02-13",
+      "balls": 6,
+      "runs": 3,
+      "wickets": 1,
+      "contribution_rate": 0.75
+    },
+    {
+      "match_id": 29815,
+      "season": 2024,
+      "match_date": "2024-02-09",
+      "balls": 7,
+      "runs": 11,
+      "wickets": 0,
+      "contribution_rate": -0.32
+    },
+    {
+      "match_id": 27064,
+      "season": 2023,
+      "match_date": "2023-12-03",
+      "balls": 12,
+      "runs": 20,
+      "wickets": 1,
+      "contribution_rate": -0.42
+    },
+    {
+      "match_id": 27063,
+      "season": 2023,
+      "match_date": "2023-12-01",
+      "balls": 12,
+      "runs": 13,
+      "wickets": 0,
+      "contribution_rate": 0.17
+    },
+    {
+      "match_id": 27062,
+      "season": 2023,
+      "match_date": "2023-11-28",
+      "balls": 18,
+      "runs": 5,
+      "wickets": 1,
+      "contribution_rate": 0.97
+    },
+    {
+      "match_id": 25156,
+      "season": 2023,
+      "match_date": "2023-09-01",
+      "balls": 12,
+      "runs": 16,
+      "wickets": 1,
+      "contribution_rate": -0.08
+    },
+    {
+      "match_id": 21585,
+      "season": 2023,
+      "match_date": "2023-05-26",
+      "balls": 18,
+      "runs": 21,
+      "wickets": 0,
+      "contribution_rate": 0.08
+    },
+    {
+      "match_id": 21584,
+      "season": 2023,
+      "match_date": "2023-05-24",
+      "balls": 12,
+      "runs": 18,
+      "wickets": 0,
+      "contribution_rate": -0.25
+    },
+    {
+      "match_id": 20249,
+      "season": 2023,
+      "match_date": "2023-05-21",
+      "balls": 12,
+      "runs": 15,
+      "wickets": 0,
+      "contribution_rate": 0.0
+    },
+    {
+      "match_id": 20243,
+      "season": 2023,
+      "match_date": "2023-05-16",
+      "balls": 8,
+      "runs": 3,
+      "wickets": 2,
+      "contribution_rate": 0.88
+    },
+    {
+      "match_id": 20234,
+      "season": 2023,
+      "match_date": "2023-05-09",
+      "balls": 10,
+      "runs": 14,
+      "wickets": 2,
+      "contribution_rate": -0.15
+    },
+    {
+      "match_id": 20215,
+      "season": 2023,
+      "match_date": "2023-04-25",
+      "balls": 8,
+      "runs": 8,
+      "wickets": 0,
+      "contribution_rate": 0.25
+    },
+    {
+      "match_id": 20211,
+      "season": 2023,
+      "match_date": "2023-04-22",
+      "balls": 12,
+      "runs": 23,
+      "wickets": 0,
+      "contribution_rate": -0.67
+    },
+    {
+      "match_id": 20205,
+      "season": 2023,
+      "match_date": "2023-04-18",
+      "balls": 10,
+      "runs": 9,
+      "wickets": 3,
+      "contribution_rate": 0.35
+    },
+    {
+      "match_id": 20196,
+      "season": 2023,
+      "match_date": "2023-04-11",
+      "balls": 6,
+      "runs": 7,
+      "wickets": 0,
+      "contribution_rate": 0.08
+    }
+  ]
+}

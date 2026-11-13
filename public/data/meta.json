@@ -1,0 +1,28 @@
+{
+  "dataset": {
+    "total_matches": 829,
+    "excluded_dls_matches": 41,
+    "excluded_dls_balls": 5254,
+    "excluded_super_over_balls": 38,
+    "total_legal_deliveries": 187655,
+    "high_pressure_deliveries": 62714,
+    "high_pressure_pct": 33.42,
+    "eligible_batters": 118,
+    "eligible_bowlers": 125,
+    "min_balls_threshold": 150,
+    "min_matches_threshold": 15,
+    "leverage_inn1_cutoff": 1.258,
+    "leverage_inn2_cutoff": 1.246
+  },
+  "build": {
+    "version": "1.0.0",
+    "git_commit": "443dbf6",
+    "build_timestamp": "2026-11-13T07:16:50.289233+00:00",
+    "data_span": "2022 to 2026",
+    "competitions": [
+      "IPL",
+      "T20I"
+    ],
+    "caveat": "Descriptive historical ratings, not predictions."
+  }
+}

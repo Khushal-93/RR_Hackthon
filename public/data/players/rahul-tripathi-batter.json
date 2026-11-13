@@ -1,0 +1,189 @@
+{
+  "player_id": "rahul-tripathi-batter",
+  "player_name": "Rahul Tripathi",
+  "role": "batter",
+  "rank": 39,
+  "tier": "Tier 3: Fringe / High Var",
+  "plain_language_reading": "Rahul Tripathi performs near historical baseline under high pressure (+0.00 runs/b across 289 balls).",
+  "stats": {
+    "balls": 289,
+    "matches": 28,
+    "raw_rate": 0.0297,
+    "shrunk_rate": 0.0042,
+    "lambda": 0.612,
+    "ci80_lower": -0.1027,
+    "ci80_upper": 0.1034,
+    "prob_top10": 0.034,
+    "dismissal_rate_vs_exp": -1.0989,
+    "ipl_share_pct": 90.0,
+    "t20i_share_pct": 10.0
+  },
+  "profile": {
+    "batting_type": "RHB",
+    "bowling_type": null,
+    "pace_or_spin": null,
+    "active_years": [
+      2022,
+      2025
+    ]
+  },
+  "phase_split": {
+    "powerplay_balls": 179,
+    "powerplay_pct": 61.9,
+    "middle_balls": 104,
+    "middle_pct": 36.0,
+    "death_balls": 6,
+    "death_pct": 2.1
+  },
+  "innings_split": {
+    "innings_1_balls": 157,
+    "innings_1_pct": 54.3,
+    "innings_2_balls": 132,
+    "innings_2_pct": 45.7
+  },
+  "stability_check": {
+    "leave_2_matches_raw_rate": 0.0244,
+    "leave_2_matches_shrunk_rate": 0.0036,
+    "leave_2_matches_rank": 44,
+    "rank_delta": 5,
+    "is_sensitive": false,
+    "audit_note": "Stable rating: stays within player's 80% credible interval when top matches are excluded."
+  },
+  "match_strip": [
+    {
+      "match_id": 40704,
+      "season": 2025,
+      "match_date": "2025-03-30",
+      "balls": 8,
+      "runs": 8,
+      "wickets": 1,
+      "contribution_rate": -0.25
+    },
+    {
+      "match_id": 40701,
+      "season": 2025,
+      "match_date": "2025-03-28",
+      "balls": 1,
+      "runs": 0,
+      "wickets": 1,
+      "contribution_rate": -1.25
+    },
+    {
+      "match_id": 31292,
+      "season": 2024,
+      "match_date": "2024-05-26",
+      "balls": 2,
+      "runs": 1,
+      "wickets": 0,
+      "contribution_rate": -0.75
+    },
+    {
+      "match_id": 31291,
+      "season": 2024,
+      "match_date": "2024-05-24",
+      "balls": 15,
+      "runs": 37,
+      "wickets": 1,
+      "contribution_rate": 1.22
+    },
+    {
+      "match_id": 31289,
+      "season": 2024,
+      "match_date": "2024-05-21",
+      "balls": 5,
+      "runs": 6,
+      "wickets": 0,
+      "contribution_rate": -0.05
+    },
+    {
+      "match_id": 31287,
+      "season": 2024,
+      "match_date": "2024-05-19",
+      "balls": 7,
+      "runs": 4,
+      "wickets": 1,
+      "contribution_rate": -0.68
+    },
+    {
+      "match_id": 30058,
+      "season": 2024,
+      "match_date": "2024-03-23",
+      "balls": 13,
+      "runs": 15,
+      "wickets": 0,
+      "contribution_rate": -0.1
+    },
+    {
+      "match_id": 20245,
+      "season": 2023,
+      "match_date": "2023-05-18",
+      "balls": 12,
+      "runs": 15,
+      "wickets": 1,
+      "contribution_rate": 0.0
+    },
+    {
+      "match_id": 20238,
+      "season": 2023,
+      "match_date": "2023-05-13",
+      "balls": 13,
+      "runs": 20,
+      "wickets": 1,
+      "contribution_rate": 0.29
+    },
+    {
+      "match_id": 20232,
+      "season": 2023,
+      "match_date": "2023-05-07",
+      "balls": 20,
+      "runs": 34,
+      "wickets": 1,
+      "contribution_rate": 0.45
+    },
+    {
+      "match_id": 20227,
+      "season": 2023,
+      "match_date": "2023-05-04",
+      "balls": 8,
+      "runs": 16,
+      "wickets": 1,
+      "contribution_rate": 0.75
+    },
+    {
+      "match_id": 20220,
+      "season": 2023,
+      "match_date": "2023-04-29",
+      "balls": 6,
+      "runs": 10,
+      "wickets": 1,
+      "contribution_rate": 0.42
+    },
+    {
+      "match_id": 20209,
+      "season": 2023,
+      "match_date": "2023-04-21",
+      "balls": 17,
+      "runs": 17,
+      "wickets": 0,
+      "contribution_rate": -0.25
+    },
+    {
+      "match_id": 20205,
+      "season": 2023,
+      "match_date": "2023-04-18",
+      "balls": 2,
+      "runs": 1,
+      "wickets": 1,
+      "contribution_rate": -0.75
+    },
+    {
+      "match_id": 20199,
+      "season": 2023,
+      "match_date": "2023-04-14",
+      "balls": 4,
+      "runs": 9,
+      "wickets": 1,
+      "contribution_rate": 1.0
+    }
+  ]
+}

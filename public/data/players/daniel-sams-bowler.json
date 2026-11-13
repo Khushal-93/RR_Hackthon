@@ -1,0 +1,189 @@
+{
+  "player_id": "daniel-sams-bowler",
+  "player_name": "Daniel Sams",
+  "role": "bowler",
+  "rank": 33,
+  "tier": "Tier 3: Fringe / High Var",
+  "plain_language_reading": "Daniel Sams restricts scoring effectively in pressure corridors (+0.12 runs saved/b) across 16 matches.",
+  "stats": {
+    "balls": 195,
+    "matches": 16,
+    "raw_rate": 0.1704,
+    "shrunk_rate": 0.1181,
+    "lambda": 0.429,
+    "ci80_lower": 0.0566,
+    "ci80_upper": 0.1869,
+    "prob_top10": 0.073,
+    "dismissal_rate_vs_exp": 0.7156,
+    "ipl_share_pct": 75.9,
+    "t20i_share_pct": 24.1
+  },
+  "profile": {
+    "batting_type": null,
+    "bowling_type": "Left-arm fast-medium",
+    "pace_or_spin": "Pace",
+    "active_years": [
+      2022,
+      2022
+    ]
+  },
+  "phase_split": {
+    "powerplay_balls": 142,
+    "powerplay_pct": 72.8,
+    "middle_balls": 35,
+    "middle_pct": 17.9,
+    "death_balls": 18,
+    "death_pct": 9.2
+  },
+  "innings_split": {
+    "innings_1_balls": 101,
+    "innings_1_pct": 51.8,
+    "innings_2_balls": 94,
+    "innings_2_pct": 48.2
+  },
+  "stability_check": {
+    "leave_2_matches_raw_rate": 0.1397,
+    "leave_2_matches_shrunk_rate": 0.1004,
+    "leave_2_matches_rank": 38,
+    "rank_delta": 5,
+    "is_sensitive": false,
+    "audit_note": "Stable rating: stays within player's 80% credible interval when top matches are excluded."
+  },
+  "match_strip": [
+    {
+      "match_id": 17763,
+      "season": 2022,
+      "match_date": "2022-10-09",
+      "balls": 6,
+      "runs": 9,
+      "wickets": 0,
+      "contribution_rate": -0.25
+    },
+    {
+      "match_id": 17396,
+      "season": 2022,
+      "match_date": "2022-09-25",
+      "balls": 17,
+      "runs": 27,
+      "wickets": 1,
+      "contribution_rate": -0.34
+    },
+    {
+      "match_id": 14163,
+      "season": 2022,
+      "match_date": "2022-05-21",
+      "balls": 12,
+      "runs": 15,
+      "wickets": 1,
+      "contribution_rate": 0.0
+    },
+    {
+      "match_id": 14159,
+      "season": 2022,
+      "match_date": "2022-05-17",
+      "balls": 18,
+      "runs": 24,
+      "wickets": 1,
+      "contribution_rate": -0.08
+    },
+    {
+      "match_id": 14153,
+      "season": 2022,
+      "match_date": "2022-05-12",
+      "balls": 4,
+      "runs": 1,
+      "wickets": 2,
+      "contribution_rate": 1.0
+    },
+    {
+      "match_id": 14150,
+      "season": 2022,
+      "match_date": "2022-05-09",
+      "balls": 18,
+      "runs": 16,
+      "wickets": 0,
+      "contribution_rate": 0.36
+    },
+    {
+      "match_id": 14145,
+      "season": 2022,
+      "match_date": "2022-05-06",
+      "balls": 10,
+      "runs": 3,
+      "wickets": 1,
+      "contribution_rate": 0.95
+    },
+    {
+      "match_id": 14137,
+      "season": 2022,
+      "match_date": "2022-04-30",
+      "balls": 12,
+      "runs": 15,
+      "wickets": 0,
+      "contribution_rate": 0.0
+    },
+    {
+      "match_id": 14130,
+      "season": 2022,
+      "match_date": "2022-04-24",
+      "balls": 12,
+      "runs": 16,
+      "wickets": 0,
+      "contribution_rate": -0.08
+    },
+    {
+      "match_id": 14126,
+      "season": 2022,
+      "match_date": "2022-04-21",
+      "balls": 24,
+      "runs": 29,
+      "wickets": 4,
+      "contribution_rate": 0.04
+    },
+    {
+      "match_id": 14107,
+      "season": 2022,
+      "match_date": "2022-04-06",
+      "balls": 12,
+      "runs": 15,
+      "wickets": 1,
+      "contribution_rate": 0.0
+    },
+    {
+      "match_id": 14102,
+      "season": 2022,
+      "match_date": "2022-04-02",
+      "balls": 7,
+      "runs": 9,
+      "wickets": 0,
+      "contribution_rate": -0.04
+    },
+    {
+      "match_id": 14095,
+      "season": 2022,
+      "match_date": "2022-03-27",
+      "balls": 19,
+      "runs": 41,
+      "wickets": 0,
+      "contribution_rate": -0.91
+    },
+    {
+      "match_id": 13616,
+      "season": 2022,
+      "match_date": "2022-02-20",
+      "balls": 12,
+      "runs": 20,
+      "wickets": 0,
+      "contribution_rate": -0.42
+    },
+    {
+      "match_id": 13615,
+      "season": 2022,
+      "match_date": "2022-02-18",
+      "balls": 6,
+      "runs": 8,
+      "wickets": 0,
+      "contribution_rate": -0.08
+    }
+  ]
+}

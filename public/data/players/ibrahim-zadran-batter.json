@@ -1,0 +1,189 @@
+{
+  "player_id": "ibrahim-zadran-batter",
+  "player_name": "Ibrahim Zadran",
+  "role": "batter",
+  "rank": 116,
+  "tier": "Tier 3: Fringe / High Var",
+  "plain_language_reading": "Ibrahim Zadran performs near historical baseline under high pressure (-0.20 runs/b across 456 balls).",
+  "stats": {
+    "balls": 456,
+    "matches": 34,
+    "raw_rate": -0.2432,
+    "shrunk_rate": -0.201,
+    "lambda": 0.796,
+    "ci80_lower": -0.2438,
+    "ci80_upper": -0.1559,
+    "prob_top10": 0.0,
+    "dismissal_rate_vs_exp": 1.2796,
+    "ipl_share_pct": 0.0,
+    "t20i_share_pct": 100.0
+  },
+  "profile": {
+    "batting_type": "RHB",
+    "bowling_type": null,
+    "pace_or_spin": null,
+    "active_years": [
+      2022,
+      2026
+    ]
+  },
+  "phase_split": {
+    "powerplay_balls": 319,
+    "powerplay_pct": 70.0,
+    "middle_balls": 120,
+    "middle_pct": 26.3,
+    "death_balls": 17,
+    "death_pct": 3.7
+  },
+  "innings_split": {
+    "innings_1_balls": 327,
+    "innings_1_pct": 71.7,
+    "innings_2_balls": 129,
+    "innings_2_pct": 28.3
+  },
+  "stability_check": {
+    "leave_2_matches_raw_rate": -0.1994,
+    "leave_2_matches_shrunk_rate": -0.1709,
+    "leave_2_matches_rank": 118,
+    "rank_delta": 5,
+    "is_sensitive": false,
+    "audit_note": "Stable rating: stays within player's 80% credible interval when top matches are excluded."
+  },
+  "match_strip": [
+    {
+      "match_id": 55560,
+      "season": 2026,
+      "match_date": "2026-10-29",
+      "balls": 1,
+      "runs": 0,
+      "wickets": 0,
+      "contribution_rate": -1.25
+    },
+    {
+      "match_id": 55559,
+      "season": 2026,
+      "match_date": "2026-10-27",
+      "balls": 6,
+      "runs": 5,
+      "wickets": 1,
+      "contribution_rate": -0.42
+    },
+    {
+      "match_id": 54409,
+      "season": 2026,
+      "match_date": "2026-09-15",
+      "balls": 33,
+      "runs": 37,
+      "wickets": 1,
+      "contribution_rate": -0.13
+    },
+    {
+      "match_id": 54408,
+      "season": 2026,
+      "match_date": "2026-09-13",
+      "balls": 10,
+      "runs": 11,
+      "wickets": 1,
+      "contribution_rate": -0.15
+    },
+    {
+      "match_id": 48597,
+      "season": 2026,
+      "match_date": "2026-01-21",
+      "balls": 17,
+      "runs": 22,
+      "wickets": 1,
+      "contribution_rate": 0.04
+    },
+    {
+      "match_id": 48596,
+      "season": 2026,
+      "match_date": "2026-01-19",
+      "balls": 30,
+      "runs": 42,
+      "wickets": 0,
+      "contribution_rate": 0.15
+    },
+    {
+      "match_id": 47262,
+      "season": 2025,
+      "match_date": "2025-11-02",
+      "balls": 2,
+      "runs": 4,
+      "wickets": 0,
+      "contribution_rate": 0.75
+    },
+    {
+      "match_id": 47260,
+      "season": 2025,
+      "match_date": "2025-10-29",
+      "balls": 10,
+      "runs": 20,
+      "wickets": 0,
+      "contribution_rate": 0.75
+    },
+    {
+      "match_id": 46755,
+      "season": 2025,
+      "match_date": "2025-10-05",
+      "balls": 6,
+      "runs": 7,
+      "wickets": 1,
+      "contribution_rate": -0.08
+    },
+    {
+      "match_id": 46754,
+      "season": 2025,
+      "match_date": "2025-10-03",
+      "balls": 36,
+      "runs": 38,
+      "wickets": 0,
+      "contribution_rate": -0.19
+    },
+    {
+      "match_id": 46753,
+      "season": 2025,
+      "match_date": "2025-10-02",
+      "balls": 10,
+      "runs": 15,
+      "wickets": 1,
+      "contribution_rate": 0.25
+    },
+    {
+      "match_id": 45505,
+      "season": 2025,
+      "match_date": "2025-09-18",
+      "balls": 6,
+      "runs": 2,
+      "wickets": 0,
+      "contribution_rate": -0.92
+    },
+    {
+      "match_id": 45503,
+      "season": 2025,
+      "match_date": "2025-09-16",
+      "balls": 12,
+      "runs": 5,
+      "wickets": 1,
+      "contribution_rate": -0.83
+    },
+    {
+      "match_id": 45495,
+      "season": 2025,
+      "match_date": "2025-09-09",
+      "balls": 4,
+      "runs": 1,
+      "wickets": 1,
+      "contribution_rate": -1.0
+    },
+    {
+      "match_id": 45857,
+      "season": 2025,
+      "match_date": "2025-09-07",
+      "balls": 9,
+      "runs": 6,
+      "wickets": 0,
+      "contribution_rate": -0.58
+    }
+  ]
+}

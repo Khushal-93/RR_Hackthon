@@ -1,0 +1,189 @@
+{
+  "player_id": "harshal-patel-bowler",
+  "player_name": "Harshal Patel",
+  "role": "bowler",
+  "rank": 51,
+  "tier": "Tier 3: Fringe / High Var",
+  "plain_language_reading": "Harshal Patel restricts scoring effectively in pressure corridors (+0.09 runs saved/b) across 48 matches.",
+  "stats": {
+    "balls": 469,
+    "matches": 48,
+    "raw_rate": 0.0935,
+    "shrunk_rate": 0.0883,
+    "lambda": 0.647,
+    "ci80_lower": 0.0117,
+    "ci80_upper": 0.1564,
+    "prob_top10": 0.023,
+    "dismissal_rate_vs_exp": -0.6484,
+    "ipl_share_pct": 73.6,
+    "t20i_share_pct": 26.4
+  },
+  "profile": {
+    "batting_type": null,
+    "bowling_type": "Right-arm medium-fast",
+    "pace_or_spin": "Pace",
+    "active_years": [
+      2022,
+      2026
+    ]
+  },
+  "phase_split": {
+    "powerplay_balls": 61,
+    "powerplay_pct": 13.0,
+    "middle_balls": 253,
+    "middle_pct": 53.9,
+    "death_balls": 155,
+    "death_pct": 33.0
+  },
+  "innings_split": {
+    "innings_1_balls": 110,
+    "innings_1_pct": 23.5,
+    "innings_2_balls": 359,
+    "innings_2_pct": 76.5
+  },
+  "stability_check": {
+    "leave_2_matches_raw_rate": 0.0767,
+    "leave_2_matches_shrunk_rate": 0.0751,
+    "leave_2_matches_rank": 56,
+    "rank_delta": 5,
+    "is_sensitive": false,
+    "audit_note": "Stable rating: stays within player's 80% credible interval when top matches are excluded."
+  },
+  "match_strip": [
+    {
+      "match_id": 50141,
+      "season": 2026,
+      "match_date": "2026-04-11",
+      "balls": 2,
+      "runs": 6,
+      "wickets": 0,
+      "contribution_rate": -1.75
+    },
+    {
+      "match_id": 50125,
+      "season": 2026,
+      "match_date": "2026-03-28",
+      "balls": 2,
+      "runs": 7,
+      "wickets": 0,
+      "contribution_rate": -2.25
+    },
+    {
+      "match_id": 40757,
+      "season": 2025,
+      "match_date": "2025-05-23",
+      "balls": 8,
+      "runs": 17,
+      "wickets": 0,
+      "contribution_rate": -0.88
+    },
+    {
+      "match_id": 40763,
+      "season": 2025,
+      "match_date": "2025-05-19",
+      "balls": 4,
+      "runs": 11,
+      "wickets": 0,
+      "contribution_rate": -1.5
+    },
+    {
+      "match_id": 40736,
+      "season": 2025,
+      "match_date": "2025-04-25",
+      "balls": 6,
+      "runs": 8,
+      "wickets": 1,
+      "contribution_rate": -0.08
+    },
+    {
+      "match_id": 40708,
+      "season": 2025,
+      "match_date": "2025-04-03",
+      "balls": 6,
+      "runs": 10,
+      "wickets": 0,
+      "contribution_rate": -0.42
+    },
+    {
+      "match_id": 40695,
+      "season": 2025,
+      "match_date": "2025-03-23",
+      "balls": 1,
+      "runs": 1,
+      "wickets": 0,
+      "contribution_rate": 0.25
+    },
+    {
+      "match_id": 31287,
+      "season": 2024,
+      "match_date": "2024-05-19",
+      "balls": 12,
+      "runs": 25,
+      "wickets": 1,
+      "contribution_rate": -0.83
+    },
+    {
+      "match_id": 31283,
+      "season": 2024,
+      "match_date": "2024-05-15",
+      "balls": 6,
+      "runs": 4,
+      "wickets": 0,
+      "contribution_rate": 0.58
+    },
+    {
+      "match_id": 31276,
+      "season": 2024,
+      "match_date": "2024-05-09",
+      "balls": 6,
+      "runs": 12,
+      "wickets": 0,
+      "contribution_rate": -0.75
+    },
+    {
+      "match_id": 31260,
+      "season": 2024,
+      "match_date": "2024-04-26",
+      "balls": 6,
+      "runs": 18,
+      "wickets": 0,
+      "contribution_rate": -1.75
+    },
+    {
+      "match_id": 31255,
+      "season": 2024,
+      "match_date": "2024-04-21",
+      "balls": 4,
+      "runs": 2,
+      "wickets": 0,
+      "contribution_rate": 0.75
+    },
+    {
+      "match_id": 31251,
+      "season": 2024,
+      "match_date": "2024-04-18",
+      "balls": 6,
+      "runs": 7,
+      "wickets": 0,
+      "contribution_rate": 0.08
+    },
+    {
+      "match_id": 31245,
+      "season": 2024,
+      "match_date": "2024-04-13",
+      "balls": 6,
+      "runs": 14,
+      "wickets": 1,
+      "contribution_rate": -1.08
+    },
+    {
+      "match_id": 30072,
+      "season": 2024,
+      "match_date": "2024-04-04",
+      "balls": 6,
+      "runs": 8,
+      "wickets": 0,
+      "contribution_rate": -0.08
+    }
+  ]
+}

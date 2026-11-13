@@ -1,0 +1,189 @@
+{
+  "player_id": "arshdeep-singh-bowler",
+  "player_name": "Arshdeep Singh",
+  "role": "bowler",
+  "rank": 72,
+  "tier": "Tier 3: Fringe / High Var",
+  "plain_language_reading": "Arshdeep Singh delivers near expected historical economy under high pressure (+0.05 runs saved/b across 1196 balls).",
+  "stats": {
+    "balls": 1196,
+    "matches": 113,
+    "raw_rate": 0.0446,
+    "shrunk_rate": 0.0512,
+    "lambda": 0.806,
+    "ci80_lower": 0.003,
+    "ci80_upper": 0.1041,
+    "prob_top10": 0.001,
+    "dismissal_rate_vs_exp": -0.477,
+    "ipl_share_pct": 51.8,
+    "t20i_share_pct": 48.2
+  },
+  "profile": {
+    "batting_type": null,
+    "bowling_type": "Left-arm medium-fast",
+    "pace_or_spin": "Pace",
+    "active_years": [
+      2022,
+      2026
+    ]
+  },
+  "phase_split": {
+    "powerplay_balls": 918,
+    "powerplay_pct": 76.8,
+    "middle_balls": 118,
+    "middle_pct": 9.9,
+    "death_balls": 160,
+    "death_pct": 13.4
+  },
+  "innings_split": {
+    "innings_1_balls": 712,
+    "innings_1_pct": 59.5,
+    "innings_2_balls": 484,
+    "innings_2_pct": 40.5
+  },
+  "stability_check": {
+    "leave_2_matches_raw_rate": 0.0366,
+    "leave_2_matches_shrunk_rate": 0.0435,
+    "leave_2_matches_rank": 77,
+    "rank_delta": 5,
+    "is_sensitive": false,
+    "audit_note": "Stable rating: stays within player's 80% credible interval when top matches are excluded."
+  },
+  "match_strip": [
+    {
+      "match_id": 54214,
+      "season": 2026,
+      "match_date": "2026-11-01",
+      "balls": 6,
+      "runs": 11,
+      "wickets": 0,
+      "contribution_rate": -0.58
+    },
+    {
+      "match_id": 54213,
+      "season": 2026,
+      "match_date": "2026-10-30",
+      "balls": 12,
+      "runs": 16,
+      "wickets": 0,
+      "contribution_rate": -0.08
+    },
+    {
+      "match_id": 54212,
+      "season": 2026,
+      "match_date": "2026-10-27",
+      "balls": 18,
+      "runs": 23,
+      "wickets": 1,
+      "contribution_rate": -0.03
+    },
+    {
+      "match_id": 54211,
+      "season": 2026,
+      "match_date": "2026-10-24",
+      "balls": 12,
+      "runs": 8,
+      "wickets": 1,
+      "contribution_rate": 0.58
+    },
+    {
+      "match_id": 54210,
+      "season": 2026,
+      "match_date": "2026-10-22",
+      "balls": 8,
+      "runs": 16,
+      "wickets": 0,
+      "contribution_rate": -0.75
+    },
+    {
+      "match_id": 50407,
+      "season": 2026,
+      "match_date": "2026-10-14",
+      "balls": 9,
+      "runs": 22,
+      "wickets": 0,
+      "contribution_rate": -1.19
+    },
+    {
+      "match_id": 50405,
+      "season": 2026,
+      "match_date": "2026-10-09",
+      "balls": 7,
+      "runs": 14,
+      "wickets": 0,
+      "contribution_rate": -0.75
+    },
+    {
+      "match_id": 50404,
+      "season": 2026,
+      "match_date": "2026-10-06",
+      "balls": 18,
+      "runs": 15,
+      "wickets": 1,
+      "contribution_rate": 0.42
+    },
+    {
+      "match_id": 54409,
+      "season": 2026,
+      "match_date": "2026-09-15",
+      "balls": 12,
+      "runs": 15,
+      "wickets": 1,
+      "contribution_rate": 0.0
+    },
+    {
+      "match_id": 54408,
+      "season": 2026,
+      "match_date": "2026-09-13",
+      "balls": 11,
+      "runs": 9,
+      "wickets": 1,
+      "contribution_rate": 0.43
+    },
+    {
+      "match_id": 45394,
+      "season": 2026,
+      "match_date": "2026-07-11",
+      "balls": 18,
+      "runs": 25,
+      "wickets": 0,
+      "contribution_rate": -0.14
+    },
+    {
+      "match_id": 45393,
+      "season": 2026,
+      "match_date": "2026-07-09",
+      "balls": 12,
+      "runs": 15,
+      "wickets": 1,
+      "contribution_rate": 0.0
+    },
+    {
+      "match_id": 45392,
+      "season": 2026,
+      "match_date": "2026-07-07",
+      "balls": 12,
+      "runs": 11,
+      "wickets": 0,
+      "contribution_rate": 0.33
+    },
+    {
+      "match_id": 45391,
+      "season": 2026,
+      "match_date": "2026-07-04",
+      "balls": 9,
+      "runs": 12,
+      "wickets": 1,
+      "contribution_rate": -0.08
+    },
+    {
+      "match_id": 50341,
+      "season": 2026,
+      "match_date": "2026-06-28",
+      "balls": 18,
+      "runs": 28,
+      "wickets": 1,
+      "contribution_rate": -0.31
+    }
+  ]
+}

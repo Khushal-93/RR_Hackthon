@@ -1,0 +1,189 @@
+{
+  "player_id": "jonny-bairstow-batter",
+  "player_name": "Jonny Bairstow",
+  "role": "batter",
+  "rank": 22,
+  "tier": "Tier 3: Fringe / High Var",
+  "plain_language_reading": "Jonny Bairstow delivers above-average run scoring in high-pressure corridors (+0.06 runs/b) across 21 matches.",
+  "stats": {
+    "balls": 266,
+    "matches": 21,
+    "raw_rate": 0.1278,
+    "shrunk_rate": 0.0556,
+    "lambda": 0.559,
+    "ci80_lower": -0.0508,
+    "ci80_upper": 0.1773,
+    "prob_top10": 0.165,
+    "dismissal_rate_vs_exp": 1.3679,
+    "ipl_share_pct": 75.9,
+    "t20i_share_pct": 24.1
+  },
+  "profile": {
+    "batting_type": "RHB",
+    "bowling_type": null,
+    "pace_or_spin": null,
+    "active_years": [
+      2022,
+      2025
+    ]
+  },
+  "phase_split": {
+    "powerplay_balls": 191,
+    "powerplay_pct": 71.8,
+    "middle_balls": 70,
+    "middle_pct": 26.3,
+    "death_balls": 5,
+    "death_pct": 1.9
+  },
+  "innings_split": {
+    "innings_1_balls": 180,
+    "innings_1_pct": 67.7,
+    "innings_2_balls": 86,
+    "innings_2_pct": 32.3
+  },
+  "stability_check": {
+    "leave_2_matches_raw_rate": 0.1048,
+    "leave_2_matches_shrunk_rate": 0.0473,
+    "leave_2_matches_rank": 27,
+    "rank_delta": 5,
+    "is_sensitive": false,
+    "audit_note": "Stable rating: stays within player's 80% credible interval when top matches are excluded."
+  },
+  "match_strip": [
+    {
+      "match_id": 40766,
+      "season": 2025,
+      "match_date": "2025-06-01",
+      "balls": 24,
+      "runs": 38,
+      "wickets": 1,
+      "contribution_rate": 0.33
+    },
+    {
+      "match_id": 40765,
+      "season": 2025,
+      "match_date": "2025-05-30",
+      "balls": 15,
+      "runs": 43,
+      "wickets": 0,
+      "contribution_rate": 1.62
+    },
+    {
+      "match_id": 31283,
+      "season": 2024,
+      "match_date": "2024-05-15",
+      "balls": 14,
+      "runs": 7,
+      "wickets": 1,
+      "contribution_rate": -0.75
+    },
+    {
+      "match_id": 31271,
+      "season": 2024,
+      "match_date": "2024-05-05",
+      "balls": 6,
+      "runs": 7,
+      "wickets": 1,
+      "contribution_rate": -0.08
+    },
+    {
+      "match_id": 31260,
+      "season": 2024,
+      "match_date": "2024-04-26",
+      "balls": 18,
+      "runs": 45,
+      "wickets": 1,
+      "contribution_rate": 1.25
+    },
+    {
+      "match_id": 31245,
+      "season": 2024,
+      "match_date": "2024-04-13",
+      "balls": 12,
+      "runs": 11,
+      "wickets": 0,
+      "contribution_rate": -0.33
+    },
+    {
+      "match_id": 31241,
+      "season": 2024,
+      "match_date": "2024-04-09",
+      "balls": 3,
+      "runs": 0,
+      "wickets": 1,
+      "contribution_rate": -1.25
+    },
+    {
+      "match_id": 30072,
+      "season": 2024,
+      "match_date": "2024-04-04",
+      "balls": 13,
+      "runs": 22,
+      "wickets": 1,
+      "contribution_rate": 0.44
+    },
+    {
+      "match_id": 30066,
+      "season": 2024,
+      "match_date": "2024-03-30",
+      "balls": 15,
+      "runs": 24,
+      "wickets": 0,
+      "contribution_rate": 0.35
+    },
+    {
+      "match_id": 30061,
+      "season": 2024,
+      "match_date": "2024-03-25",
+      "balls": 6,
+      "runs": 8,
+      "wickets": 1,
+      "contribution_rate": 0.08
+    },
+    {
+      "match_id": 25161,
+      "season": 2023,
+      "match_date": "2023-09-05",
+      "balls": 17,
+      "runs": 35,
+      "wickets": 0,
+      "contribution_rate": 0.81
+    },
+    {
+      "match_id": 25159,
+      "season": 2023,
+      "match_date": "2023-09-01",
+      "balls": 31,
+      "runs": 32,
+      "wickets": 0,
+      "contribution_rate": -0.22
+    },
+    {
+      "match_id": 16315,
+      "season": 2022,
+      "match_date": "2022-07-27",
+      "balls": 16,
+      "runs": 21,
+      "wickets": 0,
+      "contribution_rate": 0.06
+    },
+    {
+      "match_id": 14164,
+      "season": 2022,
+      "match_date": "2022-05-22",
+      "balls": 2,
+      "runs": 4,
+      "wickets": 0,
+      "contribution_rate": 0.75
+    },
+    {
+      "match_id": 14158,
+      "season": 2022,
+      "match_date": "2022-05-16",
+      "balls": 2,
+      "runs": 4,
+      "wickets": 0,
+      "contribution_rate": 0.75
+    }
+  ]
+}
