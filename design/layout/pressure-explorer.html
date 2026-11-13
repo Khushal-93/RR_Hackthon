@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wireframe - Page 5: Pressure Explorer | Who Delivers Under Pressure?</title>
+  <link rel="stylesheet" href="wireframe.css">
+  <style>
+    .wf-view-bar {
+      background: #1e293b;
+      color: #f8fafc;
+      font-family: var(--wf-font-mono);
+      font-size: 11px;
+      padding: 6px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .wf-view-btns button {
+      background: #334155;
+      color: #f8fafc;
+      border: 1px solid #64748b;
+      padding: 3px 8px;
+      font-family: inherit;
+      font-size: 11px;
+      cursor: pointer;
+      margin-left: 4px;
+    }
+    .wf-view-btns button.active {
+      background: #f8fafc;
+      color: #0f172a;
+      font-weight: 700;
+    }
+    .wrapper-desktop { max-width: 1440px; margin: 0 auto; }
+    .wrapper-tablet { max-width: 768px; margin: 0 auto; box-shadow: 0 0 0 1px var(--wf-border-strong); }
+    .wrapper-mobile { max-width: 360px; margin: 0 auto; box-shadow: 0 0 0 1px var(--wf-border-strong); }
+  </style>
+</head>
+<body>
+
+  <!-- Top Breakpoint Preview Switcher -->
+  <div class="wf-view-bar">
+    <div><strong>WIREFRAME VIEW:</strong> Page 5 of 6 - Pressure Explorer</div>
+    <div class="wf-view-btns">
+      <span>Simulate Breakpoint:</span>
+      <button onclick="setBp('desktop')" id="btn-desktop" class="active">Desktop (1440px / 12 col)</button>
+      <button onclick="setBp('tablet')" id="btn-tablet">Tablet (768px / 8 col)</button>
+      <button onclick="setBp('mobile')" id="btn-mobile">Mobile (360px / 4 col)</button>
+    </div>
+  </div>
+
+  <div id="page-wrapper" class="wrapper-desktop">
+    
+    <!-- Global Persistent Caveat Tag Strip -->
+    <div class="wf-caveat-strip">
+      <div class="wf-caveat-tag">Descriptive historical ratings, not predictions.</div>
+      <div>Method Version: 1.0 (Audited)</div>
+    </div>
+
+    <!-- Global Top Navigation -->
+    <header class="wf-header">
+      <div class="wf-container wf-nav-container">
+        <a href="index.html" class="wf-brand">
+          <div class="wf-brand-box">P</div>
+          <span>PRESSURE XI</span>
+        </a>
+        <nav>
+          <ul class="wf-nav-menu">
+            <li class="wf-nav-item"><a href="overview.html">1. Overview</a></li>
+            <li class="wf-nav-item"><a href="rankings.html">2. Rankings</a></li>
+            <li class="wf-nav-item"><a href="player-profile.html">3. Player Profile</a></li>
+            <li class="wf-nav-item"><a href="compare.html">4. Compare</a></li>
+            <li class="wf-nav-item active"><a href="pressure-explorer.html">5. Pressure Explorer</a></li>
+            <li class="wf-nav-item"><a href="method.html">6. Method</a></li>
+          </ul>
+        </nav>
+        <div class="wf-search-box">
+          <input type="text" class="wf-search-input" placeholder="Search match or player..." aria-label="Search">
+        </div>
+        <button class="wf-mobile-nav-toggle" aria-label="Open navigation menu">[MENU &#9776;]</button>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="wf-container" style="padding-top: var(--wf-space-6);">
+      
+      <!-- Page Header Strip -->
+      <section class="wf-page-header">
+        <h1 class="wf-page-title">Pressure Explorer: Match State Volatility</h1>
+        <p class="wf-page-subtitle">Interactive analysis of win probability swings, leverage index distributions, and situational heatmaps.</p>
+      </section>
+
+      <!-- 5a. Plain-English Definition Panel -->
+      <section class="wf-card" style="margin-bottom: var(--wf-space-6);">
+        <div class="wf-card-header">
+          <span class="wf-card-title">What is Pressure? The Leverage Index (LI) Formulation</span>
+        </div>
+        <div class="wf-grid" style="align-items: center;">
+          <div class="col-8">
+            <p style="font-size: 13px; margin-bottom: var(--wf-space-2); line-height: 1.5;">
+              <strong>Leverage Index (LI)</strong> measures how much a single delivery can swing the match outcome relative to an average ball. A ball with LI = 2.0 has twice the outcome-determining impact of a standard delivery.
+            </p>
+            <p style="font-size: 12px; color: var(--wf-text-secondary); line-height: 1.5;">
+              To avoid penalizing Innings 1 players (whose absolute win probabilities swing less than chasing teams facing a ticking run-rate clock), <strong>pressure is standardized strictly within each innings</strong>. High Pressure is defined as the top third (&ge; 66.7th percentile) within that innings:
+            </p>
+            <div style="font-family: var(--wf-font-mono); font-size: 11px; margin-top: var(--wf-space-2); display: flex; gap: var(--wf-space-4); flex-wrap: wrap;">
+              <span class="wf-badge" style="border: 1px solid var(--wf-border-strong); padding: 2px 6px;">Innings 1 High Pressure: LI &ge; 1.258</span>
+              <span class="wf-badge" style="border: 1px solid var(--wf-border-strong); padding: 2px 6px;">Innings 2 High Pressure: LI &ge; 1.246</span>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="wf-callout" style="padding: var(--wf-space-3); background: var(--wf-bg-subtle);">
+              <div style="font-weight: 700; font-size: 12px; margin-bottom: 2px;">Why Within-Innings Standardization?</div>
+              <div style="font-size: 11px; color: var(--wf-text-secondary); line-height: 1.4;">
+                Without separate normalization, Innings 2 death overs crowd out all Innings 1 play, falsely implying that setting a first-innings foundation carries zero match leverage.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5b. Match Picker with Win-Probability Trajectory -->
+      <section style="margin-bottom: var(--wf-space-6);">
+        <div class="wf-card">
+          <div class="wf-card-header">
+            <div>
+              <span class="wf-card-title">Ball-by-Ball Match Replay</span>
+              <h3 style="font-size: 14px; font-weight: 700; margin-top: 2px;">Win Probability Trajectory &amp; High-Leverage Delivery Detection</h3>
+            </div>
+            <div style="display: flex; gap: var(--wf-space-2);">
+              <select class="wf-filter-select" aria-label="Select match to explore">
+                <option>Sample Match: Team Alpha vs Team Beta (Chasing Thriller)</option>
+                <option>Sample Match: Team Gamma vs Team Delta (Powerplay Collapse)</option>
+              </select>
+              <button class="wf-btn-text">[View Match Deliveries Table]</button>
+            </div>
+          </div>
+
+          <div class="wf-placeholder" style="min-height: 240px;">
+            <div class="wf-placeholder-label">[Chart Placeholder: In-Game Win Probability Curve with High-Leverage Pins]</div>
+            <div class="wf-placeholder-desc">
+              X-Axis: Match Ball Number (1 to 240 legal balls).<br>
+              Y-Axis: Team Batting Win Probability (0% to 100%). Baseline 50% line.<br>
+              Visual elements: Win probability line curve, highlighted pin markers indicating High-Pressure deliveries (LI &ge; 66.7th percentile), wicket event markers.
+            </div>
+          </div>
+
+          <div class="wf-chart-controls">
+            <span>Highlighted dots mark the 33.3% of deliveries qualifying for Player Pressure Ratings</span>
+            <span>Hover / tap delivery node to inspect leverage swing and state baselines</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5c. Two Heatmaps (Innings 1 vs Innings 2) -->
+      <section style="margin-bottom: var(--wf-space-6);">
+        <div class="wf-card-header" style="margin-bottom: var(--wf-space-3);">
+          <h2 style="font-size: 15px; font-weight: 800;">LEVERAGE HEATMAPS: OVER (1-20) &times; WICKETS IN HAND (1-10)</h2>
+          <button class="wf-btn-text">[Toggle Tabular Heatmap Data]</button>
+        </div>
+
+        <div class="wf-grid">
+          
+          <!-- Heatmap: Innings 1 -->
+          <div class="col-6 wf-card">
+            <div class="wf-card-header">
+              <span class="wf-card-title">Innings 1: Early Foundation Volatility</span>
+              <span style="font-size: 11px; font-family: var(--wf-font-mono);">N = 97,854 Balls</span>
+            </div>
+            
+            <div class="wf-placeholder" style="min-height: 240px;">
+              <div class="wf-placeholder-label">[Matrix Heatmap: Innings 1 (20 Overs &times; 10 Wickets)]</div>
+              <div class="wf-placeholder-desc">
+                X-Axis: Over (1 to 20). Y-Axis: Wickets in Hand (10 down to 1).<br>
+                High leverage concentrates heavily in Overs 1&ndash;6 with 9&ndash;10 wickets in hand (swing vulnerability) and late collapse scenarios.
+              </div>
+            </div>
+
+            <div style="margin-top: var(--wf-space-2); font-size: 11px; color: var(--wf-text-secondary);">
+              <strong>Observation:</strong> 75.54% of Innings 1 high pressure occurs in the Powerplay. Top orders carry the primary burden.
+            </div>
+          </div>
+
+          <!-- Heatmap: Innings 2 -->
+          <div class="col-6 wf-card">
+            <div class="wf-card-header">
+              <span class="wf-card-title">Innings 2: Chasing Volatility under RRR</span>
+              <span style="font-size: 11px; font-family: var(--wf-font-mono);">N = 97,853 Balls</span>
+            </div>
+            
+            <div class="wf-placeholder" style="min-height: 240px;">
+              <div class="wf-placeholder-label">[Matrix Heatmap: Innings 2 (20 Overs &times; 10 Wickets)]</div>
+              <div class="wf-placeholder-desc">
+                X-Axis: Over (1 to 20). Y-Axis: Wickets in Hand (10 down to 1).<br>
+                High leverage concentrates in Death Overs (16&ndash;20) across all wicket states, and in middle overs when RRR exceeds 10.0 runs/over.
+              </div>
+            </div>
+
+            <div style="margin-top: var(--wf-space-2); font-size: 11px; color: var(--wf-text-secondary);">
+              <strong>Observation:</strong> Chasing pressure is non-linear and escalates sharply in the death overs as balls remaining deplete.
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 5d. Tactical Commentary Note Panel -->
+      <section style="margin-bottom: var(--wf-space-8);">
+        <div class="wf-callout" style="background-color: var(--wf-bg-surface); border-left-width: 4px;">
+          <div class="wf-callout-title" style="font-size: 14px;">Tactical Takeaway: Two Distinct Types of Pressure in T20 Cricket</div>
+          <div class="wf-callout-body" style="font-size: 13px;">
+            The dual heatmaps confirm that "pressure" in T20 cricket is not a single uniform phenomenon:
+            <ul style="margin: var(--wf-space-2) 0 0 var(--wf-space-4); line-height: 1.5;">
+              <li><strong>Innings 1 Pressure = Setting Leverage:</strong> Dominated by early overs (1&ndash;6) and top-order batters (orders 1&ndash;3) navigating new-ball swing while setting an unanchored par score.</li>
+              <li><strong>Innings 2 Pressure = Chasing Leverage:</strong> Dominated by death overs (16&ndash;20) and middle/lower-order finishers and death bowlers executing under escalating run-rate clocks.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="wf-footer">
+      <div class="wf-container wf-footer-content">
+        <div class="wf-footer-left">
+          <p><strong>Pressure XI</strong> &mdash; SupeRR Selector Research Project (2022 to 2026).</p>
+          <p>All statistics are descriptive historical outcomes derived strictly from non-DLS deliveries.</p>
+        </div>
+        <ul class="wf-footer-links">
+          <li><a href="method.html">Methodology</a></li>
+          <li><a href="rankings.html">Rankings</a></li>
+          <li><a href="index.html">Wireframe Index</a></li>
+        </ul>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    function setBp(bp) {
+      const wrapper = document.getElementById('page-wrapper');
+      wrapper.className = 'wrapper-' + bp;
+      document.querySelectorAll('.wf-view-btns button').forEach(b => b.classList.remove('active'));
+      document.getElementById('btn-' + bp).classList.add('active');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wireframe - Page 4: Compare | Who Delivers Under Pressure?</title>
+  <link rel="stylesheet" href="wireframe.css">
+  <style>
+    .wf-view-bar {
+      background: #1e293b;
+      color: #f8fafc;
+      font-family: var(--wf-font-mono);
+      font-size: 11px;
+      padding: 6px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .wf-view-btns button {
+      background: #334155;
+      color: #f8fafc;
+      border: 1px solid #64748b;
+      padding: 3px 8px;
+      font-family: inherit;
+      font-size: 11px;
+      cursor: pointer;
+      margin-left: 4px;
+    }
+    .wf-view-btns button.active {
+      background: #f8fafc;
+      color: #0f172a;
+      font-weight: 700;
+    }
+    .wrapper-desktop { max-width: 1440px; margin: 0 auto; }
+    .wrapper-tablet { max-width: 768px; margin: 0 auto; box-shadow: 0 0 0 1px var(--wf-border-strong); }
+    .wrapper-mobile { max-width: 360px; margin: 0 auto; box-shadow: 0 0 0 1px var(--wf-border-strong); }
+  </style>
+</head>
+<body>
+
+  <!-- Top Breakpoint Preview Switcher -->
+  <div class="wf-view-bar">
+    <div><strong>WIREFRAME VIEW:</strong> Page 4 of 6 - Player Comparison</div>
+    <div class="wf-view-btns">
+      <span>Simulate Breakpoint:</span>
+      <button onclick="setBp('desktop')" id="btn-desktop" class="active">Desktop (1440px / 12 col)</button>
+      <button onclick="setBp('tablet')" id="btn-tablet">Tablet (768px / 8 col)</button>
+      <button onclick="setBp('mobile')" id="btn-mobile">Mobile (360px / 4 col)</button>
+    </div>
+  </div>
+
+  <div id="page-wrapper" class="wrapper-desktop">
+    
+    <!-- Global Persistent Caveat Tag Strip -->
+    <div class="wf-caveat-strip">
+      <div class="wf-caveat-tag">Descriptive historical ratings, not predictions.</div>
+      <div>Method Version: 1.0 (Audited)</div>
+    </div>
+
+    <!-- Global Top Navigation -->
+    <header class="wf-header">
+      <div class="wf-container wf-nav-container">
+        <a href="index.html" class="wf-brand">
+          <div class="wf-brand-box">P</div>
+          <span>PRESSURE XI</span>
+        </a>
+        <nav>
+          <ul class="wf-nav-menu">
+            <li class="wf-nav-item"><a href="overview.html">1. Overview</a></li>
+            <li class="wf-nav-item"><a href="rankings.html">2. Rankings</a></li>
+            <li class="wf-nav-item"><a href="player-profile.html">3. Player Profile</a></li>
+            <li class="wf-nav-item active"><a href="compare.html">4. Compare</a></li>
+            <li class="wf-nav-item"><a href="pressure-explorer.html">5. Pressure Explorer</a></li>
+            <li class="wf-nav-item"><a href="method.html">6. Method</a></li>
+          </ul>
+        </nav>
+        <div class="wf-search-box">
+          <input type="text" class="wf-search-input" placeholder="Search player to compare..." aria-label="Search players">
+        </div>
+        <button class="wf-mobile-nav-toggle" aria-label="Open navigation menu">[MENU &#9776;]</button>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="wf-container" style="padding-top: var(--wf-space-6);">
+      
+      <!-- Page Header Strip -->
+      <section class="wf-page-header">
+        <h1 class="wf-page-title">Head-to-Head Player Comparison</h1>
+        <p class="wf-page-subtitle">Multi-player diagnostic comparison with pairwise bootstrap density and statistical tie analysis.</p>
+      </section>
+
+      <!-- 4a. Player Picker (2 to 4 same-role players) -->
+      <section class="wf-card" style="margin-bottom: var(--wf-space-6);">
+        <div class="wf-card-header">
+          <span class="wf-card-title">Select Players to Compare (Max 4, Same Role)</span>
+          <div class="wf-segmented-control">
+            <button class="wf-segment-btn active">Compare Batters</button>
+            <button class="wf-segment-btn">Compare Bowlers</button>
+          </div>
+        </div>
+
+        <div class="wf-grid" style="align-items: center;">
+          <div class="col-3">
+            <div style="font-size: 11px; font-weight: 700; margin-bottom: 4px; font-family: var(--wf-font-mono);">SLOT 1 (PRIMARY):</div>
+            <select class="wf-filter-select" style="width: 100%; height: 36px;">
+              <option>[Player Name A - Rank #2]</option>
+            </select>
+          </div>
+          <div class="col-3">
+            <div style="font-size: 11px; font-weight: 700; margin-bottom: 4px; font-family: var(--wf-font-mono);">SLOT 2 (BENCHMARK):</div>
+            <select class="wf-filter-select" style="width: 100%; height: 36px;">
+              <option>[Player Name B - Rank #3]</option>
+            </select>
+          </div>
+          <div class="col-3">
+            <div style="font-size: 11px; font-weight: 700; margin-bottom: 4px; font-family: var(--wf-font-mono);">SLOT 3 (OPTIONAL):</div>
+            <select class="wf-filter-select" style="width: 100%; height: 36px;">
+              <option>+ Add Player 3...</option>
+            </select>
+          </div>
+          <div class="col-3">
+            <div style="font-size: 11px; font-weight: 700; margin-bottom: 4px; font-family: var(--wf-font-mono);">SLOT 4 (OPTIONAL):</div>
+            <select class="wf-filter-select" style="width: 100%; height: 36px;" disabled>
+              <option>+ Add Player 4...</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4c. Head-to-Head Probability Display (Statistical Tie Banner) -->
+      <section style="margin-bottom: var(--wf-space-6);">
+        <div class="wf-card" style="border: 2px solid var(--wf-border-strong); background-color: var(--wf-bg-subtle);">
+          <div class="wf-card-header">
+            <span class="wf-card-title">Pairwise Resampling Evaluation: Player A vs Player B</span>
+            <span class="wf-tier-badge" style="border: 2px solid var(--wf-text-primary);">STATISTICAL TIE DETECTED</span>
+          </div>
+
+          <div class="wf-grid" style="align-items: center;">
+            <div class="col-6">
+              <div style="display: flex; align-items: baseline; gap: var(--wf-space-4);">
+                <div class="wf-stat-value" style="font-size: 36px;">55.8%</div>
+                <div style="font-size: 13px; color: var(--wf-text-secondary);">
+                  Probability that Player A &gt; Player B<br>
+                  <span style="font-family: var(--wf-font-mono); font-size: 11px;">1,000-resample match block bootstrap</span>
+                </div>
+              </div>
+              <div style="height: 14px; background: var(--wf-border-medium); width: 100%; margin-top: var(--wf-space-2); display: flex;">
+                <div style="width: 55.8%; background: var(--wf-text-primary);" title="Player A Wins"></div>
+                <div style="width: 44.2%; background: var(--wf-border-strong);" title="Player B Wins"></div>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <div class="wf-callout" style="padding: var(--wf-space-3); background: var(--wf-bg-surface);">
+                <div style="font-weight: 700; font-size: 12px; margin-bottom: 2px;">Method Interpretation:</div>
+                <div style="font-size: 11px; color: var(--wf-text-secondary); line-height: 1.4;">
+                  Because the pairwise probability is close to 50% (between 40% and 60%), these two players cannot be statistically separated. Player B has 3.4&times; the delivery volume, while Player A has higher raw efficiency, leading to mutual overlap in ranking density.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4b. Grouped Bars / Radar Comparison -->
+      <section style="margin-bottom: var(--wf-space-6);">
+        <div class="wf-card">
+          <div class="wf-card-header">
+            <div>
+              <span class="wf-card-title">Multi-Dimensional Diagnostic Profiling</span>
+              <h3 style="font-size: 14px; font-weight: 700; margin-top: 2px;">Grouped Metric Breakdown: Player A vs Player B</h3>
+            </div>
+            <button class="wf-btn-text">[View Metric Data Table]</button>
+          </div>
+
+          <div class="wf-placeholder" style="min-height: 220px;">
+            <div class="wf-placeholder-label">[Chart Placeholder: Grouped Bars / Radar Chart]</div>
+            <div class="wf-placeholder-desc">
+              Categories: Shrunk Rate Above Expected, Raw Rate, Powerplay Efficiency, Chasing (Inn 2) Efficiency, Opposition Quality Credit, Dismissal Preservation.<br>
+              Visual elements: Paired neutral bars per metric comparing selected players side-by-side.
+            </div>
+          </div>
+
+          <div class="wf-chart-controls">
+            <span>All metrics expressed per high-pressure legal delivery</span>
+            <span>Zero reference line indicates matched state expectation</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4d. Side-by-Side Facts Table -->
+      <section style="margin-bottom: var(--wf-space-8);">
+        <div class="wf-card-header" style="margin-bottom: var(--wf-space-2);">
+          <h2 style="font-size: 15px; font-weight: 800;">SIDE-BY-SIDE STATISTICAL SUMMARY</h2>
+        </div>
+
+        <div class="wf-table-container">
+          <table class="wf-table" aria-label="Side-by-side comparison facts table">
+            <thead>
+              <tr>
+                <th style="width: 250px;">Metric / Attribute</th>
+                <th>Player A (Rank #2)</th>
+                <th>Player B (Rank #3)</th>
+                <th>Differential (&Delta;)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Classification Tier</strong></td>
+                <td><span class="wf-tier-badge wf-tier-1">Tier 1: Elite Lock</span></td>
+                <td><span class="wf-tier-badge wf-tier-1">Tier 1: Elite Lock</span></td>
+                <td>Equal Tier</td>
+              </tr>
+              <tr>
+                <td><strong>Shrunk Rating (Runs/Ball)</strong></td>
+                <td><strong>+0.0000</strong></td>
+                <td><strong>+0.0000</strong></td>
+                <td>+0.0000</td>
+              </tr>
+              <tr>
+                <td><strong>80% Match Bootstrap CI</strong></td>
+                <td>[+0.000, +0.000]</td>
+                <td>[+0.000, +0.000]</td>
+                <td>Extensive Overlap</td>
+              </tr>
+              <tr>
+                <td><strong>P(Top-10 Membership)</strong></td>
+                <td>94.2%</td>
+                <td>95.6%</td>
+                <td>-1.4%</td>
+              </tr>
+              <tr>
+                <td><strong>Raw Observed Rate</strong></td>
+                <td>+0.0000</td>
+                <td>+0.0000</td>
+                <td>+0.0000</td>
+              </tr>
+              <tr>
+                <td><strong>Shrinkage Factor (&lambda;)</strong></td>
+                <td>0.576</td>
+                <td>0.831</td>
+                <td>-0.255 (Higher Volume for B)</td>
+              </tr>
+              <tr>
+                <td><strong>High-Pressure Deliveries</strong></td>
+                <td>316 balls</td>
+                <td>1,084 balls</td>
+                <td>-768 balls</td>
+              </tr>
+              <tr>
+                <td><strong>Total Matches</strong></td>
+                <td>29 matches</td>
+                <td>106 matches</td>
+                <td>-77 matches</td>
+              </tr>
+              <tr>
+                <td><strong>Leave-Top-2-Matches-Out Rank</strong></td>
+                <td>Rank #0 (Drop 0)</td>
+                <td>Rank #0 (Drop 0)</td>
+                <td>Both Resilient</td>
+              </tr>
+              <tr>
+                <td><strong>Dismissal Rate vs Expected</strong></td>
+                <td>-0.33%</td>
+                <td>+0.01%</td>
+                <td>-0.34%</td>
+              </tr>
+              <tr>
+                <td><strong>IPL / T20I Competition Mix</strong></td>
+                <td>89.6% IPL / 10.4% T20I</td>
+                <td>59.3% IPL / 40.7% T20I</td>
+                <td>Player A IPL Heavy</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="wf-footer">
+      <div class="wf-container wf-footer-content">
+        <div class="wf-footer-left">
+          <p><strong>Pressure XI</strong> &mdash; SupeRR Selector Research Project (2022 to 2026).</p>
+          <p>All statistics are descriptive historical outcomes derived strictly from non-DLS deliveries.</p>
+        </div>
+        <ul class="wf-footer-links">
+          <li><a href="method.html">Methodology</a></li>
+          <li><a href="rankings.html">Rankings</a></li>
+          <li><a href="index.html">Wireframe Index</a></li>
+        </ul>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    function setBp(bp) {
+      const wrapper = document.getElementById('page-wrapper');
+      wrapper.className = 'wrapper-' + bp;
+      document.querySelectorAll('.wf-view-btns button').forEach(b => b.classList.remove('active'));
+      document.getElementById('btn-' + bp).classList.add('active');
+    }
+  </script>
+</body>
+</html>

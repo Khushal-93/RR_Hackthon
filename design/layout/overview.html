@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wireframe - Page 1: Overview | Who Delivers Under Pressure?</title>
+  <link rel="stylesheet" href="wireframe.css">
+  <style>
+    /* Viewport Simulator bar for wireframe testing */
+    .wf-view-bar {
+      background: #1e293b;
+      color: #f8fafc;
+      font-family: var(--wf-font-mono);
+      font-size: 11px;
+      padding: 6px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .wf-view-btns button {
+      background: #334155;
+      color: #f8fafc;
+      border: 1px solid #64748b;
+      padding: 3px 8px;
+      font-family: inherit;
+      font-size: 11px;
+      cursor: pointer;
+      margin-left: 4px;
+    }
+    .wf-view-btns button.active {
+      background: #f8fafc;
+      color: #0f172a;
+      font-weight: 700;
+    }
+    .wrapper-desktop { max-width: 1440px; margin: 0 auto; }
+    .wrapper-tablet { max-width: 768px; margin: 0 auto; box-shadow: 0 0 0 1px var(--wf-border-strong); }
+    .wrapper-mobile { max-width: 360px; margin: 0 auto; box-shadow: 0 0 0 1px var(--wf-border-strong); }
+  </style>
+</head>
+<body>
+
+  <!-- Top Breakpoint Preview Switcher -->
+  <div class="wf-view-bar">
+    <div><strong>WIREFRAME VIEW:</strong> Page 1 of 6 - Overview</div>
+    <div class="wf-view-btns">
+      <span>Simulate Breakpoint:</span>
+      <button onclick="setBp('desktop')" id="btn-desktop" class="active">Desktop (1440px / 12 col)</button>
+      <button onclick="setBp('tablet')" id="btn-tablet">Tablet (768px / 8 col)</button>
+      <button onclick="setBp('mobile')" id="btn-mobile">Mobile (360px / 4 col)</button>
+    </div>
+  </div>
+
+  <div id="page-wrapper" class="wrapper-desktop">
+    
+    <!-- Global Persistent Caveat Tag Strip -->
+    <div class="wf-caveat-strip">
+      <div class="wf-caveat-tag">Descriptive historical ratings, not predictions.</div>
+      <div>Method Version: 1.0 (Audited)</div>
+    </div>
+
+    <!-- Global Top Navigation -->
+    <header class="wf-header">
+      <div class="wf-container wf-nav-container">
+        <a href="index.html" class="wf-brand">
+          <div class="wf-brand-box">P</div>
+          <span>PRESSURE XI</span>
+        </a>
+        <nav>
+          <ul class="wf-nav-menu">
+            <li class="wf-nav-item active"><a href="overview.html">1. Overview</a></li>
+            <li class="wf-nav-item"><a href="rankings.html">2. Rankings</a></li>
+            <li class="wf-nav-item"><a href="player-profile.html">3. Player Profile</a></li>
+            <li class="wf-nav-item"><a href="compare.html">4. Compare</a></li>
+            <li class="wf-nav-item"><a href="pressure-explorer.html">5. Pressure Explorer</a></li>
+            <li class="wf-nav-item"><a href="method.html">6. Method</a></li>
+          </ul>
+        </nav>
+        <div class="wf-search-box">
+          <input type="text" class="wf-search-input" placeholder="Search player (e.g. Klaasen)..." aria-label="Search players">
+        </div>
+        <button class="wf-mobile-nav-toggle" aria-label="Open navigation menu">[MENU &#9776;]</button>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="wf-container" style="padding-top: var(--wf-space-6);">
+      
+      <!-- 1a. Header Strip -->
+      <section class="wf-page-header">
+        <h1 class="wf-page-title">Who Delivers Under Pressure? IPL &amp; T20I, 2022 to 2026</h1>
+        <p class="wf-page-subtitle">A mathematically grounded, situation-adjusted evaluation of T20 execution in high-leverage match states.</p>
+      </section>
+
+      <!-- 1b. Row of Four Summary Cards -->
+      <section style="margin-bottom: var(--wf-space-6);">
+        <div class="wf-grid">
+          <div class="col-3 wf-card">
+            <div class="wf-card-title">Sample Scope</div>
+            <div class="wf-stat-value">829</div>
+            <div class="wf-stat-label">Matches Analysed</div>
+            <div class="wf-stat-subtext">Clean Non-DLS (2022-2026)</div>
+          </div>
+          <div class="col-3 wf-card">
+            <div class="wf-card-title">Ball-by-Ball Base</div>
+            <div class="wf-stat-value">195,707</div>
+            <div class="wf-stat-label">Legal Deliveries</div>
+            <div class="wf-stat-subtext">Excludes Super Overs</div>
+          </div>
+          <div class="col-3 wf-card">
+            <div class="wf-card-title">Pressure Subset</div>
+            <div class="wf-stat-value">65,229</div>
+            <div class="wf-stat-label">High-Pressure Balls</div>
+            <div class="wf-stat-subtext">Top Tercile Leverage (Innings-Standardized)</div>
+          </div>
+          <div class="col-3 wf-card">
+            <div class="wf-card-title">Eligible Cohort</div>
+            <div class="wf-stat-value">118 / 125</div>
+            <div class="wf-stat-label">Batters / Bowlers</div>
+            <div class="wf-stat-subtext">Criteria: &ge;150 Balls &amp; &ge;15 Matches</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 1c. Two Side-by-Side Leaderboards (Top 10 Batters, Top 10 Bowlers) -->
+      <section style="margin-bottom: var(--wf-space-8);">
+        <div class="wf-card-header" style="margin-bottom: var(--wf-space-4);">
+          <h2 style="font-size: 16px; font-weight: 800;">TOP-10 RATINGS UNDER PRESSURE</h2>
+          <span style="font-size: 12px; font-family: var(--wf-font-mono); color: var(--wf-text-secondary);">Score = Shrunk Runs Above / Saved per Ball</span>
+        </div>
+
+        <div class="wf-grid">
+          
+          <!-- Top 10 Batters -->
+          <div class="col-6 wf-card">
+            <div class="wf-card-header">
+              <span class="wf-card-title">Top 10 Batters (Runs Above Expected / Ball)</span>
+              <a href="rankings.html" style="font-size: 11px;">View All (118) &rarr;</a>
+            </div>
+            <div class="wf-table-container">
+              <table class="wf-table" aria-label="Top 10 Batters Under Pressure">
+                <thead>
+                  <tr>
+                    <th style="width: 32px;">#</th>
+                    <th>Player</th>
+                    <th>Shrunk Rate</th>
+                    <th>80% Interval</th>
+                    <th>P(Top-10)</th>
+                    <th>Tier</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- 10 Dummy Rows representing frozen CSV order -->
+                  <tr>
+                    <td>1</td>
+                    <td><a href="player-profile.html"><strong>Player Name</strong></a></td>
+                    <td>+0.0000</td>
+                    <td><span class="wf-interval-bar"><span class="wf-interval-span" style="left: 60%; width: 25%;"></span><span class="wf-interval-dot" style="left: 72%;"></span><span class="wf-interval-zero"></span></span></td>
+                    <td>100.0%</td>
+                    <td><span class="wf-tier-badge wf-tier-1">Tier 1</span></td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td><a href="player-profile.html"><strong>Player Name</strong></a></td>
+                    <td>+0.0000</td>
+                    <td><span class="wf-interval-bar"><span class="wf-interval-span" style="left: 55%; width: 20%;"></span><span class="wf-interval-dot" style="left: 65%;"></span><span class="wf-interval-zero"></span></span></td>
+                    <td>94.2%</td>
+                    <td><span class="wf-tier-badge wf-tier-1">Tier 1</span></td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td><a href="player-profile.html"><strong>Player Name</strong></a></td>
+                    <td>+0.0000</td>
+                    <td><span class="wf-interval-bar"><span class="wf-interval-span" style="left: 55%; width: 18%;"></span><span class="wf-interval-dot" style="left: 64%;"></span><span class="wf-interval-zero"></span></span></td>
+                    <td>95.6%</td>
+                    <td><span class="wf-tier-badge wf-tier-1">Tier 1</span></td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td><a href="player-profile.html"><strong>Player Name</strong></a></td>
+                    <td>+0.0000</td>
+                    <td><span class="wf-interval-bar"><span class="wf-interval-span" style="left: 52%; width: 22%;"></span><span class="wf-interval-dot" style="left: 61%;"></span><span class="wf-interval-zero"></span></span></td>
+                    <td>68.9%</td>
+                    <td><span class="wf-tier-badge wf-tier-1">Tier 1</span></td>
+                  </tr>
+                  <tr>
+                    <td>5</td>
+                    <td><a href="player-profile.html"><strong>Player Name</strong></a></td>
+                    <td>+0.0000</td>
+                    <td><span class="wf-interval-bar"><span class="wf-interval-span" style="left: 52%; width: 16%;"></span><span class="wf-interval-dot" style="left: 59%;"></span><span class="wf-interval-zero"></span></span></td>
+                    <td>73.0%</td>
+                    <td><span class="wf-tier-badge wf-tier-1">Tier 1</span></td>
+                  </tr>
+                  <tr>
+                    <td>6</td>
+                    <td><a href="player-profile.html"><strong>Player Name</strong></a></td>
+                    <td>+0.0000</td>
+                    <td><span class="wf-interval-bar"><span class="wf-interval-span" style="left: 50%; width: 18%;"></span><span class="wf-interval-dot" style="left: 58%;"></span><span class="wf-interval-zero"></span></span></td>
+                    <td>64.4%</td>
+                    <td><span class="wf-tier-badge wf-tier-1">Tier 1</span></td>
+                  </tr>
+                  <tr>
+                    <td>7</td>
+                    <td><a href="player-profile.html"><strong>Player Name</strong></a></td>
+                    <td>+0.0000</td>
+                    <td><span class="wf-interval-bar"><span class="wf-interval-span" style="left: 50%; width: 19%;"></span><span class="wf-interval-dot" style="left: 57%;"></span><span class="wf-interval-zero"></span></span></td>
+                    <td>56.4%</td>
+                    <td><span class="wf-tier-badge wf-tier-1">Tier 1</span></td>
+                  </tr>
+                  <tr>
+                    <td>8</td>
+                    <td><a href="player-profile.html"><strong>Player Name</strong></a></td>
+                    <td>+0.0000</td>
+                    <td><span class="wf-interval-bar"><span class="wf-interval-span" style="left: 50%; width: 17%;"></span><span class="wf-interval-dot" style="left: 56%;"></span><span class="wf-interval-zero"></span></span></td>
+                    <td>55.4%</td>
+                    <td><span class="wf-tier-badge wf-tier-1">Tier 1</span></td>
+                  </tr>
+                  <tr>
+                    <td>9</td>
+                    <td><a href="player-profile.html"><strong>Player Name</strong></a></td>
+                    <td>+0.0000</td>
+                    <td><span class="wf-interval-bar"><span class="wf-interval-span" style="left: 49%; width: 18%;"></span><span class="wf-interval-dot" style="left: 55%;"></span><span class="wf-interval-zero"></span></span></td>
+                    <td>53.5%</td>
+                    <td><span class="wf-tier-badge wf-tier-1">Tier 1</span></td>
+                  </tr>
+                  <tr>
+                    <td>10</td>
+                    <td><a href="player-profile.html"><strong>Player Name</strong></a></td>
+                    <td>+0.0000</td>
+                    <td><span class="wf-interval-bar"><span class="wf-interval-span" style="left: 49%; width: 17%;"></span><span class="wf-interval-dot" style="left: 55%;"></span><span class="wf-interval-zero"></span></span></td>
+                    <td>51.8%</td>
+                    <td><span class="wf-tier-badge wf-tier-1">Tier 1</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div style="margin-top: var(--wf-space-2); font-size: 11px; color: var(--wf-text-muted);">
+              Adjacent statistical ties: Arya vs Abhishek (55.8%), Inglis vs Allen (46.4%), Klaasen vs Brook (47.1%).
+            </div>
+          </div>
+
+          <!-- Top 10 Bowlers -->
+          <div class="col-6 wf-card">
+            <div class="wf-card-header">
+              <span class="wf-card-title">Top 10 Bowlers (Runs Saved / Ball)</span>
+              <a href="rankings.html" style="font-size: 11px;">View All (125) &rarr;</a>
+            </div>
+            <div class="wf-table-container">
+              <table class="wf-table" aria-label="Top 10 Bowlers Under Pressure">
+                <thead>
+                  <tr>
+                    <th style="width: 32px;">#</th>
+                    <th>Player</th>
+                    <th>Shrunk Rate</th>
+                    <th>80% Interval</th>
+                    <th>P(Top-10)</th>
+                    <th>Tier</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td><a href="player-profile.html"><strong>Player Name</strong></a></td>
+                    <td>+0.0000</td>
+                    <td><span class="wf-interval-bar"><span class="wf-interval-span" style="left: 60%; width: 20%;"></span><span class="wf-interval-dot" style="left: 70%;"></span><span class="wf-interval-zero"></span></span></td>
+                    <td>88.8%</td>
+                    <td><span class="wf-tier-badge wf-tier-1">Tier 1</span></td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td><a href="player-profile.html"><strong>Player Name</strong></a></td>
+                    <td>+0.0000</td>
+                    <td><span class="wf-interval-bar"><span class="wf-interval-span" style="left: 56%; width: 18%;"></span><span class="wf-interval-dot" style="left: 66%;"></span><span class="wf-interval-zero"></span></span></td>
+                    <td>76.9%</td>
+                    <td><span class="wf-tier-badge wf-tier-1">Tier 1</span></td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td><a href="player-profile.html"><strong>Player Name</strong></a></td>
+                    <td>+0.0000</td>
+                    <td><span class="wf-interval-bar"><span class="wf-interval-span" style="left: 56%; width: 16%;"></span><span class="wf-interval-dot" style="left: 66%;"></span><span class="wf-interval-zero"></span></span></td>
+                    <td>79.9%</td>
+                    <td><span class="wf-tier-badge wf-tier-1">Tier 1</span></td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td><a href="player-profile.html"><strong>Player Name</strong></a></td>
+                    <td>+0.0000</td>
+                    <td><span class="wf-interval-bar"><span class="wf-interval-span" style="left: 54%; width: 22%;"></span><span class="wf-interval-dot" style="left: 64%;"></span><span class="wf-interval-zero"></span></span></td>
+                    <td>71.3%</td>
+                    <td><span class="wf-tier-badge wf-tier-1">Tier 1</span></td>
+                  </tr>
+                  <tr>
+                    <td>5</td>
+                    <td><a href="player-profile.html"><strong>Player Name</strong></a></td>
+                    <td>+0.0000</td>
+                    <td><span class="wf-interval-bar"><span class="wf-interval-span" style="left: 52%; width: 20%;"></span><span class="wf-interval-dot" style="left: 62%;"></span><span class="wf-interval-zero"></span></span></td>
+                    <td>57.4%</td>
+                    <td><span class="wf-tier-badge wf-tier-1">Tier 1</span></td>
+                  </tr>
+                  <tr>
+                    <td>6</td>
+                    <td><a href="player-profile.html"><strong>Player Name</strong></a></td>
+                    <td>+0.0000</td>
+                    <td><span class="wf-interval-bar"><span class="wf-interval-span" style="left: 52%; width: 20%;"></span><span class="wf-interval-dot" style="left: 61%;"></span><span class="wf-interval-zero"></span></span></td>
+                    <td>46.1%</td>
+                    <td><span class="wf-tier-badge wf-tier-1">Tier 1</span></td>
+                  </tr>
+                  <tr>
+                    <td>7</td>
+                    <td><a href="player-profile.html"><strong>Player Name</strong></a></td>
+                    <td>+0.0000</td>
+                    <td><span class="wf-interval-bar"><span class="wf-interval-span" style="left: 51%; width: 17%;"></span><span class="wf-interval-dot" style="left: 60%;"></span><span class="wf-interval-zero"></span></span></td>
+                    <td>41.0%</td>
+                    <td><span class="wf-tier-badge wf-tier-1">Tier 1</span></td>
+                  </tr>
+                  <tr>
+                    <td>8</td>
+                    <td><a href="player-profile.html"><strong>Player Name</strong></a></td>
+                    <td>+0.0000</td>
+                    <td><span class="wf-interval-bar"><span class="wf-interval-span" style="left: 51%; width: 18%;"></span><span class="wf-interval-dot" style="left: 59%;"></span><span class="wf-interval-zero"></span></span></td>
+                    <td>36.9%</td>
+                    <td><span class="wf-tier-badge wf-tier-1">Tier 1</span></td>
+                  </tr>
+                  <tr>
+                    <td>9</td>
+                    <td><a href="player-profile.html"><strong>Player Name</strong></a></td>
+                    <td>+0.0000</td>
+                    <td><span class="wf-interval-bar"><span class="wf-interval-span" style="left: 50%; width: 16%;"></span><span class="wf-interval-dot" style="left: 58%;"></span><span class="wf-interval-zero"></span></span></td>
+                    <td>28.7%</td>
+                    <td><span class="wf-tier-badge wf-tier-1">Tier 1</span></td>
+                  </tr>
+                  <tr>
+                    <td>10</td>
+                    <td><a href="player-profile.html"><strong>Player Name</strong></a></td>
+                    <td>+0.0000</td>
+                    <td><span class="wf-interval-bar"><span class="wf-interval-span" style="left: 50%; width: 16%;"></span><span class="wf-interval-dot" style="left: 58%;"></span><span class="wf-interval-zero"></span></span></td>
+                    <td>21.8%</td>
+                    <td><span class="wf-tier-badge wf-tier-1">Tier 1</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div style="margin-top: var(--wf-space-2); font-size: 11px; color: var(--wf-text-muted);">
+              Adjacent statistical ties: Narine vs Rashid Khan (49.9% - coin toss).
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 1d. "What We Found": Three Short Callout Cards -->
+      <section style="margin-bottom: var(--wf-space-8);">
+        <h3 style="font-size: 14px; font-weight: 700; text-transform: uppercase; margin-bottom: var(--wf-space-3); font-family: var(--wf-font-mono);">
+          Key Empirical Findings
+        </h3>
+        <div class="wf-grid">
+          <div class="col-4 wf-callout">
+            <div class="wf-callout-title">1. Signal is Modest, Not Deterministic</div>
+            <div class="wf-callout-body">
+              Out-of-time correlation across disjoint seasons (2022-2024 &rarr; 2025-2026) is &rho; &approx; +0.25 to +0.29. Ratings describe historical efficiency, not fixed personality traits.
+            </div>
+          </div>
+          <div class="col-4 wf-callout">
+            <div class="wf-callout-title">2. Pure Run Efficiency Trumps Wickets</div>
+            <div class="wf-callout-body">
+              Testing candidate formulas proved that injecting binary dismissals into ratings destroys out-of-sample repeatability. Wickets are reported purely as diagnostic columns.
+            </div>
+          </div>
+          <div class="col-4 wf-callout">
+            <div class="wf-callout-title">3. Innings-1 Pressure is Early Powerplay</div>
+            <div class="wf-callout-body">
+              75.5% of Innings 1 pressure falls in overs 1&ndash;6 as top-order batters face early swing and target-setting volatility. Chasing pressure escalates in overs 16&ndash;20.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 1e. Chart Block: Average Leverage by Over (1 to 20), Innings 1 vs 2 -->
+      <section style="margin-bottom: var(--wf-space-8);">
+        <div class="wf-card">
+          <div class="wf-card-header">
+            <div>
+              <span class="wf-card-title">Match State Dynamics</span>
+              <h3 style="font-size: 15px; font-weight: 700; margin-top: 2px;">Average Ball Leverage Index by Over (1 to 20)</h3>
+            </div>
+            <button class="wf-btn-text" aria-expanded="false">[Toggle Accessible Table]</button>
+          </div>
+          
+          <!-- Chart Placeholder -->
+          <div class="wf-placeholder" style="min-height: 240px;">
+            <div class="wf-placeholder-label">[Line Chart: Innings 1 vs Innings 2 Leverage by Over]</div>
+            <div class="wf-placeholder-desc">
+              X-Axis: Over (1 to 20) | Y-Axis: Mean Leverage Index (1.0 = Baseline)<br>
+              Innings 1 curve peaks early (Overs 1-6 at ~1.30, declining toward middle).<br>
+              Innings 2 curve rises monotonically from ~0.90 to peak at Overs 18-20 (>1.80).
+            </div>
+          </div>
+
+          <div class="wf-chart-controls">
+            <span>Source: ball_state_clean_pressure.parquet (N=195,707 deliveries)</span>
+            <span><a href="pressure-explorer.html">Explore Leverage Heatmaps &rarr;</a></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 1f. Honest-Limits Banner Linking to Method Page -->
+      <section style="margin-bottom: var(--wf-space-12);">
+        <div class="wf-limits-banner">
+          <div class="wf-limits-icon">!</div>
+          <div class="wf-limits-content">
+            <h4>Methodological Integrity &amp; Scope Limits</h4>
+            <p>
+              100% of rain-shortened and DLS-affected matches were excluded to prevent contaminated resources.
+              Ratings near the 150-ball floor are sensitive to peak matches. Results represent situational rate efficiency,
+              not psychological bravery or "clutch" character.
+            </p>
+            <a href="method.html" style="font-weight: 700;">Read Full Methodology &amp; Reliability Report &rarr;</a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="wf-footer">
+      <div class="wf-container wf-footer-content">
+        <div class="wf-footer-left">
+          <p><strong>Pressure XI</strong> &mdash; SupeRR Selector Research Project (2022 to 2026).</p>
+          <p>All statistics are descriptive historical outcomes derived strictly from non-DLS deliveries.</p>
+          <p>No affiliation, endorsement, or sponsorship by IPL, BCCI, ICC, or any cricket franchise.</p>
+        </div>
+        <ul class="wf-footer-links">
+          <li><a href="method.html">Methodology</a></li>
+          <li><a href="rankings.html">Rankings</a></li>
+          <li><a href="index.html">Wireframe Index</a></li>
+        </ul>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    function setBp(bp) {
+      const wrapper = document.getElementById('page-wrapper');
+      wrapper.className = 'wrapper-' + bp;
+      document.querySelectorAll('.wf-view-btns button').forEach(b => b.classList.remove('active'));
+      document.getElementById('btn-' + bp).classList.add('active');
+    }
+  </script>
+</body>
+</html>

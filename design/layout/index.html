@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PRESSURE XI — Wireframe Index & Layout System Specification</title>
+  <link rel="stylesheet" href="wireframe.css">
+  <style>
+    /* Workbench layout styles */
+    .wb-container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: var(--wf-space-6) var(--wf-space-8);
+    }
+    .wb-header {
+      border-bottom: 2px solid var(--wf-border-dark);
+      padding-bottom: var(--wf-space-6);
+      margin-bottom: var(--wf-space-8);
+    }
+    .wb-title {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: var(--wf-space-2);
+    }
+    .wb-subtitle {
+      font-size: 16px;
+      color: var(--wf-text-secondary);
+      margin-bottom: var(--wf-space-3);
+    }
+    .wb-meta-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--wf-space-4);
+      font-family: var(--wf-font-mono);
+      font-size: 12px;
+      background: var(--wf-bg-subtle);
+      border: 1px solid var(--wf-border-medium);
+      padding: var(--wf-space-3) var(--wf-space-4);
+    }
+    .wb-meta-item strong {
+      color: var(--wf-text-primary);
+    }
+
+    /* Page Navigation Cards */
+    .wb-page-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--wf-space-4);
+      margin-bottom: var(--wf-space-8);
+    }
+    @media (max-width: 1024px) {
+      .wb-page-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .wb-page-grid { grid-template-columns: 1fr; }
+    }
+    .wb-page-card {
+      border: 1px solid var(--wf-border-medium);
+      background: var(--wf-bg-surface);
+      padding: var(--wf-space-4);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: border-color 0.15s ease;
+    }
+    .wb-page-card:hover {
+      border-color: var(--wf-border-dark);
+    }
+    .wb-page-card-num {
+      font-family: var(--wf-font-mono);
+      font-size: 11px;
+      color: var(--wf-text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: var(--wf-space-1);
+    }
+    .wb-page-card-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: var(--wf-space-2);
+    }
+    .wb-page-card-desc {
+      font-size: 13px;
+      color: var(--wf-text-secondary);
+      margin-bottom: var(--wf-space-4);
+      line-height: 1.4;
+    }
+    .wb-page-card-actions {
+      display: flex;
+      gap: var(--wf-space-2);
+      flex-wrap: wrap;
+    }
+    .wb-btn {
+      font-family: var(--wf-font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border: 1px solid var(--wf-border-dark);
+      background: var(--wf-bg-surface);
+      color: var(--wf-text-primary);
+      text-decoration: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .wb-btn:hover {
+      background: var(--wf-bg-muted);
+    }
+    .wb-btn-primary {
+      background: var(--wf-border-dark);
+      color: #ffffff;
+    }
+    .wb-btn-primary:hover {
+      background: #334155;
+    }
+
+    /* Embedded Live Interactive Previewer */
+    .wb-preview-section {
+      border: 2px solid var(--wf-border-dark);
+      background: var(--wf-bg-canvas);
+      margin-bottom: var(--wf-space-12);
+    }
+    .wb-preview-controls {
+      background: var(--wf-border-dark);
+      color: #ffffff;
+      padding: var(--wf-space-3) var(--wf-space-4);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--wf-space-3);
+    }
+    .wb-control-group {
+      display: flex;
+      align-items: center;
+      gap: var(--wf-space-2);
+      font-family: var(--wf-font-mono);
+      font-size: 12px;
+    }
+    .wb-select {
+      font-family: var(--wf-font-mono);
+      font-size: 12px;
+      padding: 4px 8px;
+      background: #334155;
+      color: #ffffff;
+      border: 1px solid var(--wf-border-strong);
+    }
+    .wb-bp-toggle {
+      background: #334155;
+      color: #f8fafc;
+      border: 1px solid var(--wf-border-strong);
+      padding: 4px 10px;
+      font-family: var(--wf-font-mono);
+      font-size: 11px;
+      cursor: pointer;
+    }
+    .wb-bp-toggle.active {
+      background: #ffffff;
+      color: var(--wf-border-dark);
+      font-weight: 700;
+    }
+    .wb-iframe-viewport-wrapper {
+      background: #94a3b8;
+      padding: var(--wf-space-6) 0;
+      display: flex;
+      justify-content: center;
+      overflow-x: auto;
+      min-height: 750px;
+    }
+    .wb-preview-iframe {
+      border: 1px solid var(--wf-border-dark);
+      background: #ffffff;
+      height: 780px;
+      transition: width 0.2s ease-in-out;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+
+    /* System Spec Documentation Blocks */
+    .wb-spec-section {
+      background: var(--wf-bg-surface);
+      border: 1px solid var(--wf-border-medium);
+      padding: var(--wf-space-8);
+      margin-bottom: var(--wf-space-8);
+    }
+    .wb-spec-title {
+      font-size: 22px;
+      font-weight: 700;
+      border-bottom: 1px solid var(--wf-border-medium);
+      padding-bottom: var(--wf-space-3);
+      margin-bottom: var(--wf-space-5);
+    }
+    .wb-spec-subtitle {
+      font-size: 16px;
+      font-weight: 700;
+      margin-top: var(--wf-space-6);
+      margin-bottom: var(--wf-space-3);
+    }
+    .wb-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin-bottom: var(--wf-space-6);
+    }
+    .wb-table th, .wb-table td {
+      border: 1px solid var(--wf-border-medium);
+      padding: var(--wf-space-3);
+      text-align: left;
+      vertical-align: top;
+    }
+    .wb-table th {
+      background: var(--wf-bg-subtle);
+      font-weight: 700;
+      font-family: var(--wf-font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .wb-tag-needs-export {
+      display: inline-block;
+      font-family: var(--wf-font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      background: #fee2e2;
+      color: #991b1b;
+      border: 1px solid #f87171;
+      padding: 2px 6px;
+      margin-left: 6px;
+    }
+    .wb-tag-verified {
+      display: inline-block;
+      font-family: var(--wf-font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      background: #e0f2fe;
+      color: #0369a1;
+      border: 1px solid #7dd3fc;
+      padding: 2px 6px;
+      margin-left: 6px;
+    }
+    .wb-code {
+      font-family: var(--wf-font-mono);
+      font-size: 12px;
+      background: var(--wf-bg-subtle);
+      padding: 1px 4px;
+      border: 1px solid var(--wf-border-light);
+    }
+    .wb-journey-box {
+      border-left: 3px solid var(--wf-border-dark);
+      background: var(--wf-bg-subtle);
+      padding: var(--wf-space-4);
+      margin-bottom: var(--wf-space-4);
+      font-size: 13px;
+    }
+    .wb-journey-title {
+      font-weight: 700;
+      margin-bottom: var(--wf-space-2);
+      font-family: var(--wf-font-mono);
+    }
+    .wb-flow-step {
+      display: inline-block;
+      padding: 4px 8px;
+      background: var(--wf-bg-surface);
+      border: 1px solid var(--wf-border-medium);
+      font-family: var(--wf-font-mono);
+      font-size: 11px;
+      margin: 2px 0;
+    }
+    .wb-flow-arrow {
+      margin: 0 6px;
+      color: var(--wf-text-secondary);
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Global Persistent Caveat Tag Strip -->
+  <div class="wf-caveat-strip">
+    <div class="wf-caveat-tag">Descriptive historical ratings, not predictions.</div>
+  </div>
+
+  <div class="wb-container">
+
+    <!-- Header Area -->
+    <header class="wb-header">
+      <div class="wb-page-card-num">PRESSURE XI / DESIGN SYSTEM / STAGE 1</div>
+      <h1 class="wb-title">Layout-Only Wireframe Workbench & System Specification</h1>
+      <p class="wb-subtitle">"Who Delivers Under Pressure? IPL & T20I, 2022 to 2026" — 6-Page Responsive Analytics Dashboard</p>
+      
+      <div class="wb-meta-strip">
+        <div class="wb-meta-item"><strong>Audience:</strong> Competition Judges (Method, Evidence, Honesty) & Analysts/Buyers (Lookup, Comparison)</div>
+        <div class="wb-meta-item"><strong>Hierarchy Rule:</strong> Answer First &rarr; Evidence Next &rarr; Caveats Always Visible</div>
+        <div class="wb-meta-item"><strong>Style Rule:</strong> Strict Grayscale Low-Fidelity Layout (Zero brand styling, zero invented numbers)</div>
+      </div>
+    </header>
+
+    <!-- Page Directory Grid -->
+    <section>
+      <div class="wf-spec-title" style="margin-bottom: var(--wf-space-4);">Wireframe Directory (6 Dedicated Pages)</div>
+      
+      <div class="wb-page-grid">
+        <!-- Page 1 -->
+        <div class="wb-page-card">
+          <div>
+            <div class="wb-page-card-num">Page 01</div>
+            <div class="wb-page-card-title">Overview (Main Dashboard)</div>
+            <p class="wb-page-card-desc">Executive summary for judges: 4 high-level scope cards, side-by-side Top-10 Batters/Bowlers leaderboards, empirical callout cards, Leverage by Over chart, and honest-limits banner.</p>
+          </div>
+          <div class="wb-page-card-actions">
+            <a href="overview.html" target="_blank" class="wb-btn wb-btn-primary">Open Page &nearr;</a>
+            <button onclick="loadInPreview('overview.html', 'Page 1: Overview')" class="wb-btn">View in Simulator</button>
+          </div>
+        </div>
+
+        <!-- Page 2 -->
+        <div class="wb-page-card">
+          <div>
+            <div class="wb-page-card-num">Page 02</div>
+            <div class="wb-page-card-title">Rankings & Explorer</div>
+            <p class="wb-page-card-desc">Complete eligible roster: Role toggle (Batters / Bowlers), multi-parameter filter drawer, Top-20 Forest Plot with 80% intervals, sortable 13-column data table with CSV export, and Shrunk vs Balls scatter.</p>
+          </div>
+          <div class="wb-page-card-actions">
+            <a href="rankings.html" target="_blank" class="wb-btn wb-btn-primary">Open Page &nearr;</a>
+            <button onclick="loadInPreview('rankings.html', 'Page 2: Rankings')" class="wb-btn">View in Simulator</button>
+          </div>
+        </div>
+
+        <!-- Page 3 -->
+        <div class="wb-page-card">
+          <div>
+            <div class="wb-page-card-num">Page 03</div>
+            <div class="wb-page-card-title">Player Profile</div>
+            <p class="wb-page-card-desc">Individual dossier: Plain-language rating interpretation, component breakdown (Actual vs Expected), phase/competition ball mix, Leave-Top-2-Matches-Out stability check with warning state, match contribution strip.</p>
+          </div>
+          <div class="wb-page-card-actions">
+            <a href="player-profile.html" target="_blank" class="wb-btn wb-btn-primary">Open Page &nearr;</a>
+            <button onclick="loadInPreview('player-profile.html', 'Page 3: Player Profile')" class="wb-btn">View in Simulator</button>
+          </div>
+        </div>
+
+        <!-- Page 4 -->
+        <div class="wb-page-card">
+          <div>
+            <div class="wb-page-card-num">Page 04</div>
+            <div class="wb-page-card-title">Head-to-Head Compare</div>
+            <p class="wb-page-card-desc">Multi-player comparison: 2 to 4 same-role player picker, grouped component bar/radar container, pairwise bootstrap probability display with "STATISTICAL TIE DETECTED" banner, side-by-side facts table.</p>
+          </div>
+          <div class="wb-page-card-actions">
+            <a href="compare.html" target="_blank" class="wb-btn wb-btn-primary">Open Page &nearr;</a>
+            <button onclick="loadInPreview('compare.html', 'Page 4: Compare')" class="wb-btn">View in Simulator</button>
+          </div>
+        </div>
+
+        <!-- Page 5 -->
+        <div class="wb-page-card">
+          <div>
+            <div class="wb-page-card-num">Page 05</div>
+            <div class="wb-page-card-title">Pressure Explorer</div>
+            <p class="wb-page-card-desc">The Pressure Concept: Plain-English win probability swing leverage definition, match picker with win-probability timeline and high-leverage pins, dual Innings 1 & 2 Over x Wickets heatmaps, powerplay caveat panel.</p>
+          </div>
+          <div class="wb-page-card-actions">
+            <a href="pressure-explorer.html" target="_blank" class="wb-btn wb-btn-primary">Open Page &nearr;</a>
+            <button onclick="loadInPreview('pressure-explorer.html', 'Page 5: Pressure Explorer')" class="wb-btn">View in Simulator</button>
+          </div>
+        </div>
+
+        <!-- Page 6 -->
+        <div class="wb-page-card">
+          <div>
+            <div class="wb-page-card-num">Page 06</div>
+            <div class="wb-page-card-title">Method & Reliability</div>
+            <p class="wb-page-card-desc">Judges' audit center: 6-stage methodology flow diagram, WP calibration curve & Brier score table, Out-of-Time test table with 95% CIs and chance overlap, "What We Tried and Dropped" cemetery, and downloads.</p>
+          </div>
+          <div class="wb-page-card-actions">
+            <a href="method.html" target="_blank" class="wb-btn wb-btn-primary">Open Page &nearr;</a>
+            <button onclick="loadInPreview('method.html', 'Page 6: Method & Reliability')" class="wb-btn">View in Simulator</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Embedded Live Interactive Previewer Section -->
+    <section class="wb-preview-section">
+      <div class="wb-preview-controls">
+        <div class="wb-control-group">
+          <label for="preview-page-select"><strong>Page to Preview:</strong></label>
+          <select id="preview-page-select" class="wb-select" onchange="changePreviewPage(this.value)">
+            <option value="overview.html">Page 1: Overview (Main Dashboard)</option>
+            <option value="rankings.html">Page 2: Rankings & Explorer</option>
+            <option value="player-profile.html">Page 3: Player Profile</option>
+            <option value="compare.html">Page 4: Head-to-Head Compare</option>
+            <option value="pressure-explorer.html">Page 5: Pressure Explorer</option>
+            <option value="method.html">Page 6: Method & Reliability</option>
+          </select>
+        </div>
+
+        <div class="wb-control-group">
+          <span><strong>Breakpoint:</strong></span>
+          <button class="wb-bp-toggle active" id="btn-bp-1440" onclick="setIframeBp('1440px', this)">Desktop (1440px / 12-col)</button>
+          <button class="wb-bp-toggle" id="btn-bp-768" onclick="setIframeBp('768px', this)">Tablet (768px / 8-col)</button>
+          <button class="wb-bp-toggle" id="btn-bp-360" onclick="setIframeBp('360px', this)">Mobile (360px / 4-col)</button>
+          <button class="wb-bp-toggle" id="btn-bp-100" onclick="setIframeBp('100%', this)">Full Width</button>
+        </div>
+
+        <div class="wb-control-group">
+          <a id="preview-direct-link" href="overview.html" target="_blank" style="color: #cbd5e1; text-decoration: underline;">Open In New Tab &nearr;</a>
+        </div>
+      </div>
+
+      <div class="wb-iframe-viewport-wrapper">
+        <iframe id="preview-frame" class="wb-preview-iframe" src="overview.html" style="width: 1440px;" title="Wireframe Interactive Breakpoint Simulator"></iframe>
+      </div>
+    </section>
+
+    <!-- SECTION 1: Site Map & User Journeys -->
+    <section class="wb-spec-section">
+      <h2 class="wb-spec-title">1. Site Map & User Journeys</h2>
+      
+      <p style="margin-bottom: var(--wf-space-4); color: var(--wf-text-secondary); font-size: 14px;">
+        The information architecture is optimized for two core paths: <strong>Competition Judges</strong> validating integrity and evidence first, and <strong>Analysts/Scouts</strong> seeking rapid player lookup and head-to-head comparison.
+      </p>
+
+      <div class="wb-spec-subtitle">Global Site Map Hierarchy</div>
+      <div style="background: var(--wf-bg-subtle); border: 1px solid var(--wf-border-medium); padding: var(--wf-space-4); font-family: var(--wf-font-mono); font-size: 12px; line-height: 1.8; margin-bottom: var(--wf-space-6);">
+        PRESSURE XI (Root)<br>
+        &boxur;&boxh;&boxh; 1. Overview (Dashboard) &mdash; Executive summary, Top 10 batters/bowlers, leverage by over, limits banner<br>
+        &boxur;&boxh;&boxh; 2. Rankings &mdash; Full roster table, forest plot, role toggle, filters, scatter plot, CSV download<br>
+        &boxur;&boxh;&boxh; 3. Player Profile &mdash; Deep dive dossier, component breakdown, stability check, match log<br>
+        &boxur;&boxh;&boxh; 4. Compare &mdash; 2-to-4 player picker, radar/bars, head-to-head probability, tie alert, side-by-side specs<br>
+        &boxur;&boxh;&boxh; 5. Pressure Explorer &mdash; Leverage definition, WP match explorer, dual over &times; wicket heatmaps<br>
+        &boxur;&boxh;&boxh; 6. Method & Reliability &mdash; 6-stage pipeline, WP calibration curve, out-of-time test table, graveyard, downloads
+      </div>
+
+      <div class="wb-spec-subtitle">Primary User Journeys</div>
+
+      <div class="wb-journey-box">
+        <div class="wb-journey-title">Journey 1: Overview &rarr; Player Profile (Scout / Fast Lookup)</div>
+        <div>
+          <span class="wb-flow-step">1. Lands on Overview</span>
+          <span class="wb-flow-arrow">&rarr;</span>
+          <span class="wb-flow-step">2. Scans Top-10 Leaderboard</span>
+          <span class="wb-flow-arrow">&rarr;</span>
+          <span class="wb-flow-step">3. Clicks high-performing player (e.g. Sudharsan / Bumrah)</span>
+          <span class="wb-flow-arrow">&rarr;</span>
+          <span class="wb-flow-step">4. Arrives on Player Profile</span>
+          <span class="wb-flow-arrow">&rarr;</span>
+          <span class="wb-flow-step">5. Reviews rating interpretation, Leave-2-Out check & match strip</span>
+        </div>
+      </div>
+
+      <div class="wb-journey-box">
+        <div class="wb-journey-title">Journey 2: Overview &rarr; Method & Reliability (Judge / Audit Verification)</div>
+        <div>
+          <span class="wb-flow-step">1. Lands on Overview</span>
+          <span class="wb-flow-arrow">&rarr;</span>
+          <span class="wb-flow-step">2. Reads Honest-Limits Caveat Banner</span>
+          <span class="wb-flow-arrow">&rarr;</span>
+          <span class="wb-flow-step">3. Clicks "Read Full Methodology & Reliability Audit"</span>
+          <span class="wb-flow-arrow">&rarr;</span>
+          <span class="wb-flow-step">4. Arrives on Method page</span>
+          <span class="wb-flow-arrow">&rarr;</span>
+          <span class="wb-flow-step">5. Inspects Out-of-Time table (rho=0.25 batters, rho=0.29 bowlers) & dropped metrics cemetery</span>
+        </div>
+      </div>
+
+      <div class="wb-journey-box">
+        <div class="wb-journey-title">Journey 3: Rankings &rarr; Filter & Sort &rarr; Player Profile (Analyst Deep Dive)</div>
+        <div>
+          <span class="wb-flow-step">1. Clicks Rankings in Top Nav</span>
+          <span class="wb-flow-arrow">&rarr;</span>
+          <span class="wb-flow-step">2. Selects role (Bowlers), sets min balls (250+), filters Spinners</span>
+          <span class="wb-flow-arrow">&rarr;</span>
+          <span class="wb-flow-step">3. Sorts table by Shrunk Rating or P(top-10)</span>
+          <span class="wb-flow-arrow">&rarr;</span>
+          <span class="wb-flow-step">4. Clicks player name row</span>
+          <span class="wb-flow-arrow">&rarr;</span>
+          <span class="wb-flow-step">5. Inspects individual phase breakdown and opposition mix</span>
+        </div>
+      </div>
+
+      <div class="wb-journey-box">
+        <div class="wb-journey-title">Journey 4: Rankings &rarr; Compare (Head-to-Head Evaluation)</div>
+        <div>
+          <span class="wb-flow-step">1. On Rankings or Profile page</span>
+          <span class="wb-flow-arrow">&rarr;</span>
+          <span class="wb-flow-step">2. Clicks "Compare This Player" or navigates to /compare</span>
+          <span class="wb-flow-arrow">&rarr;</span>
+          <span class="wb-flow-step">3. Selects 2-4 peers in picker (e.g. Klaasen vs Pooran)</span>
+          <span class="wb-flow-arrow">&rarr;</span>
+          <span class="wb-flow-step">4. Evaluates Pairwise Probability Matrix & reads Statistical Tie status</span>
+          <span class="wb-flow-arrow">&rarr;</span>
+          <span class="wb-flow-step">5. Inspects component overlay</span>
+        </div>
+      </div>
+
+      <div class="wb-journey-box">
+        <div class="wb-journey-title">Journey 5: Global Search &rarr; Player Profile (Instant Any-Page Navigation)</div>
+        <div>
+          <span class="wb-flow-step">1. Focuses Global Search input in Top Nav (hotkey /)</span>
+          <span class="wb-flow-arrow">&rarr;</span>
+          <span class="wb-flow-step">2. Types player name</span>
+          <span class="wb-flow-arrow">&rarr;</span>
+          <span class="wb-flow-step">3. Selects from auto-suggest list showing role, shrunk rating & balls</span>
+          <span class="wb-flow-arrow">&rarr;</span>
+          <span class="wb-flow-step">4. Directly routed to Player Profile</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: Grid and Spacing Variables -->
+    <section class="wb-spec-section">
+      <h2 class="wb-spec-title">2. Grid & Spacing System Specification</h2>
+      <p style="margin-bottom: var(--wf-space-4); color: var(--wf-text-secondary); font-size: 14px;">
+        Strict numerical scale adhering to an 8pt baseline rhythm with explicit column, gutter, margin, and container dimensions per breakpoint.
+      </p>
+
+      <div class="wb-spec-subtitle">Responsive Breakpoint & Grid Dimensions</div>
+      <table class="wb-table">
+        <thead>
+          <tr>
+            <th>Breakpoint</th>
+            <th>Viewport Width</th>
+            <th>Grid Columns</th>
+            <th>Gutter Width</th>
+            <th>Page Margin</th>
+            <th>Content Max-Width</th>
+            <th>Typical Target Devices</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Desktop</strong></td>
+            <td><code>1440px</code> (min-width: 1025px)</td>
+            <td>12 columns</td>
+            <td><code>24px</code></td>
+            <td><code>48px</code></td>
+            <td><code>1344px</code></td>
+            <td>Laptops, desktop monitors, presentation displays</td>
+          </tr>
+          <tr>
+            <td><strong>Tablet</strong></td>
+            <td><code>768px</code> (641px &ndash; 1024px)</td>
+            <td>8 columns</td>
+            <td><code>16px</code></td>
+            <td><code>32px</code></td>
+            <td><code>704px</code></td>
+            <td>iPads, Android tablets, surface displays</td>
+          </tr>
+          <tr>
+            <td><strong>Mobile</strong></td>
+            <td><code>360px</code> (max-width: 640px)</td>
+            <td>4 columns</td>
+            <td><code>12px</code></td>
+            <td><code>16px</code></td>
+            <td><code>328px</code></td>
+            <td>Handheld smartphones, mobile browser viewports</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="wb-spec-subtitle">Spacing Scale Variables</div>
+      <table class="wb-table">
+        <thead>
+          <tr>
+            <th>Variable Token</th>
+            <th>Value (Pixels)</th>
+            <th>Rem Equivalent</th>
+            <th>Structural Purpose / Usage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><code>--wf-space-1</code></td><td>4px</td><td>0.25rem</td><td>Inline badges, pill padding, micro separators</td></tr>
+          <tr><td><code>--wf-space-2</code></td><td>8px</td><td>0.5rem</td><td>Button padding, table cell padding, compact gaps</td></tr>
+          <tr><td><code>--wf-space-3</code></td><td>12px</td><td>0.75rem</td><td>Mobile card padding, form input inner spacing</td></tr>
+          <tr><td><code>--wf-space-4</code></td><td>16px</td><td>1.0rem</td><td>Standard container padding, card inner body, filter gaps</td></tr>
+          <tr><td><code>--wf-space-5</code></td><td>20px</td><td>1.25rem</td><td>Section subheadings, grid row gaps</td></tr>
+          <tr><td><code>--wf-space-6</code></td><td>24px</td><td>1.5rem</td><td>Standard grid gutter, major card padding</td></tr>
+          <tr><td><code>--wf-space-8</code></td><td>32px</td><td>2.0rem</td><td>Section bottom margins, major component separation</td></tr>
+          <tr><td><code>--wf-space-10</code></td><td>40px</td><td>2.5rem</td><td>Page header bottom margin, modal margins</td></tr>
+          <tr><td><code>--wf-space-12</code></td><td>48px</td><td>3.0rem</td><td>Major layout block separation, desktop side margins</td></tr>
+          <tr><td><code>--wf-space-16</code></td><td>64px</td><td>4.0rem</td><td>Page footer top clearance, deep block transitions</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- SECTION 3: Component Inventory Table -->
+    <section class="wb-spec-section">
+      <h2 class="wb-spec-title">3. Component Inventory (Layout Level & Interactive States)</h2>
+      <p style="margin-bottom: var(--wf-space-4); color: var(--wf-text-secondary); font-size: 14px;">
+        17 core structural components with designated content slots, responsive breakpoint adaptation, and required interactive state definitions.
+      </p>
+
+      <table class="wb-table">
+        <thead>
+          <tr>
+            <th style="width: 14%;">Component Name</th>
+            <th style="width: 14%;">Where Used</th>
+            <th style="width: 20%;">Content Slots</th>
+            <th style="width: 24%;">Breakpoint Behavior (1440 / 768 / 360)</th>
+            <th style="width: 28%;">Interactive States (8 Required)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1. Top Navigation</strong> (<code>wf-nav</code>)</td>
+            <td>All 6 pages (Global header)</td>
+            <td>Brand logo slot, 6 route links, search trigger, mobile hamburger trigger</td>
+            <td><strong>1440:</strong> Horizontal row.<br><strong>768:</strong> Compact row.<br><strong>360:</strong> Collapses to hamburger drawer.</td>
+            <td><code>Default</code>: neutral links.<br><code>Hover/Focus</code>: underline/border.<br><code>Active</code>: bold filled indicator.<br><code>Disabled/Loading/Error</code>: N/A.</td>
+          </tr>
+          <tr>
+            <td><strong>2. Global Search</strong> (<code>wf-search</code>)</td>
+            <td>All 6 pages (Top nav header)</td>
+            <td>Input field, keyboard hint (<code>/</code>), dropdown results flyout (name, role, shrunk rate)</td>
+            <td><strong>1440:</strong> 260px wide input in nav.<br><strong>768:</strong> 180px wide.<br><strong>360:</strong> Icon button opening full-width top sheet.</td>
+            <td><code>Default</code>: placeholder text.<br><code>Hover/Focus</code>: high-contrast border.<br><code>Loading</code>: spinner icon.<br><code>Empty</code>: 'No eligible player found'.<br><code>Error</code>: retry tag.</td>
+          </tr>
+          <tr>
+            <td><strong>3. Summary Card</strong> (<code>wf-card</code>)</td>
+            <td>Overview (Page 1)</td>
+            <td>Metric title label, primary numerical value, secondary context label</td>
+            <td><strong>1440:</strong> 4 equal columns in 1 row.<br><strong>768:</strong> 2 &times; 2 grid.<br><strong>360:</strong> 1 column stacked.</td>
+            <td><code>Default</code>: bordered box.<br><code>Hover</code>: subtle outline.<br><code>Loading</code>: skeleton line.<br><code>Empty/Error</code>: '--' fallback.</td>
+          </tr>
+          <tr>
+            <td><strong>4. Leaderboard Row</strong> (<code>wf-leaderboard-row</code>)</td>
+            <td>Overview (Page 1)</td>
+            <td>Rank badge, player name link, shrunk rating, uncertainty bar, P(top-10), tier badge</td>
+            <td><strong>1440:</strong> Dual side-by-side (Batters / Bowlers).<br><strong>768:</strong> Side-by-side compressed.<br><strong>360:</strong> Stacked with role toggle tab.</td>
+            <td><code>Default</code>: alternating row tints.<br><code>Hover/Focus</code>: row highlight.<br><code>Active</code>: navigation click.<br><code>Loading</code>: skeleton row.</td>
+          </tr>
+          <tr>
+            <td><strong>5. Uncertainty Bar</strong> (<code>wf-ci-bar</code>)</td>
+            <td>Overview, Rankings, Profile, Compare</td>
+            <td>80% CI interval range horizontal track, point estimate marker dot, zero reference line</td>
+            <td><strong>1440/768:</strong> 100px fixed width graphic.<br><strong>360:</strong> Numeric label + mini 60px bar or text range.</td>
+            <td><code>Default</code>: grayscale track.<br><code>Hover/Focus</code>: shows tooltip with exact [q10, q90] bounds.<br><code>Loading</code>: muted track.</td>
+          </tr>
+          <tr>
+            <td><strong>6. Tier Badge</strong> (<code>wf-badge</code>)</td>
+            <td>Overview, Rankings, Profile, Compare</td>
+            <td>Tier name text ("Elite", "Above Average", "Average", "Below Average")</td>
+            <td>Consistent across all breakpoints; font size adjusts 10px &ndash; 11px.</td>
+            <td><code>Default</code>: bordered pill.<br><code>Hover/Focus</code>: tooltip explaining definition (Elite = 80% CI strictly excludes pool mean).</td>
+          </tr>
+          <tr>
+            <td><strong>7. Role Toggle</strong> (<code>wf-toggle</code>)</td>
+            <td>Rankings, Overview (mobile), Compare</td>
+            <td>Segmented tab button group: "Batters (118)" / "Bowlers (125)"</td>
+            <td><strong>1440/768:</strong> Inline toggle button bar.<br><strong>360:</strong> Full-width split 50/50 toggle.</td>
+            <td><code>Default</code>: outline button.<br><code>Hover/Focus</code>: border dark.<br><code>Active</code>: solid fill.<br><code>Disabled</code>: dimmed.</td>
+          </tr>
+          <tr>
+            <td><strong>8. Filter Bar / Drawer</strong> (<code>wf-filter-bar</code>)</td>
+            <td>Rankings (Page 2)</td>
+            <td>Innings filter, Competition selector, min HP balls slider, Pace/Spin toggle, reset button</td>
+            <td><strong>1440:</strong> Horizontal multi-select toolbar.<br><strong>768:</strong> 2-row toolbar.<br><strong>360:</strong> 'Filters' button opening slide-over drawer.</td>
+            <td><code>Default</code>: neutral inputs.<br><code>Active</code>: filter count badge.<br><code>Disabled</code>: role-specific fields dimmed.<br><code>Reset</code>: clears all.</td>
+          </tr>
+          <tr>
+            <td><strong>9. Data Table</strong> (<code>wf-table</code>)</td>
+            <td>Rankings, Method</td>
+            <td>13 column headers with sort icons, player rows, pagination/scroll controls, CSV export button</td>
+            <td><strong>1440:</strong> Full 13 columns.<br><strong>768:</strong> Horizontal scroll within container.<br><strong>360:</strong> Card transform or swipeable table container.</td>
+            <td><code>Default</code>: clean grid.<br><code>Hover</code>: row highlight.<br><code>Focus</code>: accessible keyboard focus.<br><code>Loading</code>: skeleton rows.<br><code>Empty</code>: 'No players match filters'.</td>
+          </tr>
+          <tr>
+            <td><strong>10. Chart Container</strong> (<code>wf-chart-container</code>)</td>
+            <td>Overview, Rankings, Profile, Compare, Method</td>
+            <td>Chart title, subtitle/caption, data visualization slot, data source footnote, accessible Table toggle</td>
+            <td><strong>1440:</strong> Full column span or 6-col grid.<br><strong>768:</strong> 8-col stacked.<br><strong>360:</strong> 4-col stacked, simplified axis ticks.</td>
+            <td><code>Default</code>: graphic rendered.<br><code>Loading</code>: pulsating skeleton rect.<br><code>Active (Table View)</code>: replaces SVG with data table.<br><code>Error</code>: 'Unable to render graphic'.</td>
+          </tr>
+          <tr>
+            <td><strong>11. Callout Card</strong> (<code>wf-callout-card</code>)</td>
+            <td>Overview (Page 1)</td>
+            <td>Empirical finding headline, explanatory narrative text, cross-link anchor</td>
+            <td><strong>1440:</strong> 3-column row.<br><strong>768:</strong> 3-column row.<br><strong>360:</strong> 1-column stacked.</td>
+            <td><code>Default</code>: bordered card.<br><code>Hover/Focus</code>: accent outline.</td>
+          </tr>
+          <tr>
+            <td><strong>12. Warning / Limits Banner</strong> (<code>wf-warning-banner</code>)</td>
+            <td>All pages (Method, Profile, Overview)</td>
+            <td>Warning icon, headline, honest limitation statement, link to Method audit</td>
+            <td>Full grid width across all breakpoints; text wraps on mobile.</td>
+            <td><code>Default</code>: high-contrast bordered callout.<br><code>Focus</code>: keyboard accessible link ring.</td>
+          </tr>
+          <tr>
+            <td><strong>13. Player Identity Card</strong> (<code>wf-player-card</code>)</td>
+            <td>Player Profile (Page 3)</td>
+            <td>Player name, primary role, batting/bowling style, franchise teams, active years, eligible ball count</td>
+            <td><strong>1440:</strong> Side-by-side with rating block.<br><strong>768:</strong> Full width top block.<br><strong>360:</strong> Stacked badge layout.</td>
+            <td><code>Default</code>: clear typography hierarchy.<br><code>Loading</code>: name skeleton blocks.</td>
+          </tr>
+          <tr>
+            <td><strong>14. Match Contribution Strip</strong> (<code>wf-match-strip</code>)</td>
+            <td>Player Profile (Page 3)</td>
+            <td>Chronological match tiles, match date/opponent, balls faced/bowled, match contribution rating bar</td>
+            <td><strong>1440:</strong> Horizontal scroll strip.<br><strong>768:</strong> Horizontal scroll.<br><strong>360:</strong> Compact 2-column or list view.</td>
+            <td><code>Default</code>: discrete match blocks.<br><code>Hover/Focus</code>: shows match scorecard tooltip.<br><code>Empty</code>: 'No matches in filtered span'.</td>
+          </tr>
+          <tr>
+            <td><strong>15. Compare Radar / Bars</strong> (<code>wf-compare-block</code>)</td>
+            <td>Compare (Page 4)</td>
+            <td>Comparative multi-metric plot slot, metric legend, player color/line type indicators</td>
+            <td><strong>1440:</strong> Centered side-by-side.<br><strong>768:</strong> Full width.<br><strong>360:</strong> Grouped vertical bars (replaces radial).</td>
+            <td><code>Default</code>: 2&ndash;4 series rendered.<br><code>Hover</code>: highlights selected player series.<br><code>Tie State</code>: displays "Statistical Tie" banner.</td>
+          </tr>
+          <tr>
+            <td><strong>16. Empty State Placeholder</strong> (<code>wf-empty-state</code>)</td>
+            <td>Rankings, Compare, Match Picker</td>
+            <td>Illustration icon placeholder, heading, friendly explanation, clear action button</td>
+            <td>Centered container adapting to parent width.</td>
+            <td><code>Default</code>: clean message.<br><code>Action Focus</code>: button focus ring.</td>
+          </tr>
+          <tr>
+            <td><strong>17. Skeleton Loader</strong> (<code>wf-skeleton</code>)</td>
+            <td>Global / Charts / Tables</td>
+            <td>Pulsating box/bar placeholders mimicking exact final layout dimensions</td>
+            <td>Mirrors responsive container width at 1440 / 768 / 360.</td>
+            <td><code>Loading</code>: active.<br><code>Complete</code>: replaced with DOM.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- SECTION 4: Data Mapping Table -->
+    <section class="wb-spec-section">
+      <h2 class="wb-spec-title">4. Data Mapping Specification</h2>
+      <p style="margin-bottom: var(--wf-space-4); color: var(--wf-text-secondary); font-size: 14px;">
+        Exhaustive mapping connecting UI components to real data columns in <code class="wb-code">outputs/final_rankings.csv</code> and flagging supplementary datasets as <span class="wb-tag-needs-export">[needs export]</span>.
+      </p>
+
+      <table class="wb-table">
+        <thead>
+          <tr>
+            <th>Component</th>
+            <th>Required Data Attribute</th>
+            <th>Source Column / Dataset</th>
+            <th>Status / Export Requirement</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Overview: Summary Cards</td>
+            <td>Matches (829 clean), Legal Deliveries (195,707), High-Pressure Deliveries (65,229), Eligible Counts (118 Batters / 125 Bowlers)</td>
+            <td>Dataset metadata & frozen audit totals</td>
+            <td><span class="wb-tag-needs-export">meta.json [needs export]</span></td>
+          </tr>
+          <tr>
+            <td>Overview: Leaderboard Rows</td>
+            <td>Rank, Player Name, Role, Shrunk Rating, 80% Lower, 80% Upper, P(top-10), Tier</td>
+            <td><code>rank</code>, <code>player</code>, <code>role</code>, <code>shrunk_rate</code>, <code>ci80_lower</code>, <code>ci80_upper</code>, <code>prob_top10</code>, <code>tier</code></td>
+            <td><span class="wb-tag-verified">outputs/final_rankings.csv</span></td>
+          </tr>
+          <tr>
+            <td>Overview: Leverage by Over Chart</td>
+            <td>Over (1 to 20), Mean Leverage Innings 1, Mean Leverage Innings 2</td>
+            <td>Calculated leverage aggregated by over and innings</td>
+            <td><span class="wb-tag-needs-export">leverage_by_over.json [needs export]</span></td>
+          </tr>
+          <tr>
+            <td>Rankings: Full Table & Filters</td>
+            <td>Rank, Player, Role, Balls, Matches, Raw Rate, Shrunk Rate, Lambda, 80% CI, P(top-10), Dismissal vs Exp, IPL Share, T20I Share, Tier</td>
+            <td><code>rank</code>, <code>player</code>, <code>role</code>, <code>balls</code>, <code>matches</code>, <code>raw_rate</code>, <code>shrunk_rate</code>, <code>lambda</code>, <code>ci80_lower</code>, <code>ci80_upper</code>, <code>prob_top10</code>, <code>dismissal_rate_vs_exp</code>, <code>ipl_share_pct</code>, <code>t20i_share_pct</code>, <code>tier</code></td>
+            <td><span class="wb-tag-verified">outputs/final_rankings.csv</span></td>
+          </tr>
+          <tr>
+            <td>Rankings: Forest Plot (Top 20)</td>
+            <td>Top 20 players by shrunk rate, [ci80_lower, ci80_upper], zero pool reference line</td>
+            <td><code>player</code>, <code>shrunk_rate</code>, <code>ci80_lower</code>, <code>ci80_upper</code></td>
+            <td><span class="wb-tag-verified">outputs/final_rankings.csv</span></td>
+          </tr>
+          <tr>
+            <td>Rankings: Scatter Plot</td>
+            <td>X-axis: High-Pressure Balls, Y-axis: Shrunk Rating, Dot color: Tier, Size: Matches</td>
+            <td><code>balls</code>, <code>shrunk_rate</code>, <code>tier</code>, <code>matches</code></td>
+            <td><span class="wb-tag-verified">outputs/final_rankings.csv</span></td>
+          </tr>
+          <tr>
+            <td>Player Profile: Identity & Rating</td>
+            <td>Name, Role, Shrunk Rate, 80% Interval, P(top-10), Lambda, Descriptive Role Label</td>
+            <td><code>player</code>, <code>role</code>, <code>shrunk_rate</code>, <code>ci80_lower</code>, <code>ci80_upper</code>, <code>prob_top10</code>, <code>lambda</code>, <code>role_desc</code></td>
+            <td><span class="wb-tag-verified">outputs/final_rankings.csv</span></td>
+          </tr>
+          <tr>
+            <td>Player Profile: Components</td>
+            <td>Actual vs Expected Strike Rate, Dismissal Rate vs Expected, Shrunk Opposition Adjustment</td>
+            <td>Per-player baseline expectation decomposition</td>
+            <td><span class="wb-tag-needs-export">players/{player_id}.json [needs export]</span></td>
+          </tr>
+          <tr>
+            <td>Player Profile: Stability Check</td>
+            <td>Full Shrunk Rating vs Rating excluding Top 2 Matches, rank shift, stability flag</td>
+            <td>Sensitivity analysis table (Muqeem, Behrendorff, Klaasen, etc.)</td>
+            <td><span class="wb-tag-needs-export">players/{player_id}.json [needs export]</span></td>
+          </tr>
+          <tr>
+            <td>Player Profile: Match Strip</td>
+            <td>Chronological match list, match date, venue, opponent, HP balls, match impact rating</td>
+            <td>Per-match ball breakdown</td>
+            <td><span class="wb-tag-needs-export">match_contributions.json [needs export]</span></td>
+          </tr>
+          <tr>
+            <td>Compare: Head-to-Head & Tie Alert</td>
+            <td>Pairwise bootstrap probability: P(Player A > Player B), tie indicator (|P - 0.50| < 0.10)</td>
+            <td>Bootstrap draw distribution matrices</td>
+            <td><span class="wb-tag-needs-export">pairwise_comparisons.json [needs export]</span></td>
+          </tr>
+          <tr>
+            <td>Pressure Explorer: Heatmaps</td>
+            <td>20 Overs &times; 10 Wickets in Hand mean leverage matrix for Innings 1 and Innings 2</td>
+            <td>Leverage state matrix across 195k clean balls</td>
+            <td><span class="wb-tag-needs-export">leverage_heatmap.json [needs export]</span></td>
+          </tr>
+          <tr>
+            <td>Pressure Explorer: Match Curve</td>
+            <td>Match ID, Ball-by-ball Win Probability trajectory, High-Pressure indicator flags</td>
+            <td>Historical match win probability progression</td>
+            <td><span class="wb-tag-needs-export">sample_matches.json [needs export]</span></td>
+          </tr>
+          <tr>
+            <td>Method: WP Calibration Curve</td>
+            <td>Predicted WP deciles (0.05 to 0.95), Observed match win frequencies, Brier score (0.174)</td>
+            <td>Pre-match / in-play logistic win probability validation</td>
+            <td><span class="wb-tag-needs-export">validation.json [needs export]</span></td>
+          </tr>
+          <tr>
+            <td>Method: Out-of-Time Test</td>
+            <td>Train (2022-24) vs Test (2025-26): Batter rho (+0.2501, 95% CI [-0.071, +0.498]), Bowler rho (+0.2861, 95% CI [+0.010, +0.502]), Top-10 overlap vs chance</td>
+            <td>Out-of-time temporal repeatability report</td>
+            <td><span class="wb-tag-needs-export">validation.json [needs export]</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- SECTION 5: Content Priority & Accessibility -->
+    <section class="wb-spec-section">
+      <h2 class="wb-spec-title">5. Content Priority & Accessibility (Layout Level)</h2>
+      
+      <div class="wb-spec-subtitle">Landmark Regions & Heading Hierarchy</div>
+      <p style="margin-bottom: var(--wf-space-4); color: var(--wf-text-secondary); font-size: 14px;">
+        Every wireframe adheres to semantic HTML5 landmarks and strict single-<code>h1</code> heading progression to guarantee zero screen-reader confusion.
+      </p>
+
+      <ul style="margin-left: var(--wf-space-5); line-height: 1.8; font-size: 13px; margin-bottom: var(--wf-space-6);">
+        <li><strong>Landmark Regions:</strong> Each page contains exactly one <code>&lt;header role="banner"&gt;</code>, one <code>&lt;nav role="navigation"&gt;</code>, one <code>&lt;main role="main"&gt;</code>, multiple distinct <code>&lt;section aria-labelledby="..."&gt;</code> blocks, and one <code>&lt;footer role="contentinfo"&gt;</code>.</li>
+        <li><strong>Heading Hierarchy:</strong> <code>&lt;h1&gt;</code> is reserved strictly for the primary page title (e.g. "Who Delivers Under Pressure? IPL & T20I, 2022 to 2026"). Each major layout section uses an <code>&lt;h2&gt;</code> (e.g. "Leaderboards", "Empirical Findings", "Out-of-Time Repeatability"). Sub-components and cards use <code>&lt;h3&gt;</code>. No skipped levels.</li>
+        <li><strong>Logical Tab Order:</strong> Global Caveat Tag &rarr; Nav Links &rarr; Global Search &rarr; Page Main Actions (Filters/Toggles) &rarr; Interactive Data Cards &rarr; Chart Data Table Toggles &rarr; Table Rows &rarr; Footer Links.</li>
+      </ul>
+
+      <div class="wb-spec-subtitle">Accessible Data-Table Alternative Matrix (Every Chart Covered)</div>
+      <table class="wb-table">
+        <thead>
+          <tr>
+            <th>Chart Component</th>
+            <th>Primary Visual</th>
+            <th>Accessible Data-Table Alternative</th>
+            <th>Trigger Mechanism</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Leverage by Over (Page 1)</td>
+            <td>2-line comparative chart (Innings 1 vs Innings 2 across overs 1&ndash;20)</td>
+            <td>HTML <code>&lt;table&gt;</code> with columns: Over, Innings 1 Mean Leverage, Innings 2 Mean Leverage, Delta.</td>
+            <td>Button in chart container header: <code>[Show Data Table]</code></td>
+          </tr>
+          <tr>
+            <td>Rankings Top-20 Forest Plot (Page 2)</td>
+            <td>Horizontal error-bar dot plot with 80% credibility bounds</td>
+            <td>Standard sortable rankings table directly below plot contains identical data attributes in plain text.</td>
+            <td>Direct DOM adjacency + screen reader skip link</td>
+          </tr>
+          <tr>
+            <td>Rating vs Sample Size Scatter (Page 2)</td>
+            <td>2D Cartesian scatter (Balls vs Shrunk Rating)</td>
+            <td>HTML table summarizing eligible players grouped by sample quartiles with mean shrinkage factor lambda.</td>
+            <td>Button in chart container header: <code>[Show Data Table]</code></td>
+          </tr>
+          <tr>
+            <td>Player Profile Components (Page 3)</td>
+            <td>Horizontal bar breakdown (Actual vs Expected runs/ball, dismissal impact)</td>
+            <td>Key-value definition list (<code>&lt;dl&gt;</code>) and accessible summary table with exact decimal values.</td>
+            <td>Inline accessible table toggle button</td>
+          </tr>
+          <tr>
+            <td>Compare Radar / Bars (Page 4)</td>
+            <td>Comparative polygon radar or grouped bars</td>
+            <td>Side-by-side facts table directly below displays metric deltas, raw rates, and bootstrap head-to-head probability.</td>
+            <td>Direct DOM adjacency + screen reader caption</td>
+          </tr>
+          <tr>
+            <td>Pressure Explorer Heatmaps (Page 5)</td>
+            <td>20 &times; 10 2D color grid (Over &times; Wickets)</td>
+            <td>Interactive 20-row &times; 10-column accessible HTML data table with numeric leverage values.</td>
+            <td>Button in chart header: <code>[Switch to Table View]</code></td>
+          </tr>
+          <tr>
+            <td>WP Calibration Curve (Page 6)</td>
+            <td>Decile scatter points vs 45&deg; ideal reference line</td>
+            <td>Standard 10-row table showing Predicted WP Bin, Observed Win Rate, Match Sample Count, Absolute Error.</td>
+            <td>Permanent side-by-side display on Method page</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- SECTION 6: Open Questions List -->
+    <section class="wb-spec-section">
+      <h2 class="wb-spec-title">6. Open Questions & Ambiguities for Visual / Production Phase</h2>
+      <p style="margin-bottom: var(--wf-space-4); color: var(--wf-text-secondary); font-size: 14px;">
+        To maintain strict adherence to instructions without guessing, the following structural decisions are surfaced for explicit user confirmation prior to visual design and Next.js frontend coding:
+      </p>
+
+      <ol style="margin-left: var(--wf-space-5); line-height: 1.8; font-size: 13px;">
+        <li>
+          <strong>Compare Page Picker Capacity:</strong> The wireframe implements a flexible 2 to 4 player picker. Do judges/analysts prefer capping at exactly 2 for clean head-to-head odds (e.g. "A beats B 64% of the time"), or allowing up to 4 with a pairwise probability matrix?
+        </li>
+        <li>
+          <strong>Rankings Table Mobile Presentation:</strong> We have wireframed a responsive card-transform view (showing rank, player, rating, 80% CI and tier) with a "View Full 13-Column Scrollable Table" button. Should mobile default to the card view or horizontal swipeable table?
+        </li>
+        <li>
+          <strong>Leave-Top-2-Matches-Out Sensitivity Warning Threshold:</strong> On the Player Profile, a warning badge triggers if dropping a player's top 2 matches causes a rating drop greater than <strong>0.10 runs/ball</strong> or a rank drop of &gt;10 spots. Is 0.10 the preferred threshold, or should it be pegged to the player's 80% credible interval width?
+        </li>
+        <li>
+          <strong>Scatter Plot Zoom / Pan on Mobile:</strong> With 118 batters and 125 bowlers, plotting all points on a 360px mobile screen becomes dense. Should mobile scatter show only the Top-20 with a toggle to load all, or rely on touch pinch-to-zoom?
+        </li>
+        <li>
+          <strong>Filter Drawer vs Accordion on Tablet:</strong> At the 768px tablet breakpoint, the filter toolbar wraps to 2 rows. Would the user prefer a collapsible drawer button (matching mobile) to preserve vertical chart space on tablets?
+        </li>
+      </ol>
+    </section>
+
+    <!-- Footer -->
+    <footer class="wf-footer" style="margin-top: var(--wf-space-12);">
+      <div class="wf-footer-content">
+        <div>
+          <div style="font-weight: 700; margin-bottom: var(--wf-space-1);">PRESSURE XI &mdash; Layout Wireframe Hub</div>
+          <div class="wf-footer-text">Data source: 829 non-DLS T20 matches (IPL & T20I, 2022 to 2026). Frozen analysis outputs.</div>
+          <div class="wf-footer-text">Competition Submission &bull; Academic & Research Evaluation Only &bull; All results historically descriptive.</div>
+        </div>
+        <div style="text-align: right;">
+          <a href="method.html" class="wb-btn">View Methodology & Reliability Audit &rarr;</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    function changePreviewPage(pageUrl) {
+      const frame = document.getElementById('preview-frame');
+      const directLink = document.getElementById('preview-direct-link');
+      frame.src = pageUrl;
+      directLink.href = pageUrl;
+    }
+
+    function loadInPreview(pageUrl, pageTitle) {
+      const select = document.getElementById('preview-page-select');
+      select.value = pageUrl;
+      changePreviewPage(pageUrl);
+      document.querySelector('.wb-preview-section').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function setIframeBp(widthVal, btnElement) {
+      const frame = document.getElementById('preview-frame');
+      frame.style.width = widthVal;
+      
+      document.querySelectorAll('.wb-bp-toggle').forEach(b => b.classList.remove('active'));
+      btnElement.classList.add('active');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wireframe - Page 3: Player Profile | Who Delivers Under Pressure?</title>
+  <link rel="stylesheet" href="wireframe.css">
+  <style>
+    .wf-view-bar {
+      background: #1e293b;
+      color: #f8fafc;
+      font-family: var(--wf-font-mono);
+      font-size: 11px;
+      padding: 6px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .wf-view-btns button {
+      background: #334155;
+      color: #f8fafc;
+      border: 1px solid #64748b;
+      padding: 3px 8px;
+      font-family: inherit;
+      font-size: 11px;
+      cursor: pointer;
+      margin-left: 4px;
+    }
+    .wf-view-btns button.active {
+      background: #f8fafc;
+      color: #0f172a;
+      font-weight: 700;
+    }
+    .wrapper-desktop { max-width: 1440px; margin: 0 auto; }
+    .wrapper-tablet { max-width: 768px; margin: 0 auto; box-shadow: 0 0 0 1px var(--wf-border-strong); }
+    .wrapper-mobile { max-width: 360px; margin: 0 auto; box-shadow: 0 0 0 1px var(--wf-border-strong); }
+  </style>
+</head>
+<body>
+
+  <!-- Top Breakpoint Preview Switcher -->
+  <div class="wf-view-bar">
+    <div><strong>WIREFRAME VIEW:</strong> Page 3 of 6 - Player Profile</div>
+    <div class="wf-view-btns">
+      <span>Simulate Breakpoint:</span>
+      <button onclick="setBp('desktop')" id="btn-desktop" class="active">Desktop (1440px / 12 col)</button>
+      <button onclick="setBp('tablet')" id="btn-tablet">Tablet (768px / 8 col)</button>
+      <button onclick="setBp('mobile')" id="btn-mobile">Mobile (360px / 4 col)</button>
+    </div>
+  </div>
+
+  <div id="page-wrapper" class="wrapper-desktop">
+    
+    <!-- Global Persistent Caveat Tag Strip -->
+    <div class="wf-caveat-strip">
+      <div class="wf-caveat-tag">Descriptive historical ratings, not predictions.</div>
+      <div>Method Version: 1.0 (Audited)</div>
+    </div>
+
+    <!-- Global Top Navigation -->
+    <header class="wf-header">
+      <div class="wf-container wf-nav-container">
+        <a href="index.html" class="wf-brand">
+          <div class="wf-brand-box">P</div>
+          <span>PRESSURE XI</span>
+        </a>
+        <nav>
+          <ul class="wf-nav-menu">
+            <li class="wf-nav-item"><a href="overview.html">1. Overview</a></li>
+            <li class="wf-nav-item"><a href="rankings.html">2. Rankings</a></li>
+            <li class="wf-nav-item active"><a href="player-profile.html">3. Player Profile</a></li>
+            <li class="wf-nav-item"><a href="compare.html">4. Compare</a></li>
+            <li class="wf-nav-item"><a href="pressure-explorer.html">5. Pressure Explorer</a></li>
+            <li class="wf-nav-item"><a href="method.html">6. Method</a></li>
+          </ul>
+        </nav>
+        <div class="wf-search-box">
+          <input type="text" class="wf-search-input" placeholder="Search player (e.g. David)..." aria-label="Search players">
+        </div>
+        <button class="wf-mobile-nav-toggle" aria-label="Open navigation menu">[MENU &#9776;]</button>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="wf-container" style="padding-top: var(--wf-space-6);">
+      
+      <!-- Back Navigation & Breadcrumbs -->
+      <div style="margin-bottom: var(--wf-space-4); font-size: 12px; font-family: var(--wf-font-mono);">
+        <a href="rankings.html">&larr; Back to Rankings</a> / Player Profile
+      </div>
+
+      <!-- 3a. Identity Block & Header -->
+      <section class="wf-card" style="margin-bottom: var(--wf-space-6);">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: var(--wf-space-4);">
+          <div>
+            <div style="display: flex; align-items: center; gap: var(--wf-space-2); margin-bottom: var(--wf-space-1);">
+              <span class="wf-badge" style="font-family: var(--wf-font-mono); font-size: 11px; padding: 2px 6px; border: 1px solid var(--wf-border-strong);">BATTER / TOP ORDER</span>
+              <span class="wf-tier-badge wf-tier-1">Tier 1: Elite Lock</span>
+            </div>
+            <h1 class="wf-page-title" style="margin-bottom: var(--wf-space-1);">[Player Name]</h1>
+            <p class="wf-page-subtitle">Teams: [Franchise Name], [National Team] &bull; Match Window: 2022&ndash;2026</p>
+          </div>
+          <div style="display: flex; gap: var(--wf-space-2);">
+            <a href="compare.html" class="wf-btn-text" style="padding: 8px 16px; font-weight: 700; text-decoration: none;">[+ Compare This Player]</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3b. Headline Rating Card with Plain-Language Translation -->
+      <section style="margin-bottom: var(--wf-space-6);">
+        <div class="wf-grid">
+          
+          <div class="col-8 wf-card">
+            <div class="wf-card-header">
+              <span class="wf-card-title">Empirical Bayes Pressure Rating</span>
+              <span style="font-family: var(--wf-font-mono); font-size: 12px;">Rank #0 of 118</span>
+            </div>
+
+            <div style="display: flex; align-items: baseline; gap: var(--wf-space-4); margin-bottom: var(--wf-space-3); flex-wrap: wrap;">
+              <div class="wf-stat-value" style="font-size: 42px;">+0.0000</div>
+              <div style="font-size: 13px; color: var(--wf-text-secondary);">
+                Runs Above Expected / Ball<br>
+                <span style="font-family: var(--wf-font-mono); font-size: 11px;">80% Match Bootstrap CI: [+0.000, +0.000]</span>
+              </div>
+            </div>
+
+            <div class="wf-callout" style="background-color: var(--wf-bg-subtle); border-left-width: 3px;">
+              <div style="font-size: 13px; font-weight: 600; margin-bottom: 2px;">Plain-Language Reading:</div>
+              <div style="font-size: 12px; color: var(--wf-text-secondary); line-height: 1.45;">
+                In high-leverage corridors, this player generated <strong>+0.00 extra runs per ball</strong> compared to average expectations in identical match states (wickets in hand, phase, batting order, and opponent attack strength). The model estimates a <strong>00.0% probability</strong> of true top-10 membership within the eligible cohort.
+              </div>
+            </div>
+          </div>
+
+          <div class="col-4 wf-card">
+            <div class="wf-card-header">
+              <span class="wf-card-title">Sample &amp; Shrinkage</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: var(--wf-space-3);">
+              <div>
+                <div style="font-size: 11px; color: var(--wf-text-secondary); text-transform: uppercase;">High-Pressure Sample</div>
+                <div style="font-size: 18px; font-weight: 700; font-family: var(--wf-font-mono);">000 Balls &bull; 00 Matches</div>
+              </div>
+              <div>
+                <div style="font-size: 11px; color: var(--wf-text-secondary); text-transform: uppercase;">Raw vs Shrunk Rate</div>
+                <div style="font-size: 14px; font-family: var(--wf-font-mono);">Raw: +0.0000 &rarr; Shrunk: +0.0000</div>
+              </div>
+              <div>
+                <div style="font-size: 11px; color: var(--wf-text-secondary); text-transform: uppercase;">Shrinkage Factor (&lambda;)</div>
+                <div style="font-size: 14px; font-family: var(--wf-font-mono);">0.000 (Weight on observed sample)</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 3c & 3d. Component Breakdown & Pressure-Ball Mix -->
+      <section style="margin-bottom: var(--wf-space-6);">
+        <div class="wf-grid">
+          
+          <!-- 3c. Component Breakdown -->
+          <div class="col-6 wf-card">
+            <div class="wf-card-header">
+              <span class="wf-card-title">Score Components &amp; Diagnostic Signals</span>
+            </div>
+            
+            <div style="display: flex; flex-direction: column; gap: var(--wf-space-3);">
+              <div style="border: 1px solid var(--wf-border-light); padding: var(--wf-space-3); background: var(--wf-bg-subtle);">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                  <strong>Runs Above Expected (RAE / ball):</strong>
+                  <span style="font-family: var(--wf-font-mono); font-weight: 700;">+0.0000</span>
+                </div>
+                <div style="font-size: 11px; color: var(--wf-text-secondary);">Core scoring metric. Evaluated relative to leave-one-match-out state baseline and opponent bowling attack strength.</div>
+              </div>
+
+              <div style="border: 1px solid var(--wf-border-light); padding: var(--wf-space-3); background: var(--wf-bg-subtle);">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                  <strong>Dismissal Rate vs Expected (Diagnostic Only):</strong>
+                  <span style="font-family: var(--wf-font-mono); font-weight: 700;">+0.00%</span>
+                </div>
+                <div style="font-size: 11px; color: var(--wf-text-secondary);">Independent diagnostic column. Strictly excluded from the final rating to eliminate Bernoulli dismissal noise.</div>
+              </div>
+
+              <div style="border: 1px solid var(--wf-border-light); padding: var(--wf-space-3); background: var(--wf-bg-subtle);">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                  <strong>Opposition Strength Adjustment:</strong>
+                  <span style="font-family: var(--wf-font-mono); font-weight: 700;">+0.0000 runs/b</span>
+                </div>
+                <div style="font-size: 11px; color: var(--wf-text-secondary);">Bayesian attack credit based on opponent bowling unit economy relative to global baseline (m=300 prior).</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3d. Pressure-Ball Mix -->
+          <div class="col-6 wf-card">
+            <div class="wf-card-header">
+              <span class="wf-card-title">Situational Distribution of Pressure Deliveries</span>
+            </div>
+
+            <!-- Segment Distribution Bars Placeholder -->
+            <div style="display: flex; flex-direction: column; gap: var(--wf-space-3);">
+              <div>
+                <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 2px;">
+                  <span>Phase Distribution:</span>
+                  <span style="font-family: var(--wf-font-mono);">PP: 00.0% | Mid: 00.0% | Death: 00.0%</span>
+                </div>
+                <div style="height: 12px; background: var(--wf-border-medium); display: flex;">
+                  <div style="width: 60%; background: var(--wf-text-primary);" title="Powerplay"></div>
+                  <div style="width: 30%; background: var(--wf-border-strong);" title="Middle"></div>
+                  <div style="width: 10%; background: var(--wf-border-light);" title="Death"></div>
+                </div>
+              </div>
+
+              <div>
+                <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 2px;">
+                  <span>Innings Split:</span>
+                  <span style="font-family: var(--wf-font-mono);">Innings 1: 00.0% | Innings 2: 00.0%</span>
+                </div>
+                <div style="height: 12px; background: var(--wf-border-medium); display: flex;">
+                  <div style="width: 55%; background: var(--wf-text-primary);" title="Innings 1"></div>
+                  <div style="width: 45%; background: var(--wf-border-strong);" title="Innings 2"></div>
+                </div>
+              </div>
+
+              <div>
+                <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 2px;">
+                  <span>Competition Split:</span>
+                  <span style="font-family: var(--wf-font-mono);">IPL: 00.0% | T20I: 00.0%</span>
+                </div>
+                <div style="height: 12px; background: var(--wf-border-medium); display: flex;">
+                  <div style="width: 70%; background: var(--wf-text-primary);" title="IPL"></div>
+                  <div style="width: 30%; background: var(--wf-border-strong);" title="T20I"></div>
+                </div>
+              </div>
+
+              <div style="font-size: 11px; color: var(--wf-text-muted); margin-top: var(--wf-space-1);">
+                Note: Innings 1 pressure reflects early foundation volatility; Innings 2 reflects target-chasing execution.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 3e. Stability Check: Rating With & Without Top 2 Matches (Warning State) -->
+      <section style="margin-bottom: var(--wf-space-6);">
+        <div class="wf-card">
+          <div class="wf-card-header">
+            <span class="wf-card-title">Sensitivity &amp; Outlier Vulnerability Check</span>
+            <span class="wf-badge" style="font-family: var(--wf-font-mono); font-size: 10px; border: 1px solid var(--wf-border-strong);">LEAVE-TOP-2-MATCHES-OUT</span>
+          </div>
+
+          <div class="wf-grid" style="align-items: center;">
+            <div class="col-8">
+              <p style="font-size: 13px; margin-bottom: var(--wf-space-2);">
+                Does this player's elite standing depend on a handful of standout matches? We recalculate the player's rating after completely removing their two highest run-producing high-pressure matches.
+              </p>
+              <div style="font-family: var(--wf-font-mono); font-size: 12px; display: flex; gap: var(--wf-space-4); flex-wrap: wrap;">
+                <div>Full Sample Rank: <strong>#0</strong> (+0.0000)</div>
+                <div>&rarr;</div>
+                <div>Leave-Top-2-Out Rank: <strong>#0</strong> (+0.0000)</div>
+                <div>&Delta; Rank Shift: <strong>0 Positions</strong></div>
+              </div>
+            </div>
+
+            <div class="col-4">
+              <!-- Warning Banner / Stability Tag -->
+              <div class="wf-limits-banner" style="margin: 0; padding: var(--wf-space-3);">
+                <div style="font-size: 11px;">
+                  <strong>Stability Status: STABLE</strong><br>
+                  Rating drops moderately but player remains in top 15% of cohort. Low vulnerability to small-sample match clustering.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3f. Match-by-Match Contribution Strip -->
+      <section style="margin-bottom: var(--wf-space-8);">
+        <div class="wf-card">
+          <div class="wf-card-header">
+            <div>
+              <span class="wf-card-title">Match Execution History</span>
+              <h3 style="font-size: 14px; font-weight: 700; margin-top: 2px;">High-Pressure Delivery Contribution Strip</h3>
+            </div>
+            <button class="wf-btn-text">[View Match Data Table]</button>
+          </div>
+
+          <!-- Horizontal Match Strip Placeholder -->
+          <div class="wf-placeholder" style="min-height: 180px;">
+            <div class="wf-placeholder-label">[Timeline Strip Placeholder: Match-by-Match Run Contribution]</div>
+            <div class="wf-placeholder-desc">
+              Horizontal sequence of match cards / bars (Oldest &rarr; Most Recent).<br>
+              Each cell displays: Match Date, Opponent, Competition, High-Pressure Balls Faced, Net Runs Delivered Above Expected (+/-).
+            </div>
+          </div>
+
+          <div class="wf-chart-controls">
+            <span>Showing high-pressure deliveries across all 00 qualified matches</span>
+            <span>Hover / tap card to inspect state-level baselines</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3g. Action Navigation -->
+      <section style="display: flex; justify-content: space-between; align-items: center; padding-bottom: var(--wf-space-8);">
+        <a href="rankings.html" style="font-family: var(--wf-font-mono); font-size: 12px;">&larr; Return to Full Rankings</a>
+        <a href="compare.html" class="wf-btn-text" style="padding: 8px 16px; font-weight: 700; text-decoration: none;">[Compare with Another Player &rarr;]</a>
+      </section>
+
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="wf-footer">
+      <div class="wf-container wf-footer-content">
+        <div class="wf-footer-left">
+          <p><strong>Pressure XI</strong> &mdash; SupeRR Selector Research Project (2022 to 2026).</p>
+          <p>All statistics are descriptive historical outcomes derived strictly from non-DLS deliveries.</p>
+        </div>
+        <ul class="wf-footer-links">
+          <li><a href="method.html">Methodology</a></li>
+          <li><a href="rankings.html">Rankings</a></li>
+          <li><a href="index.html">Wireframe Index</a></li>
+        </ul>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    function setBp(bp) {
+      const wrapper = document.getElementById('page-wrapper');
+      wrapper.className = 'wrapper-' + bp;
+      document.querySelectorAll('.wf-view-btns button').forEach(b => b.classList.remove('active'));
+      document.getElementById('btn-' + bp).classList.add('active');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wireframe - Page 6: Method & Reliability | Who Delivers Under Pressure?</title>
+  <link rel="stylesheet" href="wireframe.css">
+  <style>
+    .wf-view-bar {
+      background: #1e293b;
+      color: #f8fafc;
+      font-family: var(--wf-font-mono);
+      font-size: 11px;
+      padding: 6px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .wf-view-btns button {
+      background: #334155;
+      color: #f8fafc;
+      border: 1px solid #64748b;
+      padding: 3px 8px;
+      font-family: inherit;
+      font-size: 11px;
+      cursor: pointer;
+      margin-left: 4px;
+    }
+    .wf-view-btns button.active {
+      background: #f8fafc;
+      color: #0f172a;
+      font-weight: 700;
+    }
+    .wrapper-desktop { max-width: 1440px; margin: 0 auto; }
+    .wrapper-tablet { max-width: 768px; margin: 0 auto; box-shadow: 0 0 0 1px var(--wf-border-strong); }
+    .wrapper-mobile { max-width: 360px; margin: 0 auto; box-shadow: 0 0 0 1px var(--wf-border-strong); }
+  </style>
+</head>
+<body>
+
+  <!-- Top Breakpoint Preview Switcher -->
+  <div class="wf-view-bar">
+    <div><strong>WIREFRAME VIEW:</strong> Page 6 of 6 - Method &amp; Reliability</div>
+    <div class="wf-view-btns">
+      <span>Simulate Breakpoint:</span>
+      <button onclick="setBp('desktop')" id="btn-desktop" class="active">Desktop (1440px / 12 col)</button>
+      <button onclick="setBp('tablet')" id="btn-tablet">Tablet (768px / 8 col)</button>
+      <button onclick="setBp('mobile')" id="btn-mobile">Mobile (360px / 4 col)</button>
+    </div>
+  </div>
+
+  <div id="page-wrapper" class="wrapper-desktop">
+    
+    <!-- Global Persistent Caveat Tag Strip -->
+    <div class="wf-caveat-strip">
+      <div class="wf-caveat-tag">Descriptive historical ratings, not predictions.</div>
+      <div>Method Version: 1.0 (Audited)</div>
+    </div>
+
+    <!-- Global Top Navigation -->
+    <header class="wf-header">
+      <div class="wf-container wf-nav-container">
+        <a href="index.html" class="wf-brand">
+          <div class="wf-brand-box">P</div>
+          <span>PRESSURE XI</span>
+        </a>
+        <nav>
+          <ul class="wf-nav-menu">
+            <li class="wf-nav-item"><a href="overview.html">1. Overview</a></li>
+            <li class="wf-nav-item"><a href="rankings.html">2. Rankings</a></li>
+            <li class="wf-nav-item"><a href="player-profile.html">3. Player Profile</a></li>
+            <li class="wf-nav-item"><a href="compare.html">4. Compare</a></li>
+            <li class="wf-nav-item"><a href="pressure-explorer.html">5. Pressure Explorer</a></li>
+            <li class="wf-nav-item active"><a href="method.html">6. Method</a></li>
+          </ul>
+        </nav>
+        <div class="wf-search-box">
+          <input type="text" class="wf-search-input" placeholder="Search method..." aria-label="Search">
+        </div>
+        <button class="wf-mobile-nav-toggle" aria-label="Open navigation menu">[MENU &#9776;]</button>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="wf-container" style="padding-top: var(--wf-space-6);">
+      
+      <!-- Page Header Strip -->
+      <section class="wf-page-header">
+        <h1 class="wf-page-title">Methodology, Formulations &amp; Reliability</h1>
+        <p class="wf-page-subtitle">Full scientific disclosure of state baselines, Empirical Bayes shrinkage, and out-of-time validation results.</p>
+      </section>
+
+      <!-- 6a. Pipeline Architecture Diagram -->
+      <section style="margin-bottom: var(--wf-space-8);">
+        <div class="wf-card">
+          <div class="wf-card-header">
+            <span class="wf-card-title">End-to-End Analytical Architecture</span>
+            <span style="font-family: var(--wf-font-mono); font-size: 11px;">100% Deterministic &bull; Zero Hand-Tuned Values</span>
+          </div>
+
+          <!-- Architecture Diagram Placeholder -->
+          <div class="wf-placeholder" style="min-height: 220px;">
+            <div class="wf-placeholder-label">[Flow Diagram Placeholder: 6-Stage Modeling Pipeline]</div>
+            <div class="wf-placeholder-desc" style="max-width: 600px;">
+              [Stage 1: Raw Ingestion &amp; Extras Parsing] &rarr; 
+              [Stage 2: Strict DLS Exclusion (41 matches, 5,254 balls removed)] &rarr; 
+              [Stage 3: Win Probability Model &amp; Leverage Index] &rarr; 
+              [Stage 4: Within-Innings Leverage Standardization (Top Tercile = High Pressure)] &rarr; 
+              [Stage 5: Leave-One-Match-Out State Baselines (Phase &times; WIH &times; Order &times; Style)] &rarr; 
+              [Stage 6: Empirical Bayes Shrinkage with True Delivery Variance] &rarr; 
+              [Output: Tiered Final Leaderboards &amp; Bootstrap Confidence Bands]
+            </div>
+          </div>
+
+          <div class="wf-chart-controls">
+            <span>All pipeline stages verified via 14 automated unit tests</span>
+            <span>A dedicated test enforces 0 DLS rows reaching rating models</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6b. Calibration Chart Slot & Error-Score Table -->
+      <section style="margin-bottom: var(--wf-space-8);">
+        <div class="wf-grid">
+          
+          <div class="col-6 wf-card">
+            <div class="wf-card-header">
+              <span class="wf-card-title">Win Probability Model Reliability</span>
+              <button class="wf-btn-text">[View Calibration Data]</button>
+            </div>
+            
+            <div class="wf-placeholder" style="min-height: 220px;">
+              <div class="wf-placeholder-label">[Chart Placeholder: Calibration Curve (Predicted vs Observed Win Rate)]</div>
+              <div class="wf-placeholder-desc">
+                X-Axis: Model Predicted Win Probability (10 Bins: 0-10% to 90-100%).<br>
+                Y-Axis: Actual Observed Match Outcome Win Rate (0% to 100%).<br>
+                Visual elements: 45-degree diagonal reference line (perfect calibration) and observed binned empirical points.
+              </div>
+            </div>
+
+            <div style="margin-top: var(--wf-space-2); font-size: 11px; color: var(--wf-text-secondary);">
+              Clean non-DLS evaluation proves well-calibrated game probabilities across all phases.
+            </div>
+          </div>
+
+          <div class="col-6 wf-card">
+            <div class="wf-card-header">
+              <span class="wf-card-title">Win Probability Error Scores</span>
+            </div>
+
+            <div class="wf-table-container">
+              <table class="wf-table" aria-label="Error scores table">
+                <thead>
+                  <tr>
+                    <th>Evaluation Partition</th>
+                    <th>Brier Score</th>
+                    <th>Log Loss</th>
+                    <th>Sample Size</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Innings 1 Model</strong></td>
+                    <td>0.0000</td>
+                    <td>0.0000</td>
+                    <td>97,854 balls</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Innings 2 Model</strong></td>
+                    <td>0.0000</td>
+                    <td>0.0000</td>
+                    <td>97,853 balls</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Full Dataset (Combined)</strong></td>
+                    <td><strong>0.0000</strong></td>
+                    <td><strong>0.0000</strong></td>
+                    <td><strong>195,707 balls</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div style="margin-top: var(--wf-space-3); font-size: 11px; color: var(--wf-text-secondary); line-height: 1.4;">
+              Note: Win probability models are trained strictly on clean non-DLS fixtures to prevent distorted resource assumptions.
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 6c. Out-of-Time Test Table with Intervals and Chance-Level Overlap -->
+      <section style="margin-bottom: var(--wf-space-8);">
+        <div class="wf-card">
+          <div class="wf-card-header">
+            <div>
+              <span class="wf-card-title">Rigorous Out-of-Time Validation</span>
+              <h3 style="font-size: 14px; font-weight: 700; margin-top: 2px;">Cross-Era Repeatability: Model Fit on 2022&ndash;2024 &rarr; Evaluated on Raw 2025&ndash;2026</h3>
+            </div>
+            <span class="wf-badge" style="border: 1px solid var(--wf-border-strong);">NO DATA SNOOPING</span>
+          </div>
+
+          <div class="wf-table-container">
+            <table class="wf-table" aria-label="Out of time validation table">
+              <thead>
+                <tr>
+                  <th>Player Role</th>
+                  <th>Eligibility Filter</th>
+                  <th>Active Players (N)</th>
+                  <th>Spearman &rho;</th>
+                  <th>95% Bootstrap CI</th>
+                  <th>Pearson r</th>
+                  <th>Top-10 Overlap</th>
+                  <th>Chance Top-10</th>
+                  <th>Top-20% Overlap</th>
+                  <th>Chance Top-20%</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Batters</strong></td>
+                  <td>&ge;150 Train / &ge;60 Test</td>
+                  <td>51</td>
+                  <td><strong>+0.2501</strong></td>
+                  <td>[-0.0711, +0.4985]</td>
+                  <td>+0.2523</td>
+                  <td>3 / 10</td>
+                  <td>1.96 / 10</td>
+                  <td><strong>30.0%</strong></td>
+                  <td>20.0%</td>
+                </tr>
+                <tr>
+                  <td><strong>Bowlers</strong></td>
+                  <td>&ge;150 Train / &ge;60 Test</td>
+                  <td>63</td>
+                  <td><strong>+0.2861</strong></td>
+                  <td>[+0.0105, +0.5017]</td>
+                  <td>+0.3218</td>
+                  <td>3 / 10</td>
+                  <td>1.59 / 10</td>
+                  <td><strong>25.0%</strong></td>
+                  <td>20.0%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="wf-callout" style="margin-top: var(--wf-space-3); background: var(--wf-bg-subtle);">
+            <div style="font-weight: 700; font-size: 12px; margin-bottom: 2px;">Honest Scientific Assessment:</div>
+            <div style="font-size: 11px; color: var(--wf-text-secondary); line-height: 1.45;">
+              Cross-era rank correlation is modest (&rho; &approx; +0.25 to +0.29). For batters, the 95% bootstrap confidence interval [-0.071, +0.498] spans zero, indicating that batter pressure efficiency is not statistically distinguishable from random variation across independent multi-year eras. For bowlers, the CI [+0.010, +0.502] strictly excludes zero. These ratings describe historical situational efficiency, NOT permanent predictive traits.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6d. "What We Tried and Dropped" Section -->
+      <section style="margin-bottom: var(--wf-space-8);">
+        <div class="wf-card-header" style="margin-bottom: var(--wf-space-3);">
+          <h2 style="font-size: 15px; font-weight: 800;">METHODOLOGICAL CEMETERY: WHAT WE TESTED AND DROPPED</h2>
+        </div>
+
+        <div class="wf-grid">
+          
+          <div class="col-6 wf-callout">
+            <div class="wf-callout-title">1. Raw Win Probability Added (WPA)</div>
+            <div class="wf-callout-body">
+              <strong>Why Dropped:</strong> Plain cumulative WPA showed near-zero cross-period stability (&rho; = 0.000 to 0.045) and rewarded players simply for being on the field during high-volatility finishes. It measured situational opportunity rather than player quality.
+            </div>
+          </div>
+
+          <div class="col-6 wf-callout">
+            <div class="wf-callout-title">2. Combined Score with Wickets (RAE + k&times;WAE)</div>
+            <div class="wf-callout-body">
+              <strong>Why Dropped:</strong> Dismissals occur on only ~5% of deliveries. Multiplying this binary event by runs-per-wicket (k &approx; 25) injected massive Bernoulli noise, collapsing batter out-of-time repeatability from &rho; = +0.23 to -0.004.
+            </div>
+          </div>
+
+          <div class="col-6 wf-callout">
+            <div class="wf-callout-title">3. Flat Run-per-Wicket Weight (k = 20 or 25)</div>
+            <div class="wf-callout-body">
+              <strong>Why Dropped:</strong> Wicket value changes by a factor of 4&times; across the match (from ~35 runs lost in the Powerplay to ~8 runs in the 20th over). Even dynamic state-dependent wicket loss degraded cross-era signal compared to pure run efficiency.
+            </div>
+          </div>
+
+          <div class="col-6 wf-callout">
+            <div class="wf-callout-title">4. Global (Unstandardized) Leverage Terciles</div>
+            <div class="wf-callout-body">
+              <strong>Why Dropped:</strong> A single global threshold caused Innings 2 death overs to crowd out all Innings 1 deliveries, falsely assuming that early target-setting carries negligible pressure. Within-innings standardization restored fairness.
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 6e. Data Notes & Limitations List -->
+      <section style="margin-bottom: var(--wf-space-8);">
+        <div class="wf-card">
+          <div class="wf-card-header">
+            <span class="wf-card-title">Documented Limitations &amp; Boundary Conditions</span>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: var(--wf-space-3); font-size: 13px; line-height: 1.5;">
+            <div>
+              <strong>1. Middle-Overs Spin Tactical Confounding:</strong> 60% of top-10 bowlers are spinners (vs 33.6% in the pool), and 5 bowl predominantly in Middle overs (overs 7&ndash;15). While state baselines control for phase and wickets in hand, middle overs provide structurally favorable run suppression compared to boundary-hunting death overs.
+            </div>
+            <div>
+              <strong>2. Fragility Near the Eligibility Floor:</strong> For players near 150&ndash;220 balls, removing 2 peak matches causes bowler ranks to drop 20+ positions into the #28&ndash;#32 range. Ranks near the floor are confidence bands, not definitive ordinal spots.
+            </div>
+            <div>
+              <strong>3. Strict Exclusion of Corrupted Matches:</strong> 41 rain-shortened and DLS-affected matches (5,254 balls) and 38 super-over balls were excluded from all models. Scorecards with RRR error within &plusmn;10 runs were flagged approximate.
+            </div>
+            <div>
+              <strong>4. Descriptive Historical Nature:</strong> The model evaluates what players delivered in historical states relative to expectation. It does not measure psychological bravery, choking, or future predictive traits.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6f. Downloads Block -->
+      <section style="margin-bottom: var(--wf-space-8);">
+        <div class="wf-card" style="background-color: var(--wf-bg-surface);">
+          <div class="wf-card-header">
+            <span class="wf-card-title">Audited Data &amp; Documentation Exports</span>
+          </div>
+
+          <div class="wf-grid" style="align-items: center;">
+            <div class="col-4" style="border: 1px solid var(--wf-border-medium); padding: var(--wf-space-3); background: var(--wf-bg-subtle);">
+              <div style="font-weight: 700; font-size: 13px;">final_rankings.csv</div>
+              <div style="font-size: 11px; color: var(--wf-text-secondary); margin: 4px 0;">All 243 eligible players with raw rates, shrunk ratings, lambda, intervals, and probabilities.</div>
+              <button class="wf-btn-text" style="font-weight: 700;">[Download CSV (51 KB)]</button>
+            </div>
+
+            <div class="col-4" style="border: 1px solid var(--wf-border-medium); padding: var(--wf-space-3); background: var(--wf-bg-subtle);">
+              <div style="font-weight: 700; font-size: 13px;">final_methodology_report.txt</div>
+              <div style="font-size: 11px; color: var(--wf-text-secondary); margin: 4px 0;">Full mathematical formulations, derivations, fairness safeguards, and evidence tables.</div>
+              <button class="wf-btn-text" style="font-weight: 700;">[Download Report (14 KB)]</button>
+            </div>
+
+            <div class="col-4" style="border: 1px solid var(--wf-border-medium); padding: var(--wf-space-3); background: var(--wf-bg-subtle);">
+              <div style="font-weight: 700; font-size: 13px;">phase3_player_ratings_report.txt</div>
+              <div style="font-size: 11px; color: var(--wf-text-secondary); margin: 4px 0;">Deterministic audit trail, pairwise bootstrap ties, and sensitivity diagnostics.</div>
+              <button class="wf-btn-text" style="font-weight: 700;">[Download Report (14 KB)]</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="wf-footer">
+      <div class="wf-container wf-footer-content">
+        <div class="wf-footer-left">
+          <p><strong>Pressure XI</strong> &mdash; SupeRR Selector Research Project (2022 to 2026).</p>
+          <p>All statistics are descriptive historical outcomes derived strictly from non-DLS deliveries.</p>
+        </div>
+        <ul class="wf-footer-links">
+          <li><a href="overview.html">Overview</a></li>
+          <li><a href="rankings.html">Rankings</a></li>
+          <li><a href="index.html">Wireframe Index</a></li>
+        </ul>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    function setBp(bp) {
+      const wrapper = document.getElementById('page-wrapper');
+      wrapper.className = 'wrapper-' + bp;
+      document.querySelectorAll('.wf-view-btns button').forEach(b => b.classList.remove('active'));
+      document.getElementById('btn-' + bp).classList.add('active');
+    }
+  </script>
+</body>
+</html>

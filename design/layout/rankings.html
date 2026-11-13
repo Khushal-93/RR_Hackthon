@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wireframe - Page 2: Rankings | Who Delivers Under Pressure?</title>
+  <link rel="stylesheet" href="wireframe.css">
+  <style>
+    .wf-view-bar {
+      background: #1e293b;
+      color: #f8fafc;
+      font-family: var(--wf-font-mono);
+      font-size: 11px;
+      padding: 6px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .wf-view-btns button {
+      background: #334155;
+      color: #f8fafc;
+      border: 1px solid #64748b;
+      padding: 3px 8px;
+      font-family: inherit;
+      font-size: 11px;
+      cursor: pointer;
+      margin-left: 4px;
+    }
+    .wf-view-btns button.active {
+      background: #f8fafc;
+      color: #0f172a;
+      font-weight: 700;
+    }
+    .wrapper-desktop { max-width: 1440px; margin: 0 auto; }
+    .wrapper-tablet { max-width: 768px; margin: 0 auto; box-shadow: 0 0 0 1px var(--wf-border-strong); }
+    .wrapper-mobile { max-width: 360px; margin: 0 auto; box-shadow: 0 0 0 1px var(--wf-border-strong); }
+  </style>
+</head>
+<body>
+
+  <!-- Top Breakpoint Preview Switcher -->
+  <div class="wf-view-bar">
+    <div><strong>WIREFRAME VIEW:</strong> Page 2 of 6 - Full Rankings</div>
+    <div class="wf-view-btns">
+      <span>Simulate Breakpoint:</span>
+      <button onclick="setBp('desktop')" id="btn-desktop" class="active">Desktop (1440px / 12 col)</button>
+      <button onclick="setBp('tablet')" id="btn-tablet">Tablet (768px / 8 col)</button>
+      <button onclick="setBp('mobile')" id="btn-mobile">Mobile (360px / 4 col)</button>
+    </div>
+  </div>
+
+  <div id="page-wrapper" class="wrapper-desktop">
+    
+    <!-- Global Persistent Caveat Tag Strip -->
+    <div class="wf-caveat-strip">
+      <div class="wf-caveat-tag">Descriptive historical ratings, not predictions.</div>
+      <div>Method Version: 1.0 (Audited)</div>
+    </div>
+
+    <!-- Global Top Navigation -->
+    <header class="wf-header">
+      <div class="wf-container wf-nav-container">
+        <a href="index.html" class="wf-brand">
+          <div class="wf-brand-box">P</div>
+          <span>PRESSURE XI</span>
+        </a>
+        <nav>
+          <ul class="wf-nav-menu">
+            <li class="wf-nav-item"><a href="overview.html">1. Overview</a></li>
+            <li class="wf-nav-item active"><a href="rankings.html">2. Rankings</a></li>
+            <li class="wf-nav-item"><a href="player-profile.html">3. Player Profile</a></li>
+            <li class="wf-nav-item"><a href="compare.html">4. Compare</a></li>
+            <li class="wf-nav-item"><a href="pressure-explorer.html">5. Pressure Explorer</a></li>
+            <li class="wf-nav-item"><a href="method.html">6. Method</a></li>
+          </ul>
+        </nav>
+        <div class="wf-search-box">
+          <input type="text" class="wf-search-input" placeholder="Search player (e.g. Salt)..." aria-label="Search players">
+        </div>
+        <button class="wf-mobile-nav-toggle" aria-label="Open navigation menu">[MENU &#9776;]</button>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="wf-container" style="padding-top: var(--wf-space-6);">
+      
+      <!-- Page Header Strip -->
+      <section class="wf-page-header" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: var(--wf-space-3);">
+        <div>
+          <h1 class="wf-page-title">Player Pressure Rankings</h1>
+          <p class="wf-page-subtitle">Complete leaderboard with Empirical Bayes shrinkage and match bootstrap intervals.</p>
+        </div>
+        <div>
+          <button class="wf-btn-text" style="padding: 6px 12px; font-weight: 700;">[Download final_rankings.csv]</button>
+        </div>
+      </section>
+
+      <!-- 2a. Role Toggle -->
+      <section style="margin-bottom: var(--wf-space-4); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--wf-space-2);">
+        <div class="wf-segmented-control" role="tablist" aria-label="Select Player Role">
+          <button class="wf-segment-btn active" role="tab" aria-selected="true">Batters (118 Eligible)</button>
+          <button class="wf-segment-btn" role="tab" aria-selected="false">Bowlers (125 Eligible)</button>
+        </div>
+        <div style="font-family: var(--wf-font-mono); font-size: 11px; color: var(--wf-text-secondary);">
+          Grand Mean &mu;<sub>0</sub>: -0.0361 runs/b | &tau;<sup>2</sup>: 0.0182
+        </div>
+      </section>
+
+      <!-- 2b. Filter Bar -->
+      <section class="wf-filter-bar">
+        <div class="wf-filter-group">
+          <span class="wf-filter-label">Competition:</span>
+          <select class="wf-filter-select" aria-label="Filter by competition">
+            <option>All Competitions (IPL + T20I)</option>
+            <option>IPL Only (&ge;50% share)</option>
+            <option>T20I Only (&ge;50% share)</option>
+          </select>
+        </div>
+
+        <div class="wf-filter-group">
+          <span class="wf-filter-label">Innings:</span>
+          <select class="wf-filter-select" aria-label="Filter by innings">
+            <option>All Innings Combined</option>
+            <option>Innings 1 (Early Volatility)</option>
+            <option>Innings 2 (Target Chasing)</option>
+          </select>
+        </div>
+
+        <div class="wf-filter-group">
+          <span class="wf-filter-label">Min Balls:</span>
+          <select class="wf-filter-select" aria-label="Filter by minimum pressure deliveries">
+            <option>&ge; 150 Balls (Default Floor)</option>
+            <option>&ge; 250 Balls (Standard Cohort)</option>
+            <option>&ge; 400 Balls (High Volume Veterans)</option>
+          </select>
+        </div>
+
+        <div class="wf-filter-group">
+          <span class="wf-filter-label">Bowling Type:</span>
+          <select class="wf-filter-select" aria-label="Filter by bowling style">
+            <option>All Bowling Types</option>
+            <option>Pace Only</option>
+            <option>Spin Only</option>
+          </select>
+        </div>
+
+        <div style="margin-left: auto; display: flex; align-items: center; gap: var(--wf-space-2);">
+          <input type="text" class="wf-search-input" style="width: 160px;" placeholder="Filter by name..." aria-label="Filter by name">
+          <button class="wf-btn-text">[Reset]</button>
+        </div>
+      </section>
+
+      <!-- 2c. Forest Plot (Top 20 Dot-with-Interval) -->
+      <section style="margin-bottom: var(--wf-space-6);">
+        <div class="wf-card">
+          <div class="wf-card-header">
+            <div>
+              <span class="wf-card-title">Top 20 Estimation Uncertainty</span>
+              <h3 style="font-size: 14px; font-weight: 700; margin-top: 2px;">Forest Plot: Shrunk Rating &amp; 80% Match Bootstrap Confidence Intervals</h3>
+            </div>
+            <button class="wf-btn-text">[View Forest Data Table]</button>
+          </div>
+          
+          <div class="wf-placeholder" style="min-height: 220px;">
+            <div class="wf-placeholder-label">[Chart Placeholder: Forest Plot (Horizontal Interval Bars)]</div>
+            <div class="wf-placeholder-desc">
+              Y-Axis: Top 20 Player Names (Rank 1 to 20).<br>
+              X-Axis: Net Rate Above Expected (Runs/Ball). Reference vertical line at 0.00.<br>
+              Visual elements: Point marker (shrunk rate) with horizontal error bar (80% bootstrap CI).
+            </div>
+          </div>
+
+          <div class="wf-chart-controls">
+            <span>Intervals derived from 1,000-resample match block bootstrap</span>
+            <span>Overlapping intervals denote statistical ties</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2d. Sortable, Searchable Data Table -->
+      <section style="margin-bottom: var(--wf-space-8);">
+        <div class="wf-card-header" style="margin-bottom: var(--wf-space-2);">
+          <h2 style="font-size: 15px; font-weight: 800;">ALL ELIGIBLE PLAYERS (118 ROWS)</h2>
+          <span style="font-size: 11px; font-family: var(--wf-font-mono); color: var(--wf-text-secondary);">Showing 1&ndash;15 of 118 | Page 1 of 8</span>
+        </div>
+
+        <div class="wf-table-container">
+          <table class="wf-table" aria-label="Comprehensive Player Ratings Table">
+            <thead>
+              <tr>
+                <th>Rank &Delta;</th>
+                <th>Player Name</th>
+                <th>Role / Type</th>
+                <th>Balls</th>
+                <th>Mat</th>
+                <th>Raw Rate</th>
+                <th>Shrunk Rate &Delta;</th>
+                <th>&lambda; (Weight)</th>
+                <th>80% CI Interval</th>
+                <th>P(Top-10)</th>
+                <th>Dis vs Exp</th>
+                <th>IPL %</th>
+                <th>Tier</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Row 1 -->
+              <tr>
+                <td><strong>#1</strong></td>
+                <td><a href="player-profile.html"><strong>Player Name</strong></a></td>
+                <td>Batter / Top</td>
+                <td>000</td>
+                <td>00</td>
+                <td>+0.0000</td>
+                <td><strong>+0.0000</strong></td>
+                <td>0.000</td>
+                <td>[+0.000, +0.000]</td>
+                <td>100.0%</td>
+                <td>+0.00%</td>
+                <td>66.8%</td>
+                <td><span class="wf-tier-badge wf-tier-1">Tier 1: Elite Lock</span></td>
+              </tr>
+              <!-- Row 2 -->
+              <tr>
+                <td><strong>#2</strong></td>
+                <td><a href="player-profile.html"><strong>Player Name</strong></a></td>
+                <td>Batter / Top</td>
+                <td>000</td>
+                <td>00</td>
+                <td>+0.0000</td>
+                <td><strong>+0.0000</strong></td>
+                <td>0.000</td>
+                <td>[+0.000, +0.000]</td>
+                <td>94.2%</td>
+                <td>-0.00%</td>
+                <td>89.6%</td>
+                <td><span class="wf-tier-badge wf-tier-1">Tier 1: Elite Lock</span></td>
+              </tr>
+              <!-- Row 3 -->
+              <tr>
+                <td><strong>#3</strong></td>
+                <td><a href="player-profile.html"><strong>Player Name</strong></a></td>
+                <td>Batter / Top</td>
+                <td>000</td>
+                <td>00</td>
+                <td>+0.0000</td>
+                <td><strong>+0.0000</strong></td>
+                <td>0.000</td>
+                <td>[+0.000, +0.000]</td>
+                <td>95.6%</td>
+                <td>+0.00%</td>
+                <td>59.3%</td>
+                <td><span class="wf-tier-badge wf-tier-1">Tier 1: Elite Lock</span></td>
+              </tr>
+              <!-- Row 4 -->
+              <tr>
+                <td><strong>#4</strong></td>
+                <td><a href="player-profile.html"><strong>Player Name</strong></a></td>
+                <td>Batter / Mid</td>
+                <td>000</td>
+                <td>00</td>
+                <td>+0.0000</td>
+                <td><strong>+0.0000</strong></td>
+                <td>0.000</td>
+                <td>[+0.000, +0.000]</td>
+                <td>68.9%</td>
+                <td>-0.00%</td>
+                <td>35.8%</td>
+                <td><span class="wf-tier-badge wf-tier-1">Tier 1: Elite Lock</span></td>
+              </tr>
+              <!-- Row 5 -->
+              <tr>
+                <td><strong>#5</strong></td>
+                <td><a href="player-profile.html"><strong>Player Name</strong></a></td>
+                <td>Batter / Top</td>
+                <td>000</td>
+                <td>00</td>
+                <td>+0.0000</td>
+                <td><strong>+0.0000</strong></td>
+                <td>0.000</td>
+                <td>[+0.000, +0.000]</td>
+                <td>73.0%</td>
+                <td>+0.00%</td>
+                <td>45.4%</td>
+                <td><span class="wf-tier-badge wf-tier-1">Tier 1: Elite Lock</span></td>
+              </tr>
+              <!-- Row 6 -->
+              <tr>
+                <td><strong>#6</strong></td>
+                <td><a href="player-profile.html"><strong>Player Name</strong></a></td>
+                <td>Batter / Top</td>
+                <td>000</td>
+                <td>00</td>
+                <td>+0.0000</td>
+                <td><strong>+0.0000</strong></td>
+                <td>0.000</td>
+                <td>[+0.000, +0.000]</td>
+                <td>64.4%</td>
+                <td>+0.00%</td>
+                <td>74.7%</td>
+                <td><span class="wf-tier-badge wf-tier-1">Tier 1: Elite Lock</span></td>
+              </tr>
+              <!-- Row 7 -->
+              <tr>
+                <td><strong>#7</strong></td>
+                <td><a href="player-profile.html"><strong>Player Name</strong></a></td>
+                <td>Batter / Top</td>
+                <td>000</td>
+                <td>00</td>
+                <td>+0.0000</td>
+                <td><strong>+0.0000</strong></td>
+                <td>0.000</td>
+                <td>[+0.000, +0.000]</td>
+                <td>56.4%</td>
+                <td>+0.00%</td>
+                <td>45.9%</td>
+                <td><span class="wf-tier-badge wf-tier-1">Tier 1: Elite Lock</span></td>
+              </tr>
+              <!-- Row 8 -->
+              <tr>
+                <td><strong>#8</strong></td>
+                <td><a href="player-profile.html"><strong>Player Name</strong></a></td>
+                <td>Batter / Top</td>
+                <td>000</td>
+                <td>00</td>
+                <td>+0.0000</td>
+                <td><strong>+0.0000</strong></td>
+                <td>0.000</td>
+                <td>[+0.000, +0.000]</td>
+                <td>55.4%</td>
+                <td>-0.00%</td>
+                <td>21.2%</td>
+                <td><span class="wf-tier-badge wf-tier-1">Tier 1: Elite Lock</span></td>
+              </tr>
+              <!-- Row 9 -->
+              <tr>
+                <td><strong>#9</strong></td>
+                <td><a href="player-profile.html"><strong>Player Name</strong></a></td>
+                <td>Batter / Mid</td>
+                <td>000</td>
+                <td>00</td>
+                <td>+0.0000</td>
+                <td><strong>+0.0000</strong></td>
+                <td>0.000</td>
+                <td>[+0.000, +0.000]</td>
+                <td>53.5%</td>
+                <td>+0.00%</td>
+                <td>81.7%</td>
+                <td><span class="wf-tier-badge wf-tier-1">Tier 1: Elite Lock</span></td>
+              </tr>
+              <!-- Row 10 -->
+              <tr>
+                <td><strong>#10</strong></td>
+                <td><a href="player-profile.html"><strong>Player Name</strong></a></td>
+                <td>Batter / Mid</td>
+                <td>000</td>
+                <td>00</td>
+                <td>+0.0000</td>
+                <td><strong>+0.0000</strong></td>
+                <td>0.000</td>
+                <td>[+0.000, +0.000]</td>
+                <td>51.8%</td>
+                <td>-0.00%</td>
+                <td>22.6%</td>
+                <td><span class="wf-tier-badge wf-tier-1">Tier 1: Elite Lock</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Pagination Controls -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--wf-space-3); font-size: 12px; font-family: var(--wf-font-mono);">
+          <div>Showing 1 to 10 of 118 players</div>
+          <div style="display: flex; gap: var(--wf-space-1);">
+            <button class="wf-btn-text" disabled>[&laquo; Previous]</button>
+            <button class="wf-btn-text" style="font-weight: 700;">[1]</button>
+            <button class="wf-btn-text">[2]</button>
+            <button class="wf-btn-text">[3]</button>
+            <button class="wf-btn-text">[Next &raquo;]</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2e. Scatter Plot: Rating vs Sample Size -->
+      <section style="margin-bottom: var(--wf-space-8);">
+        <div class="wf-card">
+          <div class="wf-card-header">
+            <div>
+              <span class="wf-card-title">Shrinkage &amp; Volume Interaction</span>
+              <h3 style="font-size: 14px; font-weight: 700; margin-top: 2px;">Scatter Plot: Shrunk Rating vs High-Pressure Sample Size (Balls Faced)</h3>
+            </div>
+            <button class="wf-btn-text">[View Scatter Data]</button>
+          </div>
+          
+          <div class="wf-placeholder" style="min-height: 220px;">
+            <div class="wf-placeholder-label">[Chart Placeholder: Scatter Plot with Shrinkage Funnel]</div>
+            <div class="wf-placeholder-desc">
+              X-Axis: High-Pressure Deliveries (150 to 1,200 balls).<br>
+              Y-Axis: Shrunk Rating (Runs Above Expected / Ball).<br>
+              Visual elements: Scatter dots per player, Empirical Bayes shrinkage funnel showing narrowing variance at high sample volume.
+            </div>
+          </div>
+
+          <div class="wf-chart-controls">
+            <span>Notice: Players near 150-200 balls exhibit wider posterior variance</span>
+            <span>Veterans (&ge;600 balls) have shrinkage weight &lambda; &ge; 0.75</span>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="wf-footer">
+      <div class="wf-container wf-footer-content">
+        <div class="wf-footer-left">
+          <p><strong>Pressure XI</strong> &mdash; SupeRR Selector Research Project (2022 to 2026).</p>
+          <p>All statistics are descriptive historical outcomes derived strictly from non-DLS deliveries.</p>
+        </div>
+        <ul class="wf-footer-links">
+          <li><a href="method.html">Methodology</a></li>
+          <li><a href="overview.html">Overview</a></li>
+          <li><a href="index.html">Wireframe Index</a></li>
+        </ul>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    function setBp(bp) {
+      const wrapper = document.getElementById('page-wrapper');
+      wrapper.className = 'wrapper-' + bp;
+      document.querySelectorAll('.wf-view-btns button').forEach(b => b.classList.remove('active'));
+      document.getElementById('btn-' + bp).classList.add('active');
+    }
+  </script>
+</body>
+</html>
