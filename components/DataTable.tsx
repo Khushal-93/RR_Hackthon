@@ -107,12 +107,12 @@ export function DataTable({ data }: Props) {
 
   const renderSortIcon = (field: SortField) => {
     if (sortField !== field) {
-      return <ArrowUpDown className="w-3 h-3 text-text-muted/60" />;
+      return <ArrowUpDown className="w-3 h-3 text-text-muted/50" />;
     }
     return sortAsc ? (
-      <ChevronUp className="w-3.5 h-3.5 text-accent-primary" />
+      <ChevronUp className="w-3.5 h-3.5 text-primary" />
     ) : (
-      <ChevronDown className="w-3.5 h-3.5 text-accent-primary" />
+      <ChevronDown className="w-3.5 h-3.5 text-primary" />
     );
   };
 
@@ -125,100 +125,100 @@ export function DataTable({ data }: Props) {
         </span>
         <button
           onClick={downloadCSV}
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded border border-border-medium bg-surface hover:bg-surface-subtle text-text-primary transition-colors"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border-medium bg-surface hover:bg-black/5 dark:hover:bg-white/10 text-text-primary text-xs font-medium transition-all duration-300"
         >
-          <Download className="w-3.5 h-3.5" />
+          <Download className="w-3.5 h-3.5 text-primary" />
           <span>Export CSV</span>
         </button>
       </div>
 
       {/* Desktop & Tablet Table Container */}
-      <div className="overflow-x-auto border border-border-light rounded-lg bg-surface">
+      <div className="overflow-x-auto apple-card">
         <table className="w-full text-left border-collapse text-xs">
           <thead>
-            <tr className="border-b border-border-light bg-surface-subtle/80 font-mono text-[11px] text-text-secondary uppercase">
-              <th className="py-3 px-3 cursor-pointer" onClick={() => handleSort("rank")}>
-                <div className="flex items-center gap-1">
+            <tr className="border-b border-border-light bg-black/[0.02] dark:bg-white/[0.03] font-mono text-[11px] text-text-secondary uppercase">
+              <th className="py-3.5 px-4 cursor-pointer" onClick={() => handleSort("rank")}>
+                <div className="flex items-center gap-1.5">
                   <span>#</span>
                   {renderSortIcon("rank")}
                 </div>
               </th>
-              <th className="py-3 px-4 cursor-pointer" onClick={() => handleSort("player_name")}>
-                <div className="flex items-center gap-1">
+              <th className="py-3.5 px-4 cursor-pointer" onClick={() => handleSort("player_name")}>
+                <div className="flex items-center gap-1.5">
                   <span>Player</span>
                   {renderSortIcon("player_name")}
                 </div>
               </th>
-              <th className="py-3 px-3 text-right cursor-pointer" onClick={() => handleSort("balls")}>
-                <div className="flex items-center justify-end gap-1">
+              <th className="py-3.5 px-3 text-right cursor-pointer" onClick={() => handleSort("balls")}>
+                <div className="flex items-center justify-end gap-1.5">
                   <span>Balls</span>
                   {renderSortIcon("balls")}
                 </div>
               </th>
-              <th className="py-3 px-3 text-right cursor-pointer" onClick={() => handleSort("matches")}>
-                <div className="flex items-center justify-end gap-1">
+              <th className="py-3.5 px-3 text-right cursor-pointer" onClick={() => handleSort("matches")}>
+                <div className="flex items-center justify-end gap-1.5">
                   <span>Mat</span>
                   {renderSortIcon("matches")}
                 </div>
               </th>
-              <th className="py-3 px-3 text-right cursor-pointer" onClick={() => handleSort("raw_rate")}>
-                <div className="flex items-center justify-end gap-1">
+              <th className="py-3.5 px-3 text-right cursor-pointer" onClick={() => handleSort("raw_rate")}>
+                <div className="flex items-center justify-end gap-1.5">
                   <span>Raw r/b</span>
                   {renderSortIcon("raw_rate")}
                 </div>
               </th>
-              <th className="py-3 px-3 text-right cursor-pointer" onClick={() => handleSort("shrunk_rate")}>
-                <div className="flex items-center justify-end gap-1">
+              <th className="py-3.5 px-3 text-right cursor-pointer" onClick={() => handleSort("shrunk_rate")}>
+                <div className="flex items-center justify-end gap-1.5">
                   <span>Shrunk Rating</span>
                   {renderSortIcon("shrunk_rate")}
                 </div>
               </th>
-              <th className="py-3 px-4 text-center">80% Interval</th>
-              <th className="py-3 px-3 text-right cursor-pointer" onClick={() => handleSort("prob_top10")}>
-                <div className="flex items-center justify-end gap-1">
+              <th className="py-3.5 px-4 text-center">80% Interval</th>
+              <th className="py-3.5 px-3 text-right cursor-pointer" onClick={() => handleSort("prob_top10")}>
+                <div className="flex items-center justify-end gap-1.5">
                   <span>P(Top-10)</span>
                   {renderSortIcon("prob_top10")}
                 </div>
               </th>
-              <th className="py-3 px-3 text-right cursor-pointer" onClick={() => handleSort("dismissal_rate_vs_exp")}>
-                <div className="flex items-center justify-end gap-1">
+              <th className="py-3.5 px-3 text-right cursor-pointer" onClick={() => handleSort("dismissal_rate_vs_exp")}>
+                <div className="flex items-center justify-end gap-1.5">
                   <span>Out vs Exp</span>
                   {renderSortIcon("dismissal_rate_vs_exp")}
                 </div>
               </th>
-              <th className="py-3 px-3 text-right cursor-pointer" onClick={() => handleSort("ipl_share_pct")}>
-                <div className="flex items-center justify-end gap-1">
+              <th className="py-3.5 px-3 text-right cursor-pointer" onClick={() => handleSort("ipl_share_pct")}>
+                <div className="flex items-center justify-end gap-1.5">
                   <span>IPL%</span>
                   {renderSortIcon("ipl_share_pct")}
                 </div>
               </th>
-              <th className="py-3 px-4 text-center">Tier</th>
+              <th className="py-3.5 px-4 text-center">Tier</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-border-light/50 font-mono">
             {pagedData.map((player) => {
               const isPositive = player.shrunk_rate >= 0;
               return (
-                <tr key={player.player_id} className="hover:bg-surface-subtle transition-colors group">
-                  <td className="py-2.5 px-3 font-bold text-text-secondary group-hover:text-text-primary">
+                <tr key={player.player_id} className="hover:bg-black/[0.015] dark:hover:bg-white/[0.03] transition-colors group">
+                  <td className="py-3 px-4 font-bold text-text-secondary group-hover:text-text-primary">
                     {player.rank}
                   </td>
-                  <td className="py-2.5 px-4 font-sans font-bold text-text-primary group-hover:text-accent-primary">
+                  <td className="py-3 px-4 font-sans font-semibold text-text-primary group-hover:text-primary">
                     <Link href={`/players/${player.player_id}/`} className="hover:underline">
                       {player.player_name}
                     </Link>
                   </td>
-                  <td className="py-2.5 px-3 text-right text-text-secondary">{player.balls}</td>
-                  <td className="py-2.5 px-3 text-right text-text-secondary">{player.matches}</td>
-                  <td className="py-2.5 px-3 text-right text-text-secondary">
+                  <td className="py-3 px-3 text-right text-text-secondary">{player.balls}</td>
+                  <td className="py-3 px-3 text-right text-text-secondary">{player.matches}</td>
+                  <td className="py-3 px-3 text-right text-text-secondary">
                     {player.raw_rate >= 0 ? `+${player.raw_rate.toFixed(3)}` : player.raw_rate.toFixed(3)}
                   </td>
-                  <td className="py-2.5 px-3 text-right font-bold">
-                    <span className={isPositive ? "text-accent-success" : "text-accent-danger"}>
+                  <td className="py-3 px-3 text-right font-bold">
+                    <span className={isPositive ? "text-primary" : "text-secondary"}>
                       {isPositive ? `+${player.shrunk_rate.toFixed(3)}` : player.shrunk_rate.toFixed(3)}
                     </span>
                   </td>
-                  <td className="py-2.5 px-4 text-center">
+                  <td className="py-3 px-4 text-center">
                     <UncertaintyBar
                       lower={player.ci80_lower}
                       upper={player.ci80_upper}
@@ -226,18 +226,18 @@ export function DataTable({ data }: Props) {
                       width="w-24"
                     />
                   </td>
-                  <td className="py-2.5 px-3 text-right text-text-secondary">
+                  <td className="py-3 px-3 text-right text-text-secondary">
                     {(player.prob_top10 * 100).toFixed(0)}%
                   </td>
-                  <td className="py-2.5 px-3 text-right text-text-secondary">
+                  <td className="py-3 px-3 text-right text-text-secondary">
                     {player.dismissal_rate_vs_exp >= 0
                       ? `+${(player.dismissal_rate_vs_exp * 100).toFixed(1)}%`
                       : `${(player.dismissal_rate_vs_exp * 100).toFixed(1)}%`}
                   </td>
-                  <td className="py-2.5 px-3 text-right text-text-secondary">
+                  <td className="py-3 px-3 text-right text-text-secondary">
                     {player.ipl_share_pct.toFixed(0)}%
                   </td>
-                  <td className="py-2.5 px-4 text-center font-sans">
+                  <td className="py-3 px-4 text-center font-sans">
                     <TierBadge tier={player.tier} size="sm" />
                   </td>
                 </tr>
@@ -249,11 +249,11 @@ export function DataTable({ data }: Props) {
 
       {/* Pagination Controls */}
       {totalPages > 1 && (
-        <div className="flex items-center justify-between text-xs font-mono pt-2">
+        <div className="flex items-center justify-between text-xs font-mono pt-3">
           <button
             onClick={() => setPage(Math.max(1, page - 1))}
             disabled={page === 1}
-            className="px-3 py-1.5 rounded border border-border-medium bg-surface hover:bg-surface-subtle disabled:opacity-40 transition-colors"
+            className="px-4 py-2 rounded-full border border-border-medium bg-surface hover:bg-black/5 dark:hover:bg-white/10 disabled:opacity-40 transition-colors"
           >
             &larr; Previous
           </button>
@@ -263,7 +263,7 @@ export function DataTable({ data }: Props) {
           <button
             onClick={() => setPage(Math.min(totalPages, page + 1))}
             disabled={page === totalPages}
-            className="px-3 py-1.5 rounded border border-border-medium bg-surface hover:bg-surface-subtle disabled:opacity-40 transition-colors"
+            className="px-4 py-2 rounded-full border border-border-medium bg-surface hover:bg-black/5 dark:hover:bg-white/10 disabled:opacity-40 transition-colors"
           >
             Next &rarr;
           </button>

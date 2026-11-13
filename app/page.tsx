@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { ArrowRight, Trophy } from "lucide-react";
+import { ArrowRight, Trophy, Sparkles, Shield, BarChart3, ChevronRight } from "lucide-react";
 import {
   getMetaSync,
   getRankingsSync,
@@ -23,37 +23,43 @@ export default function OverviewPage() {
   const leverageByOver = getLeverageByOverSync();
 
   return (
-    <div className="max-w-[1344px] mx-auto px-4 sm:px-6 md:px-8 py-8 space-y-10">
-      {/* a. Header Strip */}
-      <section className="space-y-2 border-b border-border-light pb-6">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <div>
-            <div className="font-mono text-xs text-text-muted uppercase tracking-wider">
-              Executive Evaluation Dashboard &bull; {meta.build.data_span}
-            </div>
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-text-primary tracking-tight">
-              Who Delivers Under Pressure?
-            </h1>
-          </div>
-          <Link
-            href="/rankings/"
-            className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-mono font-bold rounded-md bg-accent-primary text-slate-950 hover:bg-sky-400 transition-colors shadow-sm"
-          >
-            <span>Explore All 243 Qualified Players</span>
+    <div className="space-y-16 py-8 sm:py-12">
+      {/* 1. HERO SECTION (Apple-Style Minimal & Cinematic) */}
+      <section className="max-w-[1200px] mx-auto px-6 text-center space-y-6 pt-4 sm:pt-8">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-soft-blue border border-primary/20 text-primary text-xs font-semibold">
+          <Sparkles className="w-3.5 h-3.5 text-secondary" />
+          <span>Competition Research &bull; IPL & T20I, 2022 to 2026</span>
+        </div>
+
+        <h1 className="apple-hero-title max-w-4xl mx-auto text-text-primary tracking-tight">
+          Who Delivers When the Match Is on the Line?
+        </h1>
+
+        <p className="apple-subheading max-w-2xl mx-auto text-text-secondary leading-relaxed">
+          An audited empirical evaluation across 829 non-DLS matches. Shrunk with Empirical Bayes to separate genuine signal from small-sample noise.
+        </p>
+
+        <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
+          <Link href="/rankings/" className="apple-btn-gradient">
+            <span>Explore 243 Qualified Players</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
+          <Link href="/method/" className="apple-btn-secondary">
+            <span>Methodology & Audit</span>
+          </Link>
         </div>
-        <p className="text-sm sm:text-base text-text-secondary max-w-3xl leading-relaxed">
-          An empirical evaluation of batting runs-above-expected and bowling run-suppression across the highest-leverage third of T20 innings, stabilized with Empirical Bayes shrinkage.
-        </p>
+
+        <div className="text-xs font-mono text-text-muted pt-2">
+          Descriptive historical ratings &bull; Not predictive traits
+        </div>
       </section>
 
-      {/* b. Four Scope Summary Cards */}
-      <section aria-labelledby="summary-cards-heading">
+      {/* 2. FOUR SCOPE SUMMARY CARDS */}
+      <section aria-labelledby="summary-cards-heading" className="max-w-[1200px] mx-auto px-6">
         <h2 id="summary-cards-heading" className="sr-only">
           Dataset Scope Summary
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           <SummaryCard
             label="Matches Analysed"
             value={meta.dataset.total_matches.toLocaleString()}
@@ -61,10 +67,10 @@ export default function OverviewPage() {
             badge="0 DLS"
           />
           <SummaryCard
-            label="Deliveries Analysed"
+            label="Legal Deliveries"
             value={meta.dataset.total_legal_deliveries.toLocaleString()}
             subtext="Ball-state tracking records"
-            badge="Legal Balls"
+            badge="Audited"
           />
           <SummaryCard
             label="High-Pressure Corridor"
@@ -73,7 +79,7 @@ export default function OverviewPage() {
             badge="Top Third"
           />
           <SummaryCard
-            label="Eligible Players"
+            label="Eligible Roster"
             value={`${meta.dataset.eligible_batters} / ${meta.dataset.eligible_bowlers}`}
             subtext="118 Batters &bull; 125 Bowlers qualified"
             badge="&ge;150 balls, &ge;15m"
@@ -81,38 +87,38 @@ export default function OverviewPage() {
         </div>
       </section>
 
-      {/* c. Side-by-side Leaderboards (Top 10 Batters & Bowlers) */}
-      <section aria-labelledby="leaderboards-heading" className="space-y-4">
-        <div className="flex items-center justify-between border-b border-border-light pb-3">
+      {/* 3. SIDE-BY-SIDE LEADERBOARDS (Top 10 Batters & Bowlers) */}
+      <section aria-labelledby="leaderboards-heading" className="max-w-[1200px] mx-auto px-6 space-y-6">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 border-b border-border-light pb-4">
           <div>
-            <h2 id="leaderboards-heading" className="text-lg sm:text-xl font-bold text-text-primary flex items-center gap-2">
-              <Trophy className="w-5 h-5 text-amber-400" />
-              <span>High-Pressure Leaderboards</span>
+            <div className="text-xs font-semibold uppercase tracking-wider text-primary mb-1">
+              Top Performers
+            </div>
+            <h2 id="leaderboards-heading" className="apple-section-title text-text-primary">
+              High-Pressure Corridors
             </h2>
-            <p className="text-xs text-text-secondary mt-0.5">
-              Empirical Bayes shrunk rating (runs above expected / runs saved per ball).
-            </p>
           </div>
           <Link
             href="/rankings/"
-            className="text-xs font-mono text-accent-primary hover:underline hidden sm:inline"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary-dark transition-colors"
           >
-            View full rankings table &rarr;
+            <span>View all 243 players</span>
+            <ChevronRight className="w-4 h-4" />
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Top 10 Batters */}
-          <div className="space-y-3 bg-surface border border-border-light rounded-lg p-4 sm:p-5">
-            <div className="flex items-center justify-between pb-2 border-b border-border-light">
-              <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-accent-batter" />
-                <h3 className="font-bold text-sm text-text-primary">Top 10 Batters Under Pressure</h3>
+          <div className="apple-card p-6 sm:p-7 space-y-4">
+            <div className="flex items-center justify-between pb-3 border-b border-border-light">
+              <div className="flex items-center gap-2.5">
+                <div className="w-3 h-3 rounded-full bg-secondary" />
+                <h3 className="text-lg font-semibold text-text-primary">Top 10 Batters Under Pressure</h3>
               </div>
-              <span className="font-mono text-[11px] text-text-muted">RAE Shrunk r/b</span>
+              <span className="text-xs font-mono text-text-muted">RAE Shrunk r/b</span>
             </div>
 
-            <div className="space-y-2">
+            <div className="space-y-2.5">
               {top10Batters.map((player) => (
                 <LeaderboardRow key={player.player_id} player={player} rank={player.rank} />
               ))}
@@ -120,16 +126,16 @@ export default function OverviewPage() {
           </div>
 
           {/* Top 10 Bowlers */}
-          <div className="space-y-3 bg-surface border border-border-light rounded-lg p-4 sm:p-5">
-            <div className="flex items-center justify-between pb-2 border-b border-border-light">
-              <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-accent-bowler" />
-                <h3 className="font-bold text-sm text-text-primary">Top 10 Bowlers Under Pressure</h3>
+          <div className="apple-card p-6 sm:p-7 space-y-4">
+            <div className="flex items-center justify-between pb-3 border-b border-border-light">
+              <div className="flex items-center gap-2.5">
+                <div className="w-3 h-3 rounded-full bg-primary" />
+                <h3 className="text-lg font-semibold text-text-primary">Top 10 Bowlers Under Pressure</h3>
               </div>
-              <span className="font-mono text-[11px] text-text-muted">RSE Shrunk r/b</span>
+              <span className="text-xs font-mono text-text-muted">RSE Shrunk r/b</span>
             </div>
 
-            <div className="space-y-2">
+            <div className="space-y-2.5">
               {top10Bowlers.map((player) => (
                 <LeaderboardRow key={player.player_id} player={player} rank={player.rank} />
               ))}
@@ -138,13 +144,18 @@ export default function OverviewPage() {
         </div>
       </section>
 
-      {/* d. "What We Found": Three Short Callout Cards */}
-      <section aria-labelledby="callouts-heading" className="space-y-4">
-        <h2 id="callouts-heading" className="text-lg sm:text-xl font-bold text-text-primary">
-          Empirical Findings & Insights
-        </h2>
+      {/* 4. THREE CORE EMPIRICAL CALLOUT CARDS */}
+      <section aria-labelledby="callouts-heading" className="max-w-[1200px] mx-auto px-6 space-y-6">
+        <div>
+          <div className="text-xs font-semibold uppercase tracking-wider text-secondary mb-1">
+            Empirical Findings
+          </div>
+          <h2 id="callouts-heading" className="apple-section-title text-text-primary">
+            Key Insights From 195,707 Deliveries
+          </h2>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <CalloutCard
             tag="Innings Architecture"
             title="Innings 1 vs Innings 2 Asymmetry"
@@ -169,8 +180,8 @@ export default function OverviewPage() {
         </div>
       </section>
 
-      {/* e. Chart Block: Average Leverage by Over (1 to 20) */}
-      <section aria-labelledby="leverage-chart-heading">
+      {/* 5. LEVERAGE BY OVER CHART */}
+      <section aria-labelledby="leverage-chart-heading" className="max-w-[1200px] mx-auto px-6">
         <h2 id="leverage-chart-heading" className="sr-only">
           Average Leverage Index by Over
         </h2>
@@ -182,14 +193,38 @@ export default function OverviewPage() {
         />
       </section>
 
-      {/* f. Honest-Limits Banner Linking to Method Page */}
-      <section>
+      {/* 6. HONEST-LIMITS WARNING BANNER */}
+      <section className="max-w-[1200px] mx-auto px-6">
         <WarningBanner
           title="Honest Limits: Descriptive historical ratings, not predictive traits"
           message="Pressure metrics measure historical delivery-level efficiency against baseline expectations. Cross-era rank correlation is modest (rho ~ 0.25 to 0.29) and rankings contain dense statistical ties. View ratings as confidence tiers."
           linkHref="/method/"
           linkLabel="Read Full Methodology & Reliability Audit"
         />
+      </section>
+
+      {/* 7. AUDIT CITATIONS & TESTIMONIALS STRIP */}
+      <section className="max-w-[1200px] mx-auto px-6 py-6 border-t border-border-light">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-text-secondary leading-relaxed">
+          <div className="space-y-1.5">
+            <div className="font-semibold text-text-primary text-xs uppercase tracking-wider font-mono">
+              01 &bull; 0 DLS Deliveries
+            </div>
+            <p>100% of rain-shortened DLS matches (41) and Super Overs (38 balls) strictly excluded to protect baseline validity.</p>
+          </div>
+          <div className="space-y-1.5">
+            <div className="font-semibold text-text-primary text-xs uppercase tracking-wider font-mono">
+              02 &bull; Empirical Bayes Equalizer
+            </div>
+            <p>True per-player delivery variance prevents low-volume qualifiers from spiking ahead of veteran samples.</p>
+          </div>
+          <div className="space-y-1.5">
+            <div className="font-semibold text-text-primary text-xs uppercase tracking-wider font-mono">
+              03 &bull; Dropped Wicket Weighting
+            </div>
+            <p>Out-of-time tests proved adding binary wickets degrades repeatability. Pure run efficiency maximizes signal-to-noise.</p>
+          </div>
+        </div>
       </section>
     </div>
   );

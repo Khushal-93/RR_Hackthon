@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { AlertTriangle, ArrowRight } from "lucide-react";
+import { AlertCircle, ArrowRight } from "lucide-react";
 
 interface Props {
   title?: string;
@@ -19,23 +19,25 @@ export function WarningBanner({
     <div
       role="region"
       aria-label="Scientific Limitations Warning"
-      className="p-4 sm:p-5 rounded-lg border border-amber-500/40 bg-amber-950/20 text-amber-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
+      className="p-6 rounded-[22px] border border-secondary/30 bg-soft-pink/40 dark:bg-secondary/10 text-text-primary flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 transition-colors"
     >
-      <div className="flex items-start gap-3">
-        <AlertTriangle className="w-5 h-5 text-accent-warning shrink-0 mt-0.5" aria-hidden="true" />
+      <div className="flex items-start gap-4">
+        <div className="w-9 h-9 rounded-full bg-secondary/15 flex items-center justify-center shrink-0 mt-0.5">
+          <AlertCircle className="w-5 h-5 text-secondary" aria-hidden="true" />
+        </div>
         <div className="space-y-1">
-          <div className="font-bold text-sm text-text-primary">{title}</div>
-          <p className="text-xs text-text-secondary leading-relaxed max-w-3xl">{message}</p>
+          <div className="font-semibold text-base text-text-primary">{title}</div>
+          <p className="apple-caption leading-relaxed max-w-3xl">{message}</p>
         </div>
       </div>
 
       {linkHref && (
         <Link
           href={linkHref}
-          className="inline-flex items-center gap-1.5 font-mono text-xs font-bold text-accent-warning hover:text-amber-300 underline shrink-0"
+          className="inline-flex items-center gap-1.5 font-medium text-sm text-secondary hover:text-secondary-dark transition-colors shrink-0"
         >
           <span>{linkLabel}</span>
-          <ArrowRight className="w-3.5 h-3.5" />
+          <ArrowRight className="w-4 h-4" />
         </Link>
       )}
     </div>

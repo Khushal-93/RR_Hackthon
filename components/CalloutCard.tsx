@@ -12,23 +12,23 @@ interface Props {
 
 export function CalloutCard({ tag, title, description, linkHref, linkLabel }: Props) {
   return (
-    <div className="bg-surface border border-border-light rounded-lg p-5 flex flex-col justify-between hover:border-border-medium transition-colors">
-      <div className="space-y-2">
-        <span className="font-mono text-[10px] uppercase font-bold text-accent-primary tracking-wider px-2 py-0.5 rounded bg-surface-subtle border border-border-light inline-block">
+    <div className="apple-card p-7 flex flex-col justify-between">
+      <div className="space-y-3">
+        <span className="text-[11px] font-mono font-semibold uppercase tracking-wider px-3 py-1 rounded-full bg-soft-blue text-primary inline-block">
           {tag}
         </span>
-        <h3 className="font-bold text-base text-text-primary">{title}</h3>
-        <p className="text-xs text-text-secondary leading-relaxed">{description}</p>
+        <h3 className="text-xl font-semibold tracking-tight text-text-primary">{title}</h3>
+        <p className="text-sm text-text-secondary leading-relaxed">{description}</p>
       </div>
 
       {linkHref && (
-        <div className="pt-4 mt-4 border-t border-border-light/50">
+        <div className="pt-5 mt-5 border-t border-border-light">
           <Link
             href={linkHref}
-            className="inline-flex items-center gap-1 font-mono text-xs text-accent-primary hover:underline"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary-dark transition-colors group"
           >
             <span>{linkLabel || "Learn more"}</span>
-            <ArrowUpRight className="w-3.5 h-3.5" />
+            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </Link>
         </div>
       )}

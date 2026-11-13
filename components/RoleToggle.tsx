@@ -13,16 +13,16 @@ export function RoleToggle({ role, onChange, batterCount = 118, bowlerCount = 12
     <div
       role="tablist"
       aria-label="Filter player role"
-      className="inline-flex p-1 bg-surface-subtle border border-border-medium rounded-lg"
+      className="inline-flex p-1 bg-black/5 dark:bg-white/10 rounded-full border border-border-light"
     >
       <button
         role="tab"
         aria-selected={role === "batter"}
         onClick={() => onChange("batter")}
-        className={`px-4 py-2 text-xs font-mono rounded-md font-bold transition-all ${
+        className={`px-5 py-2 text-sm font-medium rounded-full transition-all duration-300 ${
           role === "batter"
-            ? "bg-accent-batter text-slate-950 shadow-sm"
-            : "text-text-secondary hover:text-text-primary hover:bg-surface/50"
+            ? "bg-secondary text-white shadow-sm"
+            : "text-text-secondary hover:text-text-primary"
         }`}
       >
         Batters ({batterCount})
@@ -32,10 +32,10 @@ export function RoleToggle({ role, onChange, batterCount = 118, bowlerCount = 12
         role="tab"
         aria-selected={role === "bowler"}
         onClick={() => onChange("bowler")}
-        className={`px-4 py-2 text-xs font-mono rounded-md font-bold transition-all ${
+        className={`px-5 py-2 text-sm font-medium rounded-full transition-all duration-300 ${
           role === "bowler"
-            ? "bg-accent-bowler text-slate-950 shadow-sm"
-            : "text-text-secondary hover:text-text-primary hover:bg-surface/50"
+            ? "bg-primary text-white shadow-sm"
+            : "text-text-secondary hover:text-text-primary"
         }`}
       >
         Bowlers ({bowlerCount})
